@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JACK的個人網站</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/github-markdown-dark.css">
+
+</head>
+<body>
+
+    <div class="backgroundFileter"></div>
+
+    <div class="container">
+        <section id="home">
+            <div class="pt-5">
+                <h6>Hi I'm</h3>
+                <h1><b>Jerry Yen</b></h1>
+                <h6 class="text-light">A College Student & Full-stack Web Developer</h6>
+            </div>
+
+            <div class="pt-3">
+                <span class="button" style="--s:1" onclick="document.querySelector('.about').click()">了解我</span>
+                <span class="button2" style="--s:1" onclick="document.querySelector('.contact').click()">與我聯繫!</span>
+            </div>
+
+            <div style="display:flex; justify-content:center;">
+                <span class="rounded-top mypic1 col-md-5 col-12">
+                    <div id="homeCarousel" class="carousel slide pb-5 mt-5" data-bs-ride="carousel">
+
+                        <!-- Indicators/dots -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                        
+                        <!-- The slideshow/carousel -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/數位系113畢展網站/DCT113.png" alt="" class="d-block w-100">
+                                <div class="carousel-caption">
+                                    <h3></h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/llyungshop.png" alt="" class="d-block w-100">
+                                <div class="carousel-caption">
+                                    <h3></h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/tz_2.png" alt="" class="d-block w-100">
+                                <div class="carousel-caption">
+                                    <h3></h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Left and right controls/icons -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </span>
+            </div>
+
+            <nav class="socialMediaBar">
+                <a class="fa fa-youtube-play" href="https://www.youtube.com/@the_walking_fish" target="_blank"></a>
+                <a class="fa fa-github" href="https://github.com/ADT109119" target="_blank"></a>
+                <a class="fa fa-envelope" href="mailto:2.jerry32262686@gmail.com" target="_blank"></a>
+            </nav>
+
+            <nav class="scrollDown text-secondary">
+                Scroll Down
+            </nav>
+            
+        </section>
+        
+        <section id="about">
+            <div class="pt-5" style="text-align: center;">
+                <h6 class="text-light">Get To Know</h3>
+                <h1 class="sectionTitle">About Me</h1>
+            </div>
+
+            <!--div class="flex flex-wrap"-->
+            <div class="aboutGrid">
+
+                <div class="pic grid-column-1">
+                    <span class="picContainer"></span>
+                </div>
+
+                <!--div class="r col-md-6 col-12"-->
+                    <div class="card grid-column-2">
+                        <b class="fs-5">自我介紹</b>
+                        <hr>
+                        <p>一個普普通通的大學生，喜歡搞一些程式相關的研究。</p>
+                        
+                        <p>會抽時間作一些Side Project，來精進自己的程式能力，並解決一些問題。</p>
+
+                        <p>目前有個<a href="https://www.youtube.com/@the_walking_fish" target="_blank">個人YouTube頻道</a>，每周會在上面更新一些教學以及程式介紹。</p>
+                    </div>
+
+                    <div class="card grid-column-1 grid-row-2">
+                        <b class="fs-5">經歷</b>
+                        <hr>
+                        <p>阿虎巴巴聯合企業股份有限公司 Full-stack Developer(intern)</p>
+                        <p>臺中教大 113級數位系畢業專題網站製作</p>
+                        <p>臺中教大 第14屆數位系聯展網站製作</p>
+                        <p>國資圖 AR作品展覽 【谷關七雄 雄讚!】(程式、3D動畫)</p>
+                        <p>原流部落 購物網站開發(程式)</p>
+                        <p>教育部因材網 互動題目製作(程式)</p>
+                    </div>
+
+                    <div class="card grid-column-2">
+                        <b class="fs-5">YouTube頻道 — The Walking Fish</b>
+                        <hr>
+
+                        <a href="https://www.youtube.com/@the_walking_fish" target="_blank">
+                            <img src="img/the_walking_fish.jpg" style="width: 100%;">
+                        </a>
+                            
+                    </div>
+
+                    <div class="card grid-column-1">
+                        <b class="fs-5">學校</b>
+                        <hr>
+                        <p>國立臺中教育大學—數位內容科技學系</p>
+                    </div>
+
+
+                <!--/div-->
+
+            </div>
+        </section>
+
+        <section id="skill">
+            <div class="pt-5" style="text-align: center;">
+                <h6 class="text-light">What Skills I Have</h3>
+                <h1 class="sectionTitle">My Skills</h1>
+            </div>
+
+            <div class="flex flex-wrap flex-space-around">
+                <div class="col-md-5 col-12 card">
+                    <div class="cardTitle" style="color: var(--hoverColor);">Front-end</div>
+                    <hr>
+                    <div class="flex flex-wrap">
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>HTML</span>
+                        </div>
+
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>CSS</span>
+                        </div>
+                        
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Vue</span>
+                        </div>
+
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>jQuery</span>
+                        </div>
+
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Bootstrap</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-12 card">
+                    <div class="cardTitle" style="color: var(--hoverColor);">Back-end</div>
+                    <hr>
+
+                    <div class="flex flex-wrap">
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>PHP</span>
+                        </div>
+
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Python(Flask)</span>
+                        </div>
+                        
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>MySQL</span>
+                        </div>
+                        
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Google App Script</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-11 col-12 card">
+                    <div class="cardTitle" style="color: var(--hoverColor);">Others</div>
+                    <hr>
+
+                    <div class="flex flex-wrap">
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Unity C#</span>
+                        </div>
+
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Python</span>
+                        </div>
+                        
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Machine Learning(Keras)</span>
+                        </div>
+                        
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>C</span>
+                        </div>
+                        
+                        <div class="col-6">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Video Editing</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="project">
+            <div class="pt-5" style="text-align: center;">
+                <h6 class="text-light">My Recent Projects</h3>
+                <h1 class="sectionTitle">Projects</h1>
+            </div>
+
+            <div id="projectClass" class="projectClass mt-5 my-2" style="text-align: center;">
+            </div>
+
+            <div id="projectContainer" class="flex flex-wrap flex-space-around">
+
+                <!--div class="col-md-3 col-12 card">
+                    <span class="image" style="--img: url('../img/noImg.avif')"></span>
+                    <div class="cardTitle" style="text-align: left;">Others</div>
+                    <div>
+                        <span class="button">GitHub</span>
+                        <span class="button2">Visit Site</span>
+                    </div>
+                    
+                </div-->
+                
+            </div>
+
+            <div id="pageButton"></div>
+        </section>
+
+        <section id="contact" style="margin-bottom: 10rem;">
+
+            <div class="pt-5" style="text-align: center;">
+                <h6 class="text-light">Anything Want To Talk To Me?</h3>
+                <h1 class="sectionTitle">Contact Me</h1>
+            </div>
+
+            <div class="flex flex-space-around flex-wrap">
+                <!--div class="flex flex-column col-md-4 col-12">
+
+                    <div class="card">asd</div>
+                    <div class="card">asd</div>
+                    <div class="card">asd</div>
+
+                </div-->
+
+                <div id="SendMessageForm" class="flex flex-column card col-md-7 col-12">
+                    
+                    <input id="inputFullName" type="text" placeholder="Name" required>
+                    <input id="inputEmail" type="email" placeholder="Email" required>
+                    <textarea id="inputMessage" placeholder="Message" required></textarea>
+
+                    <div class="mt-5" style="padding: 1rem 0;">
+                        <span class="button2" style="--s:1 ; margin: 1rem 0;" onclick="sendMessage()">送出訊息以及聯絡資訊</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    
+    <footer id="footer" class="footer">
+        <div style="font-size: 3rem; color: var(--backgroundColor);">JerryYen</div>
+
+        <div class="footerNavBar flex flex-wrap flex-center">
+            <a class="col-md-1 col-12" href="#home">Home</a>
+            <a class="col-md-1 col-12" href="#about">About</a>
+            <a class="col-md-1 col-12" href="#skill">Skills</a>
+            <a class="col-md-1 col-12" href="#project">Project</a>
+            <a class="col-md-1 col-12" href="#contact">Contact</a>
+        </div>
+
+        <div class="socialMediaBarFooter">
+            <a class="fa fa-youtube-play" href="https://www.youtube.com/@the_walking_fish" target="_blank"></a>
+            <a class="fa fa-github" href="https://github.com/ADT109119" target="_blank"></a>
+            <a class="fa fa-envelope" href="mailto:2.jerry32262686@gmail.com" target="_blank"></a>
+        </div>
+    </footer>
+    
+
+    <nav id="navBar">
+        <a class="fa fa-home" href="#home" data-text="Home"></a>
+        <a class="fa fa-user about" href="#about" data-text="About"></a>
+        <a class="fa fa-wrench" href="#skill" data-text="Skill"></a>
+        <a class="fa fa-code" href="#project" data-text="Project"></a>
+        <a class="fa fa-envelope contact" href="#contact" data-text="Contact"></a>
+    </nav>
+
+    <div class="modal fade" id="projectModal">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content bg-dark markdown-body">
+      
+            <!-- Modal Header -->
+            <!--div class="modal-header">
+              <h4 class="modal-title fs-1">Modal Heading</h4>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div-->
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+              Modal body..
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+
+    <script src="js/bootstrap.js"></script>
+    <script src="js/customFunction.js"></script>
+
+    <script
+        color="255,255,255"
+        pointColor="255,255,255"
+        opacity="0.9"
+        count="99"
+        zIndex="-3"
+        src="js/canvas-nest.js"
+    ></script>
+
+    <script>
+        loadProjectData();
+    </script>
+</body>
+</html>
