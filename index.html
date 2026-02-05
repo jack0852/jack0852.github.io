@@ -8,193 +8,185 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #1f1f38;
-            --bg-variant: #2c2c6c;
-            --primary: #4db5ff;
-            --white: #fff;
-            --light: rgba(255, 255, 255, 0.6);
+            --color-bg: #1f1f38;
+            --color-bg-variant: #2c2c6c;
+            --color-primary: #4db5ff;
+            --color-white: #fff;
+            --color-light: rgba(255, 255, 255, 0.6);
             --transition: all 400ms ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; border: 0; }
         html { scroll-behavior: smooth; }
         body { 
-            font-family: 'Poppins', sans-serif; 
-            background: var(--bg-color); 
-            color: var(--white); 
-            line-height: 1.7;
-            /* 背景幾何線條模擬 */
+            font-family: 'Poppins', sans-serif; background: var(--color-bg); color: var(--color-white); 
+            line-height: 1.7; overflow-x: hidden;
             background-image: radial-gradient(circle at 2px 2px, rgba(77, 181, 255, 0.05) 1px, transparent 0);
             background-size: 40px 40px;
         }
 
-        .container { width: 85%; max-width: 1200px; margin: 0 auto; }
-        section { padding-top: 5rem; }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h5 { color: var(--light); font-weight: 400; }
-        .section-header h2 { color: var(--primary); font-size: 2rem; }
+        .container { width: 85%; max-width: 1100px; margin: 0 auto; }
+        section { padding: 4rem 0; }
+        h2, h5 { text-align: center; }
+        h5 { color: var(--color-light); font-weight: 400; }
+        h2 { color: var(--color-primary); margin-bottom: 3rem; font-size: 2rem; }
 
-        /* --- 動畫效果 --- */
-        .animate-pop { transition: var(--transition); cursor: pointer; }
-        .animate-pop:hover { transform: translateY(-5px); background: transparent; border: 1px solid var(--primary); }
-        .animate-pop:active { transform: scale(0.95); }
-
-        /* --- About Me Grid (電腦版三欄) --- */
-        .about__grid {
-            display: grid;
-            grid-template-columns: 300px 1fr 320px;
-            gap: 2rem;
-            align-items: start;
+        /* --- 互動動畫 --- */
+        .card-animate { 
+            transition: var(--transition); 
+            cursor: pointer; 
+            border: 1px solid transparent;
         }
-
-        .photo-frame {
-            width: 100%; aspect-ratio: 1/1;
-            background: linear-gradient(45deg, transparent, var(--primary), transparent);
-            border-radius: 2rem;
-            display: grid; place-items: center;
-            transform: rotate(-10deg);
-            transition: var(--transition);
+        .card-animate:hover { 
+            transform: translateY(-8px); 
+            background: transparent; 
+            border-color: var(--color-primary); 
         }
+        .card-animate:active { transform: scale(0.95); }
+
+        /* --- 1. 首頁 (Hero) --- */
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        header h1 { font-size: 3rem; margin: 1rem 0; }
+        .hero__btns { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .btn { padding: 0.7rem 1.4rem; border-radius: 0.5rem; border: 1px solid var(--color-primary); color: var(--color-primary); transition: var(--transition); }
+        .btn-primary { background: var(--color-primary); color: var(--color-bg); }
+        .btn:hover { background: var(--color-white); color: var(--color-bg); border-color: transparent; }
+
+        /* --- 2. 關於我 Grid --- */
+        .about__grid { display: grid; grid-template-columns: 250px 1fr 280px; gap: 2rem; align-items: start; }
+        .photo-frame { width: 100%; aspect-ratio: 1/1; background: #7fb5ff; border-radius: 2rem; transform: rotate(-8deg); transition: var(--transition); }
         .photo-frame:hover { transform: rotate(0); }
-        .photo-placeholder { width: 90%; height: 90%; background: #7fb5ff; border-radius: 2rem; }
+        .card { background: var(--color-bg-variant); padding: 1.8rem; border-radius: 1.5rem; }
+        .card h3 { color: var(--color-primary); margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
 
-        .card { background: var(--bg-variant); padding: 1.5rem; border-radius: 1.5rem; margin-bottom: 1.5rem; }
-        .card h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+        /* --- 3. 技能 --- */
+        .skills__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .skill-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .skill-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; }
+        .skill-item i { color: var(--color-primary); }
 
-        /* --- 技能區塊 (Skills) --- */
-        .skills__container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-        .skill__list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .skill__item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
-        .skill__item i { color: var(--primary); }
-
-        /* --- 作品區塊 (Projects) --- */
-        .projects__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
-        .project__item { background: var(--bg-variant); padding: 1.2rem; border-radius: 2rem; transition: var(--transition); }
-        .project__img { width: 100%; border-radius: 1.5rem; margin-bottom: 1rem; }
-        .project__btns { display: flex; gap: 1rem; margin-top: 1rem; }
-        .btn { padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid var(--primary); color: var(--primary); font-size: 0.8rem; transition: var(--transition); }
-        .btn-filled { background: var(--primary); color: var(--bg-color); }
-
-        /* --- YouTube Banner --- */
-        .yt-banner { background: #fdf59b; color: #000; padding: 1rem; border-radius: 1rem; display: flex; align-items: center; gap: 1rem; }
-        .yt-icon { color: red; font-size: 2rem; }
-
-        /* --- 底部導航欄 (Floating Nav) --- */
-        nav { 
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(10px);
-            width: max-content; padding: 0.7rem 1.5rem; 
-            position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; 
-            display: flex; gap: 1rem; border-radius: 3rem; z-index: 10;
+        /* --- 4. 專案 (精確 2 個專案排列) --- */
+        .projects__grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* 電腦版並排 2 個 */
+            gap: 2.5rem; 
+            max-width: 900px; 
+            margin: 0 auto; 
         }
-        nav a { color: var(--white); font-size: 1.2rem; padding: 0.5rem; border-radius: 50%; transition: 0.3s; }
-        nav a:hover { background: var(--primary); color: var(--bg-color); }
+        .project-item { background: var(--color-bg-variant); padding: 1.2rem; border-radius: 2rem; }
+        .project-img { width: 100%; border-radius: 1.5rem; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); }
+        .project-btns { display: flex; gap: 1rem; margin-top: 1.2rem; }
 
-        /* ================= 手機版適應 (Responsive) ================= */
+        /* --- 5. 導航與手機適配 --- */
+        nav { 
+            background: rgba(0, 0, 0, 0.3); padding: 0.6rem 1.5rem; border-radius: 3rem;
+            position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; 
+            display: flex; gap: 0.8rem; backdrop-filter: blur(10px); z-index: 100;
+        }
+        nav a { color: var(--color-white); font-size: 1.1rem; padding: 0.6rem; border-radius: 50%; transition: 0.3s; }
+        nav a:hover { background: var(--color-primary); color: var(--color-bg); }
+
         @media screen and (max-width: 1024px) {
+            .about__grid, .skills__grid, .projects__grid { grid-template-columns: 1fr; }
+            .photo-frame { width: 180px; margin: 0 auto 2rem; }
             .container { width: 92%; }
-            .about__grid { grid-template-columns: 1fr; } /* 變單欄 */
-            .photo-frame { width: 200px; margin: 0 auto 2rem; }
-            .skills__container, .projects__grid { grid-template-columns: 1fr; }
-            .skill__list { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#about"><i class="fa fa-home"></i></a>
+        <a href="#home"><i class="fa fa-home"></i></a>
         <a href="#about"><i class="fa fa-user"></i></a>
         <a href="#skills"><i class="fa fa-tools"></i></a>
         <a href="#projects"><i class="fa fa-code"></i></a>
-        <a href="#contact"><i class="fa fa-envelope"></i></a>
     </nav>
 
-    <section id="about" class="container">
-        <div class="section-header">
-            <h5>Get To Know</h5>
-            <h2>About Me</h2>
+    <header id="home">
+        <h5>我是</h5>
+        <h1>JACK</h1>
+        <h5 class="text-light">一名兼全端 Web 開發人員</h5>
+        <div class="hero__btns">
+            <a href="#about" class="btn">了解我</a>
+            <a href="#projects" class="btn btn-primary">看作品</a>
         </div>
+    </header>
 
+    <section id="about" class="container">
+        <h5>Get To Know</h5>
+        <h2>About Me</h2>
         <div class="about__grid">
-            <div class="photo-frame"><div class="photo-placeholder"></div></div>
-
-            <div class="about__main">
-                <div class="card animate-pop">
-                    <h3>自我介紹</h3>
-                    <p>一個普普通通的大學生，喜歡搞一些程式相關的研究。</p>
-                    <p>目前有個 <a href="#" style="color:var(--primary)">個人YouTube頻道</a>，每周更新教學。</p>
-                </div>
-                <div class="card animate-pop">
-                    <h3>YouTube頻道 — The Walking Fish</h3>
-                    <div class="yt-banner">
-                        <i class="fab fa-youtube yt-icon"></i>
-                        <div><strong>The walking fish</strong><br><small>(・∀・)つ⑩</small></div>
-                    </div>
-                </div>
-                <div class="card animate-pop">
-                    <h3>學校</h3>
-                    <p>國立臺中教育大學—數位內容科技學系</p>
+            <div class="photo-frame"></div>
+            <div class="card card-animate">
+                <h3>自我介紹</h3>
+                <p>一個普普通通的大學生，喜歡搞一些程式相關的研究。</p>
+                <div style="background: #fdf59b; color: #000; padding: 0.8rem; border-radius: 1rem; display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+                    <i class="fab fa-youtube" style="color:red; font-size:1.5rem;"></i>
+                    <small><strong>The walking fish</strong> (・∀・)つ⑩</small>
                 </div>
             </div>
-
-            <div class="card animate-pop">
+            <div class="card card-animate">
                 <h3>經歷</h3>
-                <ul style="font-size: 0.85rem;">
-                    <li><b>阿虎巴巴聯合企業</b><br><small>Full-stack Developer(intern)</small></li>
+                <ul style="font-size: 0.8rem;">
+                    <li><b>阿虎巴巴聯合企業</b><br>Full-stack Developer</li>
                     <li style="margin-top:0.8rem"><b>數位系畢展網站製作</b></li>
-                    <li style="margin-top:0.8rem"><b>AR作品展覽【谷關七雄】</b></li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="skills" class="container">
-        <div class="section-header">
-            <h5>What Skills I Have</h5>
-            <h2>我的技能</h2>
-        </div>
-        <div class="skills__container">
-            <div class="card animate-pop">
-                <h3>前端</h3>
-                <div class="skill__list">
-                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> HTML</div>
-                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> CSS</div>
-                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> JavaScript</div>
-                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> Vue</div>
+        <h5>What Skills I Have</h5>
+        <h2>我的技能</h2>
+        <div class="skills__grid">
+            <div class="card card-animate">
+                <h3>前端開發</h3>
+                <div class="skill-list">
+                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> HTML</div>
+                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> CSS</div>
+                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> JavaScript</div>
+                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Vue</div>
                 </div>
             </div>
-            <div class="card animate-pop">
-                <h3>後端</h3>
-                <div class="skill__list">
-                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> PHP</div>
-                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> Python</div>
-                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> MySQL</div>
+            <div class="card card-animate">
+                <h3>後端開發</h3>
+                <div class="skill-list">
+                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> PHP</div>
+                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Python</div>
+                    <div class="skill-item"><i class="fa-solid fa-circle-check"></i> MySQL</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="container">
-        <div class="section-header">
-            <h5>My Recent Projects</h5>
-            <h2>專案</h2>
-        </div>
+        <h5>My Recent Projects</h5>
+        <h2>Projects</h2>
         <div class="projects__grid">
-            <div class="project__item animate-pop">
-                <div style="background:#444; height:150px; border-radius:1rem;"></div>
-                <h4 style="margin-top:1rem">Bert-VITS2-Colab</h4>
-                <small>Python · Jupyter</small>
-                <div class="project__btns">
+            <article class="project-item card-animate">
+                <img src="https://via.placeholder.com/400x250/2c2c6c/4db5ff?text=Bert-VITS2" class="project-img">
+                <h3>Bert-VITS2-Colab</h3>
+                <small>Python · Jupyter Notebook</small>
+                <div class="project-btns">
                     <a href="#" class="btn">GitHub</a>
-                    <a href="#" class="btn btn-filled">造訪網站</a>
+                    <a href="#" class="btn btn-primary">造訪網站</a>
                 </div>
-            </div>
-            </div>
+            </article>
+
+            <article class="project-item card-animate">
+                <img src="https://via.placeholder.com/400x250/2c2c6c/4db5ff?text=Interactive+Web" class="project-img">
+                <h3>多裝置互控提詞機</h3>
+                <small>WebRTC · JavaScript</small>
+                <div class="project-btns">
+                    <a href="#" class="btn">GitHub</a>
+                    <a href="#" class="btn btn-primary">造訪網站</a>
+                </div>
+            </article>
+        </div>
     </section>
 
-    <footer style="text-align:center; padding: 5rem 0; color: var(--light);">
-        <p>jack0852.github.io Clone Version</p>
+    <footer style="text-align:center; padding: 4rem 0; opacity: 0.5; font-size: 0.8rem;">
+        <p>&copy; 2026 Jack. All rights reserved.</p>
     </footer>
 
 </body>
