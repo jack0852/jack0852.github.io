@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JACK的個人網站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #1f1f38;
+            --bg-variant: #2c2c6c;
+            --primary-color: #4db5ff;
+            --primary-variant: rgba(77, 181, 255, 0.4);
+            --white: #fff;
+            --light: rgba(255, 255, 255, 0.6);
+            --transition: all 400ms ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--bg-color); color: var(--white); line-height: 1.7; }
+        
+        header { height: 100vh; padding-top: 7rem; text-align: center; overflow: hidden; }
+        .container { width: 85%; margin: 0 auto; }
+        
+        h1 { font-size: 2.5rem; }
+        .text-light { color: var(--light); }
+        .cta { margin-top: 2.5rem; display: flex; gap: 1.2rem; justify-content: center; }
+        
+        .btn { width: max-content; display: inline-block; color: var(--primary-color); padding: 0.75rem 1.2rem; border-radius: 0.4rem; cursor: pointer; border: 1px solid var(--primary-color); transition: var(--transition); text-decoration: none; }
+        .btn:hover { background: var(--white); color: var(--bg-color); border-color: transparent; }
+        .btn-primary { background: var(--primary-color); color: var(--bg-color); }
+
+        /* Navigation */
+        nav { background: rgba(0, 0, 0, 0.3); width: max-content; padding: 0.7rem 1.7rem; z-index: 2; position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; display: flex; gap: 0.8rem; border-radius: 3rem; backdrop-filter: blur(15px); }
+        nav a { background: transparent; padding: 0.9rem; border-radius: 50%; display: flex; color: var(--light); font-size: 1.1rem; text-decoration: none; }
+        nav a:hover { background: rgba(0, 0, 0, 0.3); }
+        nav a.active { background: var(--primary-color); color: var(--bg-color); }
+
+        /* About Section */
+        section { margin-top: 8rem; }
+        section h2 { text-align: center; color: var(--primary-color); }
+        
+        .about__container { display: grid; grid-template-columns: 35% 50%; gap: 15%; }
+        .about__me { width: 100%; aspect-ratio: 1/1; border-radius: 2rem; background: linear-gradient(45deg, transparent, var(--primary-color), transparent); display: grid; place-items: center; }
+        .about__me-image { border-radius: 2rem; overflow: hidden; transform: rotate(10deg); transition: var(--transition); }
+        .about__me-image:hover { transform: rotate(0); }
+
+        /* Experience/Skills Card */
+        .experience__container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .experience__content { background: var(--bg-variant); padding: 2.4rem 5rem; border-radius: 2rem; border: 1px solid transparent; transition: var(--transition); }
+        .experience__content:hover { background: transparent; border-color: var(--primary-variant); cursor: default; }
+
+        /* Portfolio */
+        .portfolio__container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .portfolio__item { background: var(--bg-variant); padding: 1.3rem; border-radius: 2rem; border: 1px solid transparent; transition: var(--transition); }
+        .portfolio__item:hover { border-color: var(--primary-variant); background: transparent; }
+        .portfolio__item-image { border-radius: 1.5rem; overflow: hidden; height: 200px; background: #333; }
+
+        footer { background: var(--primary-color); padding: 3rem 0; text-align: center; color: var(--bg-color); margin-top: 7rem; }
+        .footer__socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+        .footer__socials a { background: var(--bg-color); color: var(--white); padding: 0.8rem; border-radius: 0.7rem; display: flex; text-decoration: none; }
+
+        @media screen and (max-width: 1024px) {
+            .about__container { grid-template-columns: 1fr; gap: 0; }
+            .portfolio__container { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="home">
+        <div class="container">
+            <h5>我是</h5>
+            <h1>JACK</h1>
+            <h5 class="text-light">全端網頁開發者 / JACK</h5>
+            <div class="cta">
+                <a href="#" class="btn">下載履歷</a>
+                <a href="#contact" class="btn btn-primary">與我聯繫</a>
+            </div>
+            <div class="me">
+                </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#home" class="active"><i class="fa fa-home"></i></a>
+        <a href="#about"><i class="fa fa-user"></i></a>
+        <a href="#experience"><i class="fa fa-book"></i></a>
+        <a href="#portfolio"><i class="fa fa-briefcase"></i></a>
+        <a href="#contact"><i class="fa fa-message"></i></a>
+    </nav>
+
+    <section id="about">
+        <h5>了解我</h5>
+        <h2>自我介紹</h2>
+        <div class="container about__container">
+            <div class="about__me">
+                <div class="about__me-image">
+                    <img src="https://via.placeholder.com/300" alt="About Image">
+                </div>
+            </div>
+            <div class="about__content">
+                <p>一個普普通通的大學生，喜歡搞一些程式相關的研究。會抽時間作一些 Side Project，來精進自己的程式能力，並解決一些問題。</p>
+                <a href="#contact" class="btn btn-primary">開始對話</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h5>我擁有的技能</h5>
+        <h2>我的技術棧</h2>
+        <div class="container experience__container">
+            <div class="experience__content">
+                <h3>前端開發</h3>
+                <p>HTML, CSS, JavaScript, Vue, jQuery, Bootstrap</p>
+            </div>
+            <div class="experience__content">
+                <h3>後端開發</h3>
+                <p>PHP, Python (Flask), MySQL, Google App Script</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h5>最近的作品</h5>
+        <h2>作品集</h2>
+        <div class="container portfolio__container">
+            <article class="portfolio__item">
+                <div class="portfolio__item-image"></div>
+                <h3>WhisperGUI</h3>
+                <div class="portfolio__item-cta">
+                    <a href="https://github.com/ADT109119" class="btn">GitHub</a>
+                </div>
+            </article>
+            <article class="portfolio__item">
+                <div class="portfolio__item-image"></div>
+                <h3>輕鬆記帳 PWA</h3>
+                <div class="portfolio__item-cta">
+                    <a href="#" class="btn">GitHub</a>
+                </div>
+            </article>
+            <article class="portfolio__item">
+                <div class="portfolio__item-image"></div>
+                <h3>遠距提詞機</h3>
+                <div class="portfolio__item-cta">
+                    <a href="#" class="btn">GitHub</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <a href="#" class="footer__logo">Jerry Yen</a>
+        <div class="footer__socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="footer__copyright">
+            <small>&copy; Jerry Yen. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script>
+        // 簡單的導航切換效果
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
