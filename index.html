@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JACK</title>
+    <title>JACK's Full Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -16,6 +16,7 @@
             --transition: all 400ms ease;
         }
 
+        /* 基礎設定 */
         * { margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; border: 0; }
         html { scroll-behavior: smooth; }
         body { 
@@ -24,85 +25,114 @@
             background-image: radial-gradient(circle at 2px 2px, rgba(77, 181, 255, 0.05) 1px, transparent 0);
             background-size: 40px 40px;
         }
-
         .container { width: 85%; max-width: 1100px; margin: 0 auto; }
-        
-        /* 頂部緊湊化 */
-        header { padding-top: 2rem; min-height: 90vh; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        header h1 { font-size: 3.5rem; margin: 0.5rem 0; color: var(--color-white); }
-        
-        .hero__btns { display: flex; gap: 1rem; margin-top: 1rem; margin-bottom: 2.5rem; }
-        .btn { padding: 0.8rem 1.6rem; border-radius: 0.5rem; border: 1px solid var(--color-primary); color: var(--color-primary); transition: var(--transition); cursor: pointer; }
-        .btn-primary { background: var(--color-primary); color: var(--color-bg); }
-        .btn:hover { background: var(--color-white); color: var(--color-bg); border-color: transparent; }
+        section { padding: 4rem 0; }
+        h2 { text-align: center; color: var(--color-primary); margin-bottom: 3rem; font-size: 2.2rem; }
 
-        /* --- 輪播圖樣式 --- */
-        .carousel { width: 80%; max-width: 700px; aspect-ratio: 16/9; position: relative; overflow: hidden; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .carousel-inner { display: flex; transition: transform 0.5s ease-in-out; height: 100%; }
-        .carousel-item { min-width: 100%; height: 100%; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- 互動動畫 --- */
+        /* 動畫效果：點擊縮放、懸浮升起 */
         .card-animate { transition: var(--transition); cursor: pointer; border: 1px solid transparent; }
         .card-animate:hover { transform: translateY(-10px); background: transparent; border-color: var(--color-primary); }
         .card-animate:active { transform: scale(0.95); }
 
-        /* --- 專案樣式 (放照片) --- */
-        .projects__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
-        .project-card { background: var(--color-bg-variant); padding: 1.5rem; border-radius: 2rem; text-align: center; }
-        .project-img { width: 100%; aspect-ratio: 4/3; border-radius: 1.5rem; object-fit: cover; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }
+        /* 1. 首頁 Header (頂部不留白) */
+        header { padding: 1.5rem 0 3rem; min-height: 85vh; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        header h1 { font-size: 4rem; margin: 0.2rem 0; color: var(--color-white); letter-spacing: 2px; }
+        .hero__btns { display: flex; gap: 1rem; margin-top: 1rem; margin-bottom: 2.5rem; }
+        .btn { padding: 0.8rem 1.6rem; border-radius: 0.5rem; border: 1px solid var(--color-primary); color: var(--color-primary); transition: var(--transition); cursor: pointer; display: inline-block; }
+        .btn-primary { background: var(--color-primary); color: var(--color-bg); }
+        .btn:hover { background: var(--color-white); color: var(--color-bg); border-color: transparent; }
 
-        /* --- 技能樣式 --- */
-        .skills__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-        .card { background: var(--color-bg-variant); padding: 2rem; border-radius: 1.5rem; }
+        /* 2. 輪播圖 Carousel */
+        .carousel { width: 85%; max-width: 800px; aspect-ratio: 16/9; position: relative; overflow: hidden; border-radius: 1.5rem; border: 5px solid var(--color-bg-variant); }
+        .carousel-inner { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; }
+        .carousel-item { min-width: 100%; height: 100%; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 3. 關於我 Grid (電腦三欄) */
+        .about__grid { display: grid; grid-template-columns: 280px 1fr 280px; gap: 2rem; }
+        .card { background: var(--color-bg-variant); padding: 2rem; border-radius: 2rem; }
+        .card h3 { color: var(--color-primary); margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+
+        /* 4. 我的技能 Skills */
+        .skills__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .skill-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .skill-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .skill-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; }
         .skill-item i { color: var(--color-primary); }
 
-        /* --- 導航 --- */
-        nav { background: rgba(0, 0, 0, 0.3); padding: 0.7rem 1.7rem; position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; display: flex; gap: 1rem; border-radius: 3rem; backdrop-filter: blur(10px); z-index: 100; }
-        nav a { color: var(--color-white); font-size: 1.2rem; transition: 0.3s; }
-        nav a:hover { color: var(--color-primary); }
+        /* 5. 專案 Projects (2 個照片卡片) */
+        .projects__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .project-card { background: var(--color-bg-variant); padding: 1.5rem; border-radius: 2.5rem; text-align: center; }
+        .project-img { width: 100%; aspect-ratio: 1/1; border-radius: 2rem; object-fit: cover; margin-bottom: 1.5rem; border: 2px solid rgba(77, 181, 255, 0.2); }
 
+        /* 6. 手機版適應 */
         @media screen and (max-width: 1024px) {
-            .projects__grid, .skills__grid { grid-template-columns: 1fr; }
-            .carousel { width: 95%; }
-            header h1 { font-size: 2.5rem; }
+            .about__grid, .skills__grid, .projects__grid { grid-template-columns: 1fr; }
+            .carousel { width: 100%; }
+            header h1 { font-size: 2.8rem; }
+            .container { width: 90%; }
         }
+
+        /* 導航導覽 */
+        nav { background: rgba(0, 0, 0, 0.4); padding: 0.8rem 2rem; position: fixed; left: 50%; transform: translateX(-50%); bottom: 1.5rem; display: flex; gap: 1.5rem; border-radius: 4rem; backdrop-filter: blur(12px); z-index: 1000; }
+        nav a { color: var(--color-white); font-size: 1.3rem; transition: 0.3s; }
+        nav a:hover { color: var(--color-primary); transform: scale(1.2); }
     </style>
 </head>
 <body>
 
     <nav>
         <a href="#home"><i class="fa fa-home"></i></a>
+        <a href="#about"><i class="fa fa-user"></i></a>
         <a href="#skills"><i class="fa fa-tools"></i></a>
         <a href="#projects"><i class="fa fa-image"></i></a>
     </nav>
 
-    <header id="home">
+    <header id="home" class="container">
         <h5>嗨，我是</h5>
         <h1>JACK</h1>
-        <h5 class="text-light">一名兼全端 Web 開發人員</h5>
+        <h5 class="text-light">一名大學生兼全端 Web 開發人員</h5>
         
         <div class="hero__btns">
-            <a href="#projects" class="btn">了解我</a>
+            <a href="#about" class="btn">了解我</a>
             <a href="#projects" class="btn btn-primary">看作品</a>
         </div>
 
         <div class="carousel">
             <div class="carousel-inner" id="carouselInner">
-                <div class="carousel-item"><img src="https://via.placeholder.com/800x450/2c2c6c/ffffff?text=Slide+1" alt="照片1"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/800x450/4db5ff/ffffff?text=Slide+2" alt="照片2"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/800x450/2c2c6c/ffffff?text=Slide+3" alt="照片3"></div>
+                <div class="carousel-item"><img src="https://via.placeholder.com/800x450/2c2c6c/ffffff?text=Slide+1" alt="輪播1"></div>
+                <div class="carousel-item"><img src="https://via.placeholder.com/800x450/4db5ff/ffffff?text=Slide+2" alt="輪播2"></div>
+                <div class="carousel-item"><img src="https://via.placeholder.com/800x450/1f1f38/ffffff?text=Slide+3" alt="輪播3"></div>
             </div>
         </div>
     </header>
 
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about__grid">
+            <div class="card card-animate">
+                <h3>學歷</h3>
+                <p>國立臺中教育大學<br>數位內容科技學系</p>
+            </div>
+            <div class="card card-animate">
+                <h3>自我介紹</h3>
+                <p>一個普普通通的大學生，喜歡搞一些程式相關的研究。目前致力於 Web 開發與互動設計。</p>
+            </div>
+            <div class="card card-animate">
+                <h3>經歷</h3>
+                <ul style="font-size: 0.85rem;">
+                    <li>• 阿虎巴巴實習開發者</li>
+                    <li>• 數位系畢業展網站製作</li>
+                    <li>• 國資圖 AR 作品展覽程式</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section id="skills" class="container">
-        <h2 style="text-align: center; color: var(--color-primary); margin-bottom: 2rem;">我的技能</h2>
+        <h2>My Skills</h2>
         <div class="skills__grid">
             <div class="card card-animate">
-                <h3 style="margin-bottom: 1rem;">前端開發</h3>
+                <h3>前端</h3>
                 <div class="skill-list">
                     <div class="skill-item"><i class="fa-solid fa-circle-check"></i> HTML</div>
                     <div class="skill-item"><i class="fa-solid fa-circle-check"></i> CSS</div>
@@ -111,7 +141,7 @@
                 </div>
             </div>
             <div class="card card-animate">
-                <h3 style="margin-bottom: 1rem;">後端開發</h3>
+                <h3>後端</h3>
                 <div class="skill-list">
                     <div class="skill-item"><i class="fa-solid fa-circle-check"></i> PHP</div>
                     <div class="skill-item"><i class="fa-solid fa-circle-check"></i> Python</div>
@@ -122,36 +152,36 @@
     </section>
 
     <section id="projects" class="container">
-        <h2 style="text-align: center; color: var(--color-primary); margin-bottom: 2rem;">我的作品</h2>
+        <h2>My Projects</h2>
         <div class="projects__grid">
             <article class="project-card card-animate">
-                <img src="https://via.placeholder.com/400x300?text=My+Photo+1" class="project-img" alt="我的照片">
-                <h3>專案名稱 A</h3>
-                <p style="font-size: 0.9rem; color: var(--color-light); margin-bottom: 1rem;">這裡輸入你的專案描述文字...</p>
-                <a href="#" class="btn btn-primary" style="display: inline-block;">造訪網站</a>
+                <img src="https://via.placeholder.com/500x500?text=My+Photo+1" class="project-img" alt="專案照片 1">
+                <h3>示範 1 中國網紅【甜蜜老张】</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--color-light);">示範 1 中國網紅【甜蜜老张】</p>
+                <a href="https://jack0852.github.io/abc2018/wylz004" target="_blank" class="btn btn-primary">造訪網站</a>
             </article>
 
             <article class="project-card card-animate">
-                <img src="https://via.placeholder.com/400x300?text=My+Photo+2" class="project-img" alt="我的照片">
-                <h3>專案名稱 B</h3>
-                <p style="font-size: 0.9rem; color: var(--color-light); margin-bottom: 1rem;">這裡輸入你的專案描述文字...</p>
-                <a href="#" class="btn btn-primary" style="display: inline-block;">造訪網站</a>
+                <img src="https://via.placeholder.com/500x500?text=My+Photo+2" class="project-img" alt="專案照片 2">
+                <h3>示範 2 中國網紅【青岛大姨张大霞】</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--color-light);">示範 2 中國網紅【青岛大姨张大霞】</p>
+                <a href="https://jack0852.github.io/abc2018/wylz003/" target="_blank" class="btn btn-primary">造訪網站</a>
             </article>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 4rem 0; opacity: 0.4;">
-        <p>&copy; 2026 JACK. All rights reserved.</p>
+    <footer style="text-align: center; padding: 4rem 0; opacity: 0.3; font-size: 0.8rem;">
+        <p>&copy; 2026 JACK Portfolio. All rights reserved.</p>
     </footer>
 
     <script>
-        // 輪播圖邏輯
+        // 輪播自動播放邏輯 (3.5 秒切換)
         const inner = document.getElementById('carouselInner');
-        let index = 0;
+        let currentIdx = 0;
         setInterval(() => {
-            index = (index + 1) % 3;
-            inner.style.transform = `translateX(-${index * 100}%)`;
-        }, 3000);
+            currentIdx = (currentIdx + 1) % 3;
+            inner.style.transform = `translateX(-${currentIdx * 100}%)`;
+        }, 3500);
     </script>
 </body>
 </html>
