@@ -3,189 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack's Website | Responsive</title>
+    <title>Jack</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
     <style>
-        /* --- 基礎變數與配色 (來自原始儲存庫) --- */
         :root {
-            --color-bg: #1f1f38;
-            --color-bg-variant: #2c2c6c;
-            --color-primary: #4db5ff;
-            --color-primary-variant: rgba(77, 181, 255, 0.4);
-            --color-white: #fff;
-            --color-light: rgba(255, 255, 255, 0.6);
+            --bg-color: #1f1f38;
+            --bg-variant: #2c2c6c;
+            --primary: #4db5ff;
+            --white: #fff;
+            --light: rgba(255, 255, 255, 0.6);
             --transition: all 400ms ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; border: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background: var(--color-bg); color: var(--color-white); line-height: 1.7; overflow-x: hidden; }
-
-        /* --- 佈局容器：這是適配的關鍵 --- */
-        .container { 
-            width: 75%; /* 電腦版寬度 */
-            margin: 0 auto; 
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: var(--bg-color); 
+            color: var(--white); 
+            line-height: 1.7;
+            /* 背景幾何線條模擬 */
+            background-image: radial-gradient(circle at 2px 2px, rgba(77, 181, 255, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
         }
 
-        /* --- 標題樣式 --- */
-        section { margin-top: 5rem; padding-top: 2rem; }
-        section > h2, section > h5 { text-align: center; }
-        section > h5 { color: var(--color-light); font-weight: 400; }
-        section > h2 { color: var(--color-primary); margin-bottom: 3rem; font-size: 2rem; }
+        .container { width: 85%; max-width: 1200px; margin: 0 auto; }
+        section { padding-top: 5rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h5 { color: var(--light); font-weight: 400; }
+        .section-header h2 { color: var(--primary); font-size: 2rem; }
 
-        /* --- Navigation (底部浮動導航) --- */
-        nav { background: rgba(0, 0, 0, 0.3); width: max-content; padding: 0.7rem 1.7rem; z-index: 5; position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; display: flex; gap: 0.8rem; border-radius: 3rem; backdrop-filter: blur(15px); }
-        nav a { background: transparent; padding: 0.9rem; border-radius: 50%; display: flex; color: var(--color-light); font-size: 1.1rem; transition: var(--transition); }
-        nav a:hover { background: rgba(0, 0, 0, 0.3); }
-        nav a.active { background: var(--color-primary); color: var(--color-bg); }
+        /* --- 動畫效果 --- */
+        .animate-pop { transition: var(--transition); cursor: pointer; }
+        .animate-pop:hover { transform: translateY(-5px); background: transparent; border: 1px solid var(--primary); }
+        .animate-pop:active { transform: scale(0.95); }
 
-        /* --- About Section Grid --- */
-        .about__container { 
-            display: grid; 
-            grid-template-columns: 35% 50%; /* 電腦版：左右分欄 */
-            gap: 15%; 
-        }
-        .about__me { 
-            width: 100%; 
-            aspect-ratio: 1/1; 
-            border-radius: 2rem; 
-            background: linear-gradient(45deg, transparent, var(--color-primary), transparent); 
-            display: grid; 
-            place-items: center; 
-        }
-        .about__me-image { border-radius: 2rem; overflow: hidden; transform: rotate(10deg); transition: var(--transition); }
-        .about__me-image:hover { transform: rotate(0); }
-
-        /* --- 卡片樣式 (與圖片一致) --- */
-        .card { background: var(--color-bg-variant); padding: 2rem; border-radius: 2rem; border: 1px solid transparent; transition: var(--transition); height: 100%; }
-        .card:hover { background: transparent; border-color: var(--color-primary-variant); }
-        .card h3 { color: var(--color-primary); margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; font-size: 1.1rem; }
-
-        /* --- 經歷與學校的 Grid --- */
-        .experience__grid {
+        /* --- About Me Grid (電腦版三欄) --- */
+        .about__grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 電腦版：兩欄 */
+            grid-template-columns: 300px 1fr 320px;
             gap: 2rem;
+            align-items: start;
         }
 
-        /* YouTube 橫條 */
-        .yt-banner { background: #fdf59b; color: #000; padding: 1rem; border-radius: 1rem; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
-        .yt-icon { color: #ff0000; font-size: 1.5rem; }
+        .photo-frame {
+            width: 100%; aspect-ratio: 1/1;
+            background: linear-gradient(45deg, transparent, var(--primary), transparent);
+            border-radius: 2rem;
+            display: grid; place-items: center;
+            transform: rotate(-10deg);
+            transition: var(--transition);
+        }
+        .photo-frame:hover { transform: rotate(0); }
+        .photo-placeholder { width: 90%; height: 90%; background: #7fb5ff; border-radius: 2rem; }
 
-        /* ================= 手機版與平板適配 (Responsive Media Queries) ================= */
-        
-        /* 平板 (Tablets) */
+        .card { background: var(--bg-variant); padding: 1.5rem; border-radius: 1.5rem; margin-bottom: 1.5rem; }
+        .card h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+
+        /* --- 技能區塊 (Skills) --- */
+        .skills__container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .skill__list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .skill__item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .skill__item i { color: var(--primary); }
+
+        /* --- 作品區塊 (Projects) --- */
+        .projects__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+        .project__item { background: var(--bg-variant); padding: 1.2rem; border-radius: 2rem; transition: var(--transition); }
+        .project__img { width: 100%; border-radius: 1.5rem; margin-bottom: 1rem; }
+        .project__btns { display: flex; gap: 1rem; margin-top: 1rem; }
+        .btn { padding: 0.5rem 1rem; border-radius: 0.5rem; border: 1px solid var(--primary); color: var(--primary); font-size: 0.8rem; transition: var(--transition); }
+        .btn-filled { background: var(--primary); color: var(--bg-color); }
+
+        /* --- YouTube Banner --- */
+        .yt-banner { background: #fdf59b; color: #000; padding: 1rem; border-radius: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .yt-icon { color: red; font-size: 2rem; }
+
+        /* --- 底部導航欄 (Floating Nav) --- */
+        nav { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            width: max-content; padding: 0.7rem 1.5rem; 
+            position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; 
+            display: flex; gap: 1rem; border-radius: 3rem; z-index: 10;
+        }
+        nav a { color: var(--white); font-size: 1.2rem; padding: 0.5rem; border-radius: 50%; transition: 0.3s; }
+        nav a:hover { background: var(--primary); color: var(--bg-color); }
+
+        /* ================= 手機版適應 (Responsive) ================= */
         @media screen and (max-width: 1024px) {
-            .container { width: 86%; }
-            .about__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-            .about__me { width: 50%; margin: 0 auto 3rem; }
-            .experience__grid { grid-template-columns: 1fr; }
-        }
-
-        /* 手機 (Phones) */
-        @media screen and (max-width: 600px) {
-            .container { width: 90%; }
-            .about__me { width: 65%; }
-            header { padding-top: 4rem; }
-            section { margin-top: 3rem; }
-            h1 { font-size: 1.8rem; }
-            .card { padding: 1.5rem; }
-            nav { padding: 0.5rem 1.2rem; }
-            nav a { padding: 0.7rem; font-size: 1rem; }
+            .container { width: 92%; }
+            .about__grid { grid-template-columns: 1fr; } /* 變單欄 */
+            .photo-frame { width: 200px; margin: 0 auto 2rem; }
+            .skills__container, .projects__grid { grid-template-columns: 1fr; }
+            .skill__list { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header id="home" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-        <h5>你好，我是</h5>
-        <h1>Jack</h1>
-        <h5 class="text-light">A College Student & Developer</h5>
-        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-            <a href="#about" style="border: 1px solid var(--color-primary); padding: 0.8rem 1.5rem; border-radius: 0.5rem; color: var(--color-primary);">了解我</a>
-            <a href="#contact" style="background: var(--color-primary); padding: 0.8rem 1.5rem; border-radius: 0.5rem; color: var(--color-bg);">聯繫我</a>
-        </div>
-    </header>
-
-    <nav id="navbar">
-        <a href="#home" class="active"><i class="fa fa-home"></i></a>
+    <nav>
+        <a href="#about"><i class="fa fa-home"></i></a>
         <a href="#about"><i class="fa fa-user"></i></a>
-        <a href="#experience"><i class="fa fa-book"></i></a>
-        <a href="#contact"><i class="fa fa-message"></i></a>
+        <a href="#skills"><i class="fa fa-tools"></i></a>
+        <a href="#projects"><i class="fa fa-code"></i></a>
+        <a href="#contact"><i class="fa fa-envelope"></i></a>
     </nav>
 
-    <section id="about">
-        <h5>Get To Know</h5>
-        <h2>About Me</h2>
-        <div class="container about__container">
-            <div class="about__me">
-                <div class="about__me-image">
-                    <img src="https://via.placeholder.com/300" alt="Me" style="width: 100%; display: block;">
-                </div>
-            </div>
-            <div class="about__content">
-                <div class="card">
+    <section id="about" class="container">
+        <div class="section-header">
+            <h5>Get To Know</h5>
+            <h2>About Me</h2>
+        </div>
+
+        <div class="about__grid">
+            <div class="photo-frame"><div class="photo-placeholder"></div></div>
+
+            <div class="about__main">
+                <div class="card animate-pop">
                     <h3>自我介紹</h3>
-                    <p>一個普普通通的大學生，喜歡搞一些程式相關的研究。會抽時間作一些 Side Project，來精進自己的程式能力。</p>
+                    <p>一個普普通通的大學生，喜歡搞一些程式相關的研究。</p>
+                    <p>目前有個 <a href="#" style="color:var(--primary)">個人YouTube頻道</a>，每周更新教學。</p>
+                </div>
+                <div class="card animate-pop">
+                    <h3>YouTube頻道 — The Walking Fish</h3>
                     <div class="yt-banner">
                         <i class="fab fa-youtube yt-icon"></i>
-                        <div><strong>The Walking Fish</strong><br><small>每周更新教學影片</small></div>
+                        <div><strong>The walking fish</strong><br><small>(・∀・)つ⑩</small></div>
                     </div>
+                </div>
+                <div class="card animate-pop">
+                    <h3>學校</h3>
+                    <p>國立臺中教育大學—數位內容科技學系</p>
+                </div>
+            </div>
+
+            <div class="card animate-pop">
+                <h3>經歷</h3>
+                <ul style="font-size: 0.85rem;">
+                    <li><b>阿虎巴巴聯合企業</b><br><small>Full-stack Developer(intern)</small></li>
+                    <li style="margin-top:0.8rem"><b>數位系畢展網站製作</b></li>
+                    <li style="margin-top:0.8rem"><b>AR作品展覽【谷關七雄】</b></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <div class="section-header">
+            <h5>What Skills I Have</h5>
+            <h2>我的技能</h2>
+        </div>
+        <div class="skills__container">
+            <div class="card animate-pop">
+                <h3>前端</h3>
+                <div class="skill__list">
+                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> HTML</div>
+                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> CSS</div>
+                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> JavaScript</div>
+                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> Vue</div>
+                </div>
+            </div>
+            <div class="card animate-pop">
+                <h3>後端</h3>
+                <div class="skill__list">
+                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> PHP</div>
+                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> Python</div>
+                    <div class="skill__item"><i class="fa-solid fa-circle-check"></i> MySQL</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience">
-        <h5>My Background</h5>
-        <h2>經歷與學校</h2>
-        <div class="container experience__grid">
-            <div class="card">
-                <h3>經歷</h3>
-                <ul style="font-size: 0.9rem; line-height: 2;">
-                    <li>• 阿虎巴巴聯合企業 (Intern)</li>
-                    <li>• 數位系畢業專題網站製作</li>
-                    <li>• 原流部落購物網站開發</li>
-                    <li>• 教育部因材網互動題目製作</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>學校</h3>
-                <p>國立臺中教育大學<br>數位內容科技學系</p>
-            </div>
+    <section id="projects" class="container">
+        <div class="section-header">
+            <h5>My Recent Projects</h5>
+            <h2>專案</h2>
         </div>
+        <div class="projects__grid">
+            <div class="project__item animate-pop">
+                <div style="background:#444; height:150px; border-radius:1rem;"></div>
+                <h4 style="margin-top:1rem">Bert-VITS2-Colab</h4>
+                <small>Python · Jupyter</small>
+                <div class="project__btns">
+                    <a href="#" class="btn">GitHub</a>
+                    <a href="#" class="btn btn-filled">造訪網站</a>
+                </div>
+            </div>
+            </div>
     </section>
 
-    <footer id="contact" style="background: var(--color-primary); color: var(--color-bg); padding: 4rem 0; text-align: center; margin-top: 5rem;">
-        <h2>JACK</h2>
-        <div style="margin: 2rem 0; display: flex; justify-content: center; gap: 1.5rem; font-size: 1.5rem;">
-            <a href="#" style="color: var(--color-bg);"><i class="fab fa-facebook"></i></a>
-            <a href="#" style="color: var(--color-bg);"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/jack0852" style="color: var(--color-bg);"><i class="fab fa-github"></i></a>
-        </div>
-        <small>&copy; Jack. All rights reserved.</small>
+    <footer style="text-align:center; padding: 5rem 0; color: var(--light);">
+        <p>jack0852.github.io Clone Version</p>
     </footer>
 
-    <script>
-        // 控制導航欄 active 狀態
-        const links = document.querySelectorAll('nav a');
-        window.addEventListener('scroll', () => {
-            let current = "";
-            document.querySelectorAll('section, header').forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            links.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
