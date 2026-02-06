@@ -1,271 +1,318 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>超級帥哥群</title>
-    <style>
-        :root {
-            --bg-color: #f0f2f5;
-            --white: #ffffff;
-            --text-dark: #1c1e21;
-            --text-gray: #65676b;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>超級帥哥群｜官方團隊網站</title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-        }
+<style>
+:root{
+  --main:#0a3cff;
+  --bg:#f4f6fb;
+  --card:#fff;
+  --text:#1c1e21;
+  --gray:#6b7280;
+}
 
-        /* 輪播圖適配 */
-        .slider-box {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            position: relative;
-        }
-        .slides {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            transition: transform 0.6s ease-in-out;
-        }
-        .slide {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:var(--bg);
+  color:var(--text);
+}
 
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+header{
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
 
-        .section-header {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 30px 0 15px;
-            padding-left: 10px;
-            border-left: 4px solid #007bff;
-        }
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-        /* 響應式網格系統 (重點) */
-        .responsive-grid {
-            display: grid;
-            gap: 12px;
-            /* 預設手機版: 2 欄 */
-            grid-template-columns: repeat(2, 1fr); 
-            margin-bottom: 40px;
-        }
+.logo{
+  font-weight:800;
+  font-size:1.2rem;
+  color:var(--main);
+}
 
-        /* 平板版: 3 欄 */
-        @media (min-width: 768px) {
-            .responsive-grid { grid-template-columns: repeat(3, 1fr); }
-        }
+.menu a{
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:600;
+  color:#333;
+}
 
-        /* 電腦版: 5 欄 */
-        @media (min-width: 1024px) {
-            .responsive-grid { grid-template-columns: repeat(5, 1fr); }
-        }
+.hero{
+  height:420px;
+  position:relative;
+  overflow:hidden;
+}
 
-        /* 甜蜜老張風卡片 */
-        .insta-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s;
-        }
-        .insta-card:hover { transform: translateY(-5px); }
+.slides{
+  display:flex;
+  height:100%;
+  width:300%;
+  transition:.6s;
+}
 
-        .card-image {
-            width: 100%;
-            aspect-ratio: 1 / 1.2; /* 稍微長形，更有雜誌感 */
-            background-size: cover;
-            background-position: center;
-            background-color: #ddd;
-        }
+.slide{
+  flex:1;
+  background-size:cover;
+  background-position:center;
+}
 
-        .card-info {
-            padding: 12px;
-        }
+.hero-text{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(to bottom,rgba(0,0,0,.45),rgba(0,0,0,.4));
+  color:#fff;
+  text-align:center;
+  padding:20px;
+}
 
-        .card-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+.hero-text h1{
+  font-size:2.6rem;
+  margin:0 0 12px;
+}
 
-        /* 成員資訊列 (頭像+名+勾勾) */
-        .user-line {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+.hero-text p{
+  max-width:600px;
+  font-size:1.05rem;
+  opacity:.9;
+}
 
-        .user-img {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            object-fit: cover;
-            background: #eee;
-        }
+.main{
+  max-width:1200px;
+  margin:auto;
+  padding:50px 20px;
+}
 
-        .name-tag {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
+.section{
+  margin-bottom:60px;
+}
 
-        /* 藍勾勾修正：保持 15px 大小 */
-        .verified-badge {
-            width: 15px;
-            height: 15px;
-            margin-left: 3px;
-        }
+.section h2{
+  font-size:1.6rem;
+  margin-bottom:18px;
+  border-left:6px solid var(--main);
+  padding-left:12px;
+}
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #999;
-            font-size: 0.8rem;
-        }
-    </style>
+.team-intro{
+  background:#fff;
+  padding:30px;
+  border-radius:16px;
+  line-height:1.8;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+@media(min-width:768px){
+  .grid{grid-template-columns:repeat(3,1fr);}
+}
+
+@media(min-width:1024px){
+  .grid{grid-template-columns:repeat(5,1fr);}
+}
+
+.card{
+  background:var(--card);
+  border-radius:14px;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.card-img{
+  aspect-ratio:1/1.15;
+  background-size:cover;
+  background-position:center;
+}
+
+.card-body{
+  padding:14px;
+}
+
+.card-title{
+  font-weight:700;
+  margin-bottom:8px;
+  font-size:.9rem;
+}
+
+.user{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.user img{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.name{
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--gray);
+  display:flex;
+  align-items:center;
+}
+
+.badge{
+  width:15px;
+  margin-left:4px;
+}
+
+footer{
+  background:#fff;
+  text-align:center;
+  padding:40px 15px;
+  color:#777;
+  font-size:.85rem;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="slider-box">
-        <div class="slides" id="slideTrack">
-            <div class="slide" style="background-image: url('649_n.jpg')"></div>
-            <div class="slide" style="background-image: url('https://img.fun-life.com.tw/webp/Taichung-play/e-zo-j/1.jpg.webp')"></div>
-            <div class="slide" style="background-image: url('https://megapx-assets.dcard.tw/images/0fac6609-1fcd-407d-9b2f-8f2ef5c400f1/640.webp')"></div>
-        </div>
+<header>
+  <div class="nav">
+    <div class="logo">超級帥哥群</div>
+    <div class="menu">
+      <a href="#">首頁</a>
+      <a href="#">團隊介紹</a>
+      <a href="#">精選影片</a>
+      <a href="#">聯絡我們</a>
     </div>
+  </div>
+</header>
 
-    <div class="main-content">
-        
-        <div class="section-header">成員介紹</div>
-        <div class="responsive-grid">
-            <a href="https://www.instagram.com/wylz888" class="insta-card" target="_blank">
-                <div class="card-image" style="background-image: url('S__6578193.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">網站核心開發者</div>
-                    <div class="user-line">
-                        <img src="S__6578193.jpg" class="user-img">
-                        <span class="name-tag">杰哥<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span>
-                    </div>
-                </div>
-            </a>
-            <a href="https://www.instagram.com/ian.grace1030/" class="insta-card" target="_blank">
-                <div class="card-image" style="background-image: url('66818_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">帥氣日常紀錄</div>
-                    <div class="user-line">
-                        <img src="66818_n.jpg" class="user-img">
-                        <span class="name-tag">蕭易展<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span>
-                    </div>
-                </div>
-            </a>
-            <a href="https://www.instagram.com/easonliaoliao" class="insta-card" target="_blank">
-                <div class="card-image" style="background-image: url('6988_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">魅力生活點滴</div>
-                    <div class="user-line">
-                        <img src="6988_n.jpg" class="user-img">
-                        <span class="name-tag">Eason Liao<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span>
-                    </div>
-                </div>
-            </a>
-            <a href="https://www.instagram.com/ajvictor777" class="insta-card" target="_blank">
-                <div class="card-image" style="background-image: url('625109573_17856268899609915_4749941350781355691_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">精彩瞬間紀錄</div>
-                    <div class="user-line">
-                        <img src="625109573_17856268899609915_4749941350781355691_n.jpg" class="user-img">
-                        <span class="name-tag">哈貓<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span>
-                    </div>
-                </div>
-            </a>
-            <a href="https://www.instagram.com/114514._.x" class="insta-card" target="_blank">
-                <div class="card-image" style="background-image: url('17853264015666641_8879845370727657398_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">最速生活動態</div>
-                    <div class="user-line">
-                        <img src="17853264015666641_8879845370727657398_n.jpg" class="user-img">
-                        <span class="name-tag">家豪<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span>
-                    </div>
-                </div>
-            </a>
-        </div>
+<div class="hero">
+  <div class="slides" id="slides">
+    <div class="slide" style="background-image:url('649_n.jpg')"></div>
+    <div class="slide" style="background-image:url('https://img.fun-life.com.tw/webp/Taichung-play/e-zo-j/1.jpg.webp')"></div>
+    <div class="slide" style="background-image:url('https://megapx-assets.dcard.tw/images/0fac6609-1fcd-407d-9b2f-8f2ef5c400f1/640.webp')"></div>
+  </div>
+  <div class="hero-text">
+    <h1>超級帥哥群</h1>
+    <p>打造最具影響力的創作團隊，整合內容、品牌與流量的最強戰隊。</p>
+  </div>
+</div>
 
-        <div class="section-header">精選影片</div>
-        <div class="responsive-grid">
-            <div class="insta-card">
-                <div class="card-image" style="background-image: url('S__6578193.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">要由內而外的自信</div>
-                    <div class="user-line">
-                        <img src="S__6578193.jpg" class="user-img">
-                        <span class="name-tag">杰哥<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="insta-card">
-                <div class="card-image" style="background-image: url('66818_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">你該如何應對</div>
-                    <div class="user-line">
-                        <img src="66818_n.jpg" class="user-img">
-                        <span class="name-tag">蕭易展<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="insta-card">
-                <div class="card-image" style="background-image: url('6988_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">生活紀錄</div>
-                    <div class="user-line"><img src="6988_n.jpg" class="user-img"><span class="name-tag">Eason<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span></div>
-                </div>
-            </div>
-            <div class="insta-card">
-                <div class="card-image" style="background-image: url('625109573_17856268899609915_4749941350781355691_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">精彩瞬間</div>
-                    <div class="user-line"><img src="625109573_17856268899609915_4749941350781355691_n.jpg" class="user-img"><span class="name-tag">哈貓<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span></div>
-                </div>
-            </div>
-            <div class="insta-card">
-                <div class="card-image" style="background-image: url('17853264015666641_8879845370727657398_n.jpg');"></div>
-                <div class="card-info">
-                    <div class="card-title">霸氣登場</div>
-                    <div class="user-line"><img src="17853264015666641_8879845370727657398_n.jpg" class="user-img"><span class="name-tag">家豪<img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="verified-badge"></span></div>
-                </div>
-            </div>
-        </div>
+<main class="main">
+
+<section class="section">
+  <h2>團隊理念</h2>
+  <div class="team-intro">
+    我們是一群熱愛創作、影像、內容與社群經營的團隊，致力於打造高品質內容、建立影響力品牌，
+    透過專業分工與創意整合，讓每一個作品都能發揮最大價值。
+  </div>
+</section>
+
+<section class="section">
+<h2>核心成員</h2>
+
+<div class="grid">
+
+<a href="https://www.instagram.com/wylz888" class="card" target="_blank">
+  <div class="card-img" style="background-image:url('S__6578193.jpg')"></div>
+  <div class="card-body">
+    <div class="card-title">網站核心開發者</div>
+    <div class="user">
+      <img src="S__6578193.jpg">
+      <span class="name">杰哥 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"></span>
     </div>
+  </div>
+</a>
 
-    <footer>Copyright © 2026 超級帥哥群 - 杰哥製作</footer>
+<a href="https://www.instagram.com/ian.grace1030/" class="card" target="_blank">
+  <div class="card-img" style="background-image:url('66818_n.jpg')"></div>
+  <div class="card-body">
+    <div class="card-title">內容創作者</div>
+    <div class="user">
+      <img src="66818_n.jpg">
+      <span class="name">蕭易展 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"></span>
+    </div>
+  </div>
+</a>
 
-    <script>
-        const track = document.getElementById('slideTrack');
-        let idx = 0;
-        setInterval(() => {
-            idx = (idx + 1) % 3;
-            track.style.transform = `translateX(-${idx * 100}%)`;
-        }, 5000);
-    </script>
+<a href="https://www.instagram.com/easonliaoliao" class="card" target="_blank">
+  <div class="card-img" style="background-image:url('6988_n.jpg')"></div>
+  <div class="card-body">
+    <div class="card-title">影像企劃</div>
+    <div class="user">
+      <img src="6988_n.jpg">
+      <span class="name">Eason <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"></span>
+    </div>
+  </div>
+</a>
+
+<a href="https://www.instagram.com/ajvictor777" class="card" target="_blank">
+  <div class="card-img" style="background-image:url('625109573_17856268899609915_4749941350781355691_n.jpg')"></div>
+  <div class="card-body">
+    <div class="card-title">攝影剪輯</div>
+    <div class="user">
+      <img src="625109573_17856268899609915_4749941350781355691_n.jpg">
+      <span class="name">哈貓 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"></span>
+    </div>
+  </div>
+</a>
+
+<a href="https://www.instagram.com/114514._.x" class="card" target="_blank">
+  <div class="card-img" style="background-image:url('17853264015666641_8879845370727657398_n.jpg')"></div>
+  <div class="card-body">
+    <div class="card-title">行銷企劃</div>
+    <div class="user">
+      <img src="17853264015666641_8879845370727657398_n.jpg">
+      <span class="name">家豪 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"></span>
+    </div>
+  </div>
+</a>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+Copyright © 2026 超級帥哥群｜杰哥製作
+</footer>
+
+<script>
+let idx=0;
+const slides=document.getElementById('slides');
+setInterval(()=>{
+  idx=(idx+1)%3;
+  slides.style.transform=`translateX(-${idx*100}%)`;
+},5000);
+</script>
+
 </body>
 </html>
