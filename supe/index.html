@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>超級帥哥群官方網站</title>
     <style>
-        /* 全域變數設定 */
         :root {
             --primary-color: #007bff;
             --dark-bg: #121212;
-            --glass-bg: rgba(255, 255, 255, 0.8);
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
@@ -22,7 +20,6 @@
             line-height: 1.6;
         }
 
-        /* 導航欄 */
         nav {
             background-color: rgba(26, 26, 26, 0.9);
             backdrop-filter: blur(10px);
@@ -34,62 +31,18 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        .nav-logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #fff;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-        .nav-links a {
-            color: #bbb;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .nav-links a:hover { color: #fff; }
+        .nav-logo { font-size: 1.8rem; font-weight: 900; white-space: nowrap; }
+        .nav-links a { color: #bbb; text-decoration: none; margin-left: 25px; font-weight: 600; }
 
-        /* 輪播圖 16:9 */
-        .slider {
-            width: 100%;
-            aspect-ratio: 16 / 9; 
-            overflow: hidden;
-            position: relative;
-        }
-        .slides {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-        .slide {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.6);
-            text-align: center;
-        }
+        .slider { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; position: relative; }
+        .slides { display: flex; width: 300%; height: 100%; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        .slide { width: 100%; height: 100%; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem; font-weight: 900; text-shadow: 0 10px 20px rgba(0,0,0,0.6); text-align: center; }
 
-        .section-title {
-            text-align: center;
-            margin: 60px 0 40px;
-            font-size: 2.5rem;
-            font-weight: 800;
-        }
+        .section-title { text-align: center; margin: 80px 0 40px; font-size: 2.5rem; font-weight: 800; }
 
-        /* 成員卡片區 */
-        .members-container {
+        /* 統一 5 欄排列 */
+        .members-container, .video-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
@@ -97,81 +50,43 @@
             gap: 25px;
             padding: 0 20px;
         }
+
+        /* 成員卡片 */
         .member-link { text-decoration: none; color: inherit; }
         .member-card {
             background: white;
-            border-radius: 20px;
-            padding: 30px 15px;
+            border-radius: 24px;
+            padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
         }
-        .member-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .member-card img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid #eee;
-        }
-        
-        /* 名字旁邊的藍勾勾樣式 */
-        .name-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
+        .member-card:hover { transform: translateY(-15px); }
+        .member-card img.avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid #f8f9fa; }
+
+        /* 名字 + 小藍勾勾修正 */
+        .member-card h3, .user-row {
             font-size: 1.2rem;
-            font-weight: 800;
-            color: #1a1a1a;
             margin: 10px 0;
-        }
-        .blue-tick {
-            width: 18px;
-            height: 18px;
-            object-fit: contain;
-        }
-
-        /* 影片區 */
-        .video-wrapper {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
-        .video-card {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        .video-cover {
-            width: 100%;
-            aspect-ratio: 9/16;
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 4px;
         }
-        .play-icon { font-size: 3rem; color: rgba(255,255,255,0.8); }
+        .blue-tick { width: 16px; height: 16px; object-fit: contain; }
+
+        /* 影片卡片 */
+        .video-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: var(--transition); }
+        .video-cover { width: 100%; aspect-ratio: 9/16; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; }
+        .play-icon { font-size: 3rem; color: white; opacity: 0.8; }
         .video-meta { padding: 15px; }
+        .video-desc { font-size: 0.85rem; color: #636e72; margin-top: 5px; text-align: center; }
 
-        footer {
-            background: #1a1a1a;
-            color: #888;
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
+        footer { background: #1a1a1a; color: #888; text-align: center; padding: 60px 0; margin-top: 100px; }
 
-        /* 響應式 */
         @media (max-width: 1024px) { .members-container, .video-wrapper { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 768px) { .members-container, .video-wrapper { grid-template-columns: repeat(2, 1fr); } .slide { font-size: 1.8rem; } }
+        @media (max-width: 768px) { .members-container, .video-wrapper { grid-template-columns: repeat(2, 1fr); } .slide { font-size: 1.5rem; } }
     </style>
 </head>
 <body>
@@ -187,9 +102,9 @@
 
     <div class="slider">
         <div class="slides" id="slideTrack">
-            <a href="#" class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('649_n.jpg')">超級帥哥群 正式登場</a>
-            <a href="#" class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://img.fun-life.com.tw/webp/Taichung-play/e-zo-j/1.jpg.webp')">最新企劃 籌備中</a>
-            <a href="#" class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://megapx-assets.dcard.tw/images/0fac6609-1fcd-407d-9b2f-8f2ef5c400f1/640.webp')">立即追蹤 掌握動態</a>
+            <div class="slide" style="background-image: url('649_n.jpg')">超級帥哥群 正式登場</div>
+            <div class="slide" style="background-image: url('https://img.fun-life.com.tw/webp/Taichung-play/e-zo-j/1.jpg.webp')">最新企劃 籌備中</div>
+            <div class="slide" style="background-image: url('https://megapx-assets.dcard.tw/images/0fac6609-1fcd-407d-9b2f-8f2ef5c400f1/640.webp')">立即追蹤 掌握動態</div>
         </div>
     </div>
 
@@ -198,47 +113,37 @@
         <div class="members-container">
             <a href="https://www.instagram.com/wylz888" target="_blank" class="member-link">
                 <div class="member-card">
-                    <img src="S__6578193.jpg" alt="杰哥">
-                    <div class="name-wrapper">
-                        杰哥 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick">
-                    </div>
-                    <p>核心成員與網站開發者</p>
+                    <img src="S__6578193.jpg" class="avatar">
+                    <h3>杰哥 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></h3>
+                    <p>網站建立者與核心成員</p>
                 </div>
             </a>
             <a href="https://www.instagram.com/ian.grace1030/" target="_blank" class="member-link">
                 <div class="member-card">
-                    <img src="https://via.placeholder.com/130" alt="蕭易展">
-                    <div class="name-wrapper">
-                        蕭易展 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick">
-                    </div>
+                    <img src="https://via.placeholder.com/130" class="avatar">
+                    <h3>蕭易展 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></h3>
                     <p>點擊追蹤帥氣日常！</p>
                 </div>
             </a>
             <a href="https://www.instagram.com/easonliaoliao" target="_blank" class="member-link">
                 <div class="member-card">
-                    <img src="https://via.placeholder.com/130" alt="Eason">
-                    <div class="name-wrapper">
-                        Eason Liao <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick">
-                    </div>
-                    <p>點擊追蹤帥氣日常！</p>
+                    <img src="https://via.placeholder.com/130" class="avatar">
+                    <h3>Eason Liao <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></h3>
+                    <p>魅力生活點滴</p>
                 </div>
             </a>
             <a href="https://www.instagram.com/ajvictor777" target="_blank" class="member-link">
                 <div class="member-card">
-                    <img src="https://via.placeholder.com/130" alt="哈貓">
-                    <div class="name-wrapper">
-                        哈貓 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick">
-                    </div>
-                    <p>點擊追蹤帥氣日常！</p>
+                    <img src="https://via.placeholder.com/130" class="avatar">
+                    <h3>哈貓 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></h3>
+                    <p>生活精彩片段</p>
                 </div>
             </a>
             <a href="https://www.instagram.com/114514._.x" target="_blank" class="member-link">
                 <div class="member-card">
-                    <img src="https://via.placeholder.com/130" alt="家豪">
-                    <div class="name-wrapper">
-                        家豪 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick">
-                    </div>
-                    <p>點擊追蹤帥氣日常！</p>
+                    <img src="https://via.placeholder.com/130" class="avatar">
+                    <h3>家豪 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></h3>
+                    <p>最速追蹤！</p>
                 </div>
             </a>
         </div>
@@ -248,35 +153,35 @@
         <h2 class="section-title">精選影片</h2>
         <div class="video-wrapper">
             <div class="video-card">
-                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=影片1');"><div class="play-icon">▶</div></div>
+                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=Video+1');"><div class="play-icon">▶</div></div>
                 <div class="video-meta">
-                    <div class="name-wrapper" style="justify-content: flex-start; font-size: 1rem;">
-                        杰哥 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick">
-                    </div>
+                    <div class="user-row">杰哥 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></div>
+                    <div class="video-desc">要由內而外的自信</div>
                 </div>
             </div>
             <div class="video-card">
-                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=影片2');"><div class="play-icon">▶</div></div>
-                <div class="video-meta"><div class="name-wrapper" style="justify-content: flex-start; font-size: 1rem;">蕭易展 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div></div>
+                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=Video+2');"><div class="play-icon">▶</div></div>
+                <div class="video-meta">
+                    <div class="user-row">蕭易展 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></div>
+                    <div class="video-desc">你該如何應對</div>
+                </div>
             </div>
             <div class="video-card">
-                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=影片3');"><div class="play-icon">▶</div></div>
-                <div class="video-meta"><div class="name-wrapper" style="justify-content: flex-start; font-size: 1rem;">Eason <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div></div>
+                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=Video+3');"><div class="play-icon">▶</div></div>
+                <div class="video-meta"><div class="user-row">Eason <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></div><div class="video-desc">生活紀錄</div></div>
             </div>
             <div class="video-card">
-                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=影片4');"><div class="play-icon">▶</div></div>
-                <div class="video-meta"><div class="name-wrapper" style="justify-content: flex-start; font-size: 1rem;">哈貓 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div></div>
+                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=Video+4');"><div class="play-icon">▶</div></div>
+                <div class="video-meta"><div class="user-row">哈貓 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></div><div class="video-desc">精彩瞬間</div></div>
             </div>
             <div class="video-card">
-                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=影片5');"><div class="play-icon">▶</div></div>
-                <div class="video-meta"><div class="name-wrapper" style="justify-content: flex-start; font-size: 1rem;">家豪 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div></div>
+                <div class="video-cover" style="background-image: url('https://via.placeholder.com/280x500?text=Video+5');"><div class="play-icon">▶</div></div>
+                <div class="video-meta"><div class="user-row">家豪 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Twitter_Verified_Badge.svg" class="blue-tick"></div><div class="video-desc">熱血日常</div></div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>Copyright © 2026 超級帥哥群官方網站－杰哥製作</p>
-    </footer>
+    <footer><p>Copyright © 2026 超級帥哥群官方網站－杰哥製作</p></footer>
 
     <script>
         const track = document.getElementById('slideTrack');
