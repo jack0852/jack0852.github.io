@@ -5,36 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>超級帥哥群官方網站</title>
     <style>
-        /* 基礎設定 */
+        /* 基礎樣式設定 */
         body {
-            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            font-family: "Microsoft JhengHei", Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
+            background-color: #f4f7f9;
             color: #333;
         }
 
-        /* 導航欄 */
+        /* 導航欄 (Navigation Bar) */
         nav {
-            background-color: #333;
+            background-color: #1a1a1a;
             color: white;
-            padding: 1rem 0;
-            text-align: center;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
+        .nav-logo {
+            font-size: 1.6rem;
             font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #fff;
         }
 
-        /* 輪播圖區域 */
+        /* 輪播圖 (Slider) */
         .slider {
             width: 100%;
-            height: 400px;
+            height: 500px;
             overflow: hidden;
             position: relative;
         }
@@ -42,7 +55,7 @@
             display: flex;
             width: 300%;
             height: 100%;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .slide {
             width: 100%;
@@ -53,178 +66,282 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-decoration: none;
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.7);
         }
 
-        /* 內容區塊標題 */
+        /* 區塊標題 */
         .section-title {
             text-align: center;
-            margin: 50px 0 30px;
-            font-size: 1.8rem;
+            margin: 60px 0 30px;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #007bff;
+            display: block;
+            margin: 12px auto;
+            border-radius: 2px;
         }
 
-        /* 成員介紹 (五人) */
+        /* 關於我們 - 成員介紹 (五人) */
         .members-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
             padding: 0 20px;
         }
+        .member-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
         .member-card {
             background: white;
-            padding: 20px;
-            border-radius: 15px;
+            border-radius: 20px;
+            padding: 30px 15px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            flex: 1 1 18%; /* 五個人平均分配 */
-            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         .member-card img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
+            border: 4px solid #f0f0f0;
+            margin-bottom: 15px;
         }
+        .member-card h3 { margin: 10px 0; font-size: 1.3rem; }
+        .member-card p { font-size: 0.9rem; color: #777; line-height: 1.5; }
 
-        /* 精選影片卡片 (藍勾勾風格) */
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        /* 精選影片卡片 (五個) */
+        .video-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
             padding: 20px;
         }
-        .video-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            width: 280px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        .video-item {
+            text-decoration: none;
+            color: inherit;
         }
-        .video-thumb {
+        .video-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .video-card:hover { transform: scale(1.02); }
+        .video-cover {
             width: 100%;
-            aspect-ratio: 9/16; /* 仿抖音/短影音比例 */
-            background: #000;
+            aspect-ratio: 9/16;
+            background-color: #222;
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            position: relative;
-            cursor: pointer;
         }
-        .play-btn {
-            font-size: 3rem;
-            opacity: 0.8;
+        .play-icon {
+            font-size: 3.5rem;
+            color: rgba(255,255,255,0.8);
         }
-        .video-info {
-            padding: 12px;
+        .video-meta {
+            padding: 15px;
         }
-        .user-meta {
+        .user-row {
             display: flex;
             align-items: center;
             font-weight: bold;
+            font-size: 1rem;
         }
         .blue-tick {
-            width: 16px;
-            height: 16px;
-            margin-left: 5px;
+            width: 18px;
+            height: 18px;
+            margin-left: 6px;
+        }
+        .video-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* 頁尾 */
         footer {
-            background: #333;
-            color: white;
+            background: #1a1a1a;
+            color: #999;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid #333;
         }
 
-        /* 響應式調整 */
+        /* 響應式 (手機/平板) */
+        @media (max-width: 1024px) {
+            .members-container, .video-wrapper { grid-template-columns: repeat(3, 1fr); }
+        }
         @media (max-width: 768px) {
-            .member-card { flex: 1 1 40%; }
-            .slider { height: 250px; }
+            .members-container, .video-wrapper { grid-template-columns: repeat(2, 1fr); }
+            .slider { height: 350px; }
+            .nav-logo { font-size: 1.3rem; }
+        }
+        @media (max-width: 480px) {
+            .members-container, .video-wrapper { grid-template-columns: repeat(1, 1fr); }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#">首頁</a>
-        <a href="#about">關於我們</a>
-        <a href="#videos">精選影片</a>
+        <div class="nav-logo">超級帥哥群</div>
+        <div class="nav-links">
+            <a href="#">首頁</a>
+            <a href="#about">關於我們</a>
+            <a href="#videos">精選影片</a>
+        </div>
     </nav>
 
     <div class="slider">
         <div class="slides" id="slideTrack">
-            <a href="你的連結1" class="slide" style="background-image: url('https://via.placeholder.com/1200x400/333/fff?text=歡迎來到超級帥哥群')"></a>
-            <a href="你的連結2" class="slide" style="background-image: url('https://via.placeholder.com/1200x400/444/fff?text=最新活動內容')"></a>
-            <a href="你的連結3" class="slide" style="background-image: url('https://via.placeholder.com/1200x400/555/fff?text=加入我們')"></a>
+            <a href="連結1" class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://via.placeholder.com/1200x500?text=帥哥群亮相')">超級帥哥群正式登場</a>
+            <a href="連結2" class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://via.placeholder.com/1200x500?text=活動封面')">最新企劃籌備中</a>
+            <a href="連結3" class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://via.placeholder.com/1200x500?text=加入粉絲團')">立即追蹤我們</a>
         </div>
     </div>
 
     <section id="about">
         <h2 class="section-title">關於我們</h2>
         <div class="members-container">
-            <div class="member-card">
-                <img src="https://via.placeholder.com/100" alt="成員1">
-                <h3>帥哥 1</h3>
-                <p>這裡輸入自我介紹內容...</p>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/100" alt="成員2">
-                <h3>帥哥 2</h3>
-                <p>這裡輸入自我介紹內容...</p>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/100" alt="成員3">
-                <h3>帥哥 3</h3>
-                <p>這裡輸入自我介紹內容...</p>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/100" alt="成員4">
-                <h3>帥哥 4</h3>
-                <p>這裡輸入自我介紹內容...</p>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/100" alt="成員5">
-                <h3>帥哥 5</h3>
-                <p>這裡輸入自我介紹內容...</p>
-            </div>
+            
+            <a href="https://www.instagram.com/wylz888" target="_blank" class="member-link">
+                <div class="member-card">
+                    <img src="https://via.placeholder.com/150" alt="成員1">
+                    <h3>成員 A</h3>
+                    <p>網站建立者！</p>
+                </div>
+            </a>
+
+            <a href="https://instagram.com/帳號2" target="_blank" class="member-link">
+                <div class="member-card">
+                    <img src="https://via.placeholder.com/150" alt="成員2">
+                    <h3>成員 B</h3>
+                    <p>點擊追蹤我的個人 Instagram，了解我的帥氣日常！</p>
+                </div>
+            </a>
+
+            <a href="https://instagram.com/帳號3" target="_blank" class="member-link">
+                <div class="member-card">
+                    <img src="https://via.placeholder.com/150" alt="成員3">
+                    <h3>成員 C</h3>
+                    <p>點擊追蹤我的個人 Instagram，了解我的帥氣日常！</p>
+                </div>
+            </a>
+
+            <a href="https://instagram.com/帳號4" target="_blank" class="member-link">
+                <div class="member-card">
+                    <img src="https://via.placeholder.com/150" alt="成員4">
+                    <h3>成員 D</h3>
+                    <p>點擊追蹤我的個人 Instagram，了解我的帥氣日常！</p>
+                </div>
+            </a>
+
+            <a href="https://instagram.com/帳號5" target="_blank" class="member-link">
+                <div class="member-card">
+                    <img src="https://via.placeholder.com/150" alt="成員5">
+                    <h3>成員 E</h3>
+                    <p>點擊追蹤我的個人 Instagram，了解我的帥氣日常！</p>
+                </div>
+            </a>
+
         </div>
     </section>
 
     <section id="videos">
         <h2 class="section-title">超級帥哥群精選影片</h2>
-        <div class="video-container">
-            <div class="video-card">
-                <div class="video-thumb">
-                    <div class="play-btn">▶</div>
-                </div>
-                <div class="video-info">
-                    <div class="user-meta">
-                        超級帥哥 A
-                        <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick" alt="藍勾勾">
+        <div class="video-wrapper">
+            
+            <a href="IG影片連結1" target="_blank" class="video-item">
+                <div class="video-card">
+                    <div class="video-cover" style="background-image: url('封面圖1');">
+                        <div class="play-icon">▶</div>
                     </div>
-                    <p style="font-size: 0.9rem; color: #666;">影片描述內容...</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumb">
-                    <div class="play-btn">▶</div>
-                </div>
-                <div class="video-info">
-                    <div class="user-meta">
-                        超級帥哥 B
-                        <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick" alt="藍勾勾">
+                    <div class="video-meta">
+                        <div class="user-row">
+                            成員名字 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick">
+                        </div>
+                        <div class="video-desc">影片短標題內容...</div>
                     </div>
-                    <p style="font-size: 0.9rem; color: #666;">影片描述內容...</p>
                 </div>
-            </div>
+            </a>
+
+            <a href="IG影片連結2" target="_blank" class="video-item">
+                <div class="video-card">
+                    <div class="video-cover" style="background-image: url('封面圖2');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-meta">
+                        <div class="user-row">成員名字 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div>
+                        <div class="video-desc">影片短標題內容...</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="IG影片連結3" target="_blank" class="video-item">
+                <div class="video-card">
+                    <div class="video-cover" style="background-image: url('封面圖3');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-meta">
+                        <div class="user-row">成員名字 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div>
+                        <div class="video-desc">影片短標題內容...</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="IG影片連結4" target="_blank" class="video-item">
+                <div class="video-card">
+                    <div class="video-cover" style="background-image: url('封面圖4');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-meta">
+                        <div class="user-row">成員名字 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div>
+                        <div class="video-desc">影片短標題內容...</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="IG影片連結5" target="_blank" class="video-item">
+                <div class="video-card">
+                    <div class="video-cover" style="background-image: url('封面圖5');">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-meta">
+                        <div class="user-row">成員名字 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick"></div>
+                        <div class="video-desc">影片短標題內容...</div>
+                    </div>
+                </div>
+            </a>
+
         </div>
     </section>
 
@@ -233,13 +350,13 @@
     </footer>
 
     <script>
-        // 簡單輪播邏輯
+        // 輪播動畫邏輯
         const track = document.getElementById('slideTrack');
-        let index = 0;
+        let currentIdx = 0;
         setInterval(() => {
-            index = (index + 1) % 3;
-            track.style.transform = `translateX(-${index * 100}%)`;
-        }, 3000);
+            currentIdx = (currentIdx + 1) % 3;
+            track.style.transform = `translateX(-${currentIdx * 100}%)`;
+        }, 4500);
     </script>
 </body>
 </html>
