@@ -10,7 +10,7 @@
   --main:#0a3cff;
   --bg:#f4f6fb;
   --card:#fff;
-  --text:#1c1e21;
+  --text:#111;
   --gray:#6b7280;
 }
 
@@ -33,27 +33,37 @@ header{
 .nav{
   max-width:1200px;
   margin:auto;
-  padding:12px 20px;
+  padding:12px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  flex-wrap:nowrap;
 }
 
 .logo{
   font-weight:800;
-  font-size:1.2rem;
+  font-size:1.15rem;
   color:var(--main);
+  white-space:nowrap;
+}
+
+.menu{
+  display:flex;
+  gap:14px;
+  flex-wrap:nowrap;
 }
 
 .menu a{
-  margin-left:18px;
   text-decoration:none;
   font-weight:600;
   color:#333;
+  font-size:.9rem;
+  white-space:nowrap;
 }
 
 .hero{
-  height:420px;
+  width:100%;
+  aspect-ratio:16/9;
   position:relative;
   overflow:hidden;
 }
@@ -85,13 +95,13 @@ header{
 }
 
 .hero-text h1{
-  font-size:2.6rem;
-  margin:0 0 12px;
+  font-size:2.3rem;
+  margin:0 0 10px;
 }
 
 .hero-text p{
   max-width:600px;
-  font-size:1.05rem;
+  font-size:1rem;
   opacity:.9;
 }
 
@@ -144,9 +154,7 @@ header{
   transition:.3s;
 }
 
-.card:hover{
-  transform:translateY(-6px);
-}
+.card:hover{transform:translateY(-6px);}
 
 .card-img{
   aspect-ratio:1/1.15;
@@ -154,40 +162,70 @@ header{
   background-position:center;
 }
 
-.card-body{
-  padding:14px;
-}
+.card-body{padding:14px;}
 
 .card-title{
   font-weight:700;
   margin-bottom:8px;
-  font-size:.9rem;
+  font-size:.95rem;
 }
 
 .user{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:8px;
 }
 
 .user img{
-  width:22px;
-  height:22px;
+  width:28px;
+  height:28px;
   border-radius:50%;
   object-fit:cover;
 }
 
 .name{
-  font-size:.8rem;
-  font-weight:600;
-  color:var(--gray);
+  font-size:.95rem;
+  font-weight:700;
+  color:#000;
   display:flex;
   align-items:center;
+  gap:4px;
 }
 
 .badge{
-  width:15px;
-  margin-left:4px;
+  width:18px;
+  height:18px;
+}
+
+.video-list{
+  display:grid;
+  gap:14px;
+}
+
+.video-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#fff;
+  padding:14px 16px;
+  border-radius:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+
+.video-item img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.video-title{
+  font-size:1rem;
+  font-weight:700;
+  color:#000;
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 
 footer{
@@ -207,9 +245,9 @@ footer{
     <div class="logo">超級帥哥群</div>
     <div class="menu">
       <a href="#">首頁</a>
-      <a href="#">團隊介紹</a>
-      <a href="#">精選影片</a>
-      <a href="#">聯絡我們</a>
+      <a href="#about">關於我們</a>
+      <a href="#team">核心成員</a>
+      <a href="#video">精選影片</a>
     </div>
   </div>
 </header>
@@ -222,21 +260,21 @@ footer{
   </div>
   <div class="hero-text">
     <h1>超級帥哥群</h1>
-    <p>打造最具影響力的創作團隊，整合內容、品牌與流量的最強戰隊。</p>
+    <p>打造最具影響力的創作團隊，整合內容、品牌與流量的最強戰隊</p>
   </div>
 </div>
 
 <main class="main">
 
-<section class="section">
-  <h2>團隊理念</h2>
-  <div class="team-intro">
-    我們是一群熱愛創作、影像、內容與社群經營的團隊，致力於打造高品質內容、建立影響力品牌，
-    透過專業分工與創意整合，讓每一個作品都能發揮最大價值。
-  </div>
+<section class="section" id="about">
+<h2>關於我們</h2>
+<div class="team-intro">
+我們是一群熱愛創作、影像、內容與社群經營的團隊，致力於打造高品質內容、建立影響力品牌，
+透過專業分工與創意整合，讓每一個作品都能發揮最大價值。
+</div>
 </section>
 
-<section class="section">
+<section class="section" id="team">
 <h2>核心成員</h2>
 
 <div class="grid">
@@ -295,6 +333,39 @@ footer{
     </div>
   </div>
 </a>
+
+</div>
+</section>
+
+<section class="section" id="video">
+<h2>超級帥哥群 · 群組精選影片</h2>
+
+<div class="video-list">
+
+<div class="video-item">
+  <img src="S__6578193.jpg">
+  <div class="video-title">杰哥 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"> 精選影片</div>
+</div>
+
+<div class="video-item">
+  <img src="66818_n.jpg">
+  <div class="video-title">蕭易展 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"> 精選影片</div>
+</div>
+
+<div class="video-item">
+  <img src="6988_n.jpg">
+  <div class="video-title">Eason <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"> 精選影片</div>
+</div>
+
+<div class="video-item">
+  <img src="625109573_17856268899609915_4749941350781355691_n.jpg">
+  <div class="video-title">哈貓 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"> 精選影片</div>
+</div>
+
+<div class="video-item">
+  <img src="17853264015666641_8879845370727657398_n.jpg">
+  <div class="video-title">家豪 <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="badge"> 精選影片</div>
+</div>
 
 </div>
 </section>
