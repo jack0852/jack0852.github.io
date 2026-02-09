@@ -23,14 +23,23 @@
 
     /* Header */
     header {
-      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
     }
 
-    .site-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #111827;
-      letter-spacing: 1px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #1f2937;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
     }
 
     /* Main */
@@ -43,56 +52,37 @@
     }
 
     .card {
-      background: #ffffff;
-      max-width: 540px;
+      background: #fff;
+      max-width: 520px;
       width: 100%;
       padding: 50px 40px;
-      border-radius: 18px;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       text-align: center;
-      animation: fadeUp 0.8s ease forwards;
     }
 
-    /* 照片 */
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 24px;
-      border: 4px solid #f3f4f6;
-
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 1s ease forwards;
-      animation-delay: 0.2s;
+    .icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      color: #f59e0b;
     }
 
     h1 {
       font-size: 28px;
       margin-bottom: 16px;
       color: #111827;
-
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
-      animation-delay: 0.4s;
     }
 
     p {
       font-size: 16px;
       line-height: 1.8;
       color: #4b5563;
-
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
-      animation-delay: 0.6s;
     }
 
     .hint {
       margin-top: 24px;
       font-size: 14px;
       color: #6b7280;
-      animation-delay: 0.8s;
     }
 
     /* Footer */
@@ -101,19 +91,11 @@
       padding: 20px;
       font-size: 13px;
       color: #6b7280;
-      line-height: 1.6;
     }
 
-    /* 動畫 */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    footer span {
+      display: block;
+      margin-top: 6px;
     }
 
     /* RWD */
@@ -129,50 +111,41 @@
       h1 {
         font-size: 24px;
       }
-
-      .profile-img {
-        width: 100px;
-        height: 100px;
-      }
     }
   </style>
 </head>
 
 <body>
-
   <!-- Header -->
   <header>
-    <div class="site-title">Jack 官方網站</div>
+    <div class="logo">
+      <span>Jack 官方網站</span>
+    </div>
   </header>
 
   <!-- Main -->
   <main>
     <div class="card">
-
-      <!-- 🔽 你的照片（淡入動畫） -->
-      <img src="https://jack0852.github.io/%E7%B6%B2%E7%AB%99%E7%B6%AD%E8%AD%B7.jpg" alt="Jack 照片" class="profile-img">
-
-      <h1>網站維護中！</h1>
-
+      <div class="icon">⚠️</div>
+      <h1>網站維護中</h1>
       <p>
-        目前正在進行系統維護與網站優化，<br>
-        以確保提供更穩定、更專業的服務體驗。
+        我們正在進行系統升級與內容優化，<br>
+        以提供更穩定、更優質的瀏覽體驗。
       </p>
-
       <p class="hint">
-        造成不便，敬請見諒。<br>
-        感謝您的耐心與支持。 
+        造成您的不便，敬請見諒。<br>
+        請稍後再回來看看，感謝您的耐心等候。
       </p>
-
     </div>
   </main>
 
   <!-- Footer -->
   <footer>
-    本網站由 HTML、CSS 和 JavaScript 打造<br>
-    Copyright © 2026 Jack 官方網站 All Rights Reserved.<br>
-    Powered by Jack．© 2026 本網站由 Jack 維護
+    本網站由 HTML、CSS 和 JavaScript 打造
+    <span>
+      Copyright © 2026 Jack 官方網站 All Rights Reserved.<br>
+      Powered by Jack．© 2026 本網站由 Jack 維護
+    </span>
   </footer>
-
 </body>
 </html>
