@@ -1,224 +1,167 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JACK</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #1f1f38;
-            --color-bg-variant: #2c2c6c;
-            --color-primary: #4db5ff;
-            --color-primary-variant: rgba(77, 181, 255, 0.4);
-            --color-white: #fff;
-            --color-light: rgba(255, 255, 255, 0.6);
-            --transition: all 400ms ease;
-            --container-width-lg: 80%;
-            --container-width-md: 90%;
-            --container-width-sm: 94%;
-        }
+  <meta charset="UTF-8">
+  <title>Jack 官方網站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    }
 
-        /* 基礎樣式重置 */
-        * { margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; border: 0; outline: 0; }
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Poppins', sans-serif; background: var(--color-bg); color: var(--color-white); 
-            line-height: 1.7; overflow-x: hidden;
-            background-image: radial-gradient(circle at 2px 2px, rgba(77, 181, 255, 0.05) 1px, transparent 0);
-            background-size: 40px 40px;
-        }
-        .container { width: var(--container-width-lg); margin: 0 auto; }
-        section { padding-top: 5rem; padding-bottom: 5rem; }
-        h2 { text-align: center; color: var(--color-primary); margin-bottom: 3rem; font-size: 2.2rem; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background-size: 300% 300%;
+      animation: bgMove 12s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
 
-        /* 通用按鈕與動畫 */
-        .btn { padding: 0.8rem 1.6rem; border-radius: 0.5rem; border: 1px solid var(--color-primary); color: var(--color-primary); transition: var(--transition); cursor: pointer; display: inline-block; }
-        .btn-primary { background: var(--color-primary); color: var(--color-bg); font-weight: 500; }
-        .btn:hover { background: var(--color-white); color: var(--color-bg); border-color: transparent; transform: scale(1.05); }
-        .card-animate { transition: var(--transition); border: 1px solid transparent; }
-        .card-animate:hover { transform: translateY(-10px); background: transparent; border-color: var(--color-primary-variant); box-shadow: 0 1rem 1.5rem rgba(0,0,0,0.3); }
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        /* --- 1. Header 區塊 --- */
-        header { padding-top: 3rem; text-align: center; min-height: 100vh; }
-        header h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0.5rem 0; color: var(--color-white); text-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .hero__btns { display: flex; gap: 1.2rem; justify-content: center; margin: 1.5rem 0 3rem; }
+    /* 導覽列 */
+    .navbar {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
 
-        /* --- 2. 輪播圖 Carousel --- */
-        .carousel { width: 100%; max-width: 850px; aspect-ratio: 16/9; margin: 0 auto; position: relative; overflow: hidden; border-radius: 2rem; border: 0.5rem solid var(--color-bg-variant); box-shadow: 0 2rem 3rem rgba(0,0,0,0.4); }
-        .carousel-inner { display: flex; transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); height: 100%; }
-        .carousel-item { min-width: 100%; height: 100%; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+    .navbar h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
 
-        /* --- 3. 關於我佈局 --- */
-        .about__grid { display: grid; grid-template-columns: 35% 55%; gap: 10%; align-items: center; }
-        .about__me-img { 
-            width: 100%; aspect-ratio: 1/1; border-radius: 2rem; 
-            background: linear-gradient(45deg, transparent, var(--color-primary), transparent);
-            display: grid; place-items: center; transition: var(--transition);
-        }
-        .about__me-img img { width: 100%; border-radius: 2rem; transform: rotate(10deg); transition: var(--transition); }
-        .about__me-img:hover img { transform: rotate(0); }
+    /* 主內容 */
+    main {
+      flex: 1;
+    }
 
-        .about__cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
-        .card { background: var(--color-bg-variant); padding: 1.5rem; border-radius: 1.2rem; text-align: center; }
-        .card i { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.8rem; }
-        .card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .card small { color: var(--color-light); font-size: 0.75rem; }
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+    }
 
-        /* --- 4. 技能區塊 --- */
-        .skills__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .skill__content { background: var(--color-bg-variant); padding: 2.4rem 4rem; border-radius: 2rem; }
-        .skill-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .skill-item { display: flex; gap: 1rem; align-items: start; }
-        .skill-item i { color: var(--color-primary); margin-top: 5px; }
+    .hero h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-        /* --- 5. 專案區塊 --- */
-        .projects__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-        .project-card { background: var(--color-bg-variant); padding: 1.3rem; border-radius: 2rem; text-align: center; }
-        .project-img { width: 100%; aspect-ratio: 1/1; border-radius: 1.5rem; object-fit: cover; margin-bottom: 1.5rem; }
-        .project-card h3 { margin-bottom: 0.8rem; }
-        .project-card p { font-size: 0.9rem; color: var(--color-light); margin-bottom: 1.5rem; }
+    .hero p {
+      font-size: 18px;
+      opacity: 0.85;
+      letter-spacing: 1px;
+      margin-bottom: 48px;
+    }
 
-        /* --- 6. 底部導航 --- */
-        nav { background: rgba(0, 0, 0, 0.3); padding: 0.7rem 1.7rem; position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; display: flex; gap: 1rem; border-radius: 3rem; backdrop-filter: blur(10px); z-index: 100; }
-        nav a { color: var(--color-white); font-size: 1.2rem; padding: 0.6rem; border-radius: 50%; display: flex; transition: var(--transition); }
-        nav a:hover { background: var(--color-bg); color: var(--color-primary); }
+    /* 關於我 */
+    .about {
+      max-width: 720px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
 
-        /* --- 響應式媒體查詢 --- */
-        /* 平板 (Tablets) */
-        @media screen and (max-width: 1024px) {
-            .container { width: var(--container-width-md); }
-            .about__grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-            .about__me-img { width: 50%; margin: 0 auto; }
-            .skill__content { padding: 2rem; }
-        }
+    .about h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
 
-        /* 手機 (Mobile) */
-        @media screen and (max-width: 600px) {
-            .container { width: var(--container-width-sm); }
-            .about__me-img { width: 65%; }
-            .about__cards { grid-template-columns: 1fr; }
-            .skills__grid { grid-template-columns: 1fr; }
-            .projects__grid { grid-template-columns: 1fr; }
-            .skill-list { gap: 1rem; }
-            header { padding-top: 2rem; }
-            nav { bottom: 1rem; padding: 0.5rem 1.2rem; }
-        }
-    </style>
+    .about p {
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .skills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    /* 頁尾 */
+    footer {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 24px 16px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+      opacity: 0.75;
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#home"><i class="fa fa-home"></i></a>
-        <a href="#about"><i class="fa fa-user"></i></a>
-        <a href="#skills"><i class="fa fa-tools"></i></a>
-        <a href="#projects"><i class="fa fa-image"></i></a>
-    </nav>
+  <header class="navbar">
+    <h1>Jack 官方網站</h1>
+  </header>
 
-    <header id="home" class="container">
-        <h5>嗨，我是</h5>
-        <h1>JACK</h1>
-        <h5 class="text-light">學生兼全端 Web 開發人員</h5>
-        
-        <div class="hero__btns">
-            <a href="#about" class="btn">了解我</a>
-            <a href="#projects" class="btn btn-primary">看作品</a>
+  <main>
+    <section class="hero">
+      <h2>Jack</h2>
+      <p>前端開發 · 靜態網站設計</p>
+
+      <div class="about">
+        <h3>關於我</h3>
+        <p>
+          我是 Jack，專注於前端技術與靜態網站設計。
+          擅長使用 HTML、CSS 和 JavaScript，
+          打造結構清晰、視覺乾淨且具備良好使用體驗的網站。
+        </p>
+        <p>
+          目前以設計與製作靜態網站為主，
+          適合個人品牌、作品展示與官方形象網站。
+        </p>
+
+        <div class="skills">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Static Website Design</div>
         </div>
-
-        <div class="carousel">
-            <div class="carousel-inner" id="carouselInner">
-                <div class="carousel-item"><img src="https://jack0852.github.io/S__6504471.jpg" alt="作品1"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/850x480/4db5ff/ffffff?text=Slide+2" alt="作品2"></div>
-                <div class="carousel-item"><img src="https://via.placeholder.com/850x480/1f1f38/ffffff?text=Slide+3" alt="作品3"></div>
-            </div>
-        </div>
-    </header>
-
-    <section id="about" class="container">
-        <h5>Get To Know</h5>
-        <h2>About Me</h2>
-        
-        <div class="about__grid">
-            <div class="about__me-img card-animate">
-                <img src="https://jack0852.github.io/S__6504471.jpg" alt="My Photo">
-            </div>
-
-            <div class="about__content">
-                <div class="about__cards">
-                    <article class="card card-animate">
-                        <i class="fa fa-graduation-cap"></i>
-                        <h3>學歷</h3>
-                        <small>國立臺中教育大學<br>數位內容科技學系</small>
-                    </article>
-                    <article class="card card-animate">
-                        <i class="fa fa-briefcase"></i>
-                        <h3>經歷</h3>
-                        <small>阿虎巴巴實習<br>113級畢展網站開發</small>
-                    </article>
-                </div>
-                <p>一個熱愛探索程式奧秘的學生，專注於全端 Web 開發與互動技術。擅長將複雜的需求轉化為直觀且具設計感的數位體驗。</p>
-                <a href="#projects" class="btn btn-primary">查看所有作品</a>
-            </div>
-        </div>
+      </div>
     </section>
+  </main>
 
-    <section id="skills" class="container">
-        <h5>Skills I Have</h5>
-        <h2>我的技術</h2>
-        <div class="skills__grid">
-            <div class="skill__content card-animate">
-                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--color-primary);">前端開發</h3>
-                <div class="skill-list">
-                    <div class="skill-item"><i class="fa-solid fa-badge-check"></i> <div><h4>HTML</h4><small>Experienced</small></div></div>
-                    <div class="skill-item"><i class="fa-solid fa-badge-check"></i> <div><h4>CSS</h4><small>Experienced</small></div></div>
-                    <div class="skill-item"><i class="fa-solid fa-badge-check"></i> <div><h4>JS</h4><small>Intermediate</small></div></div>
-                    <div class="skill-item"><i class="fa-solid fa-badge-check"></i> <div><h4>Vue</h4><small>Intermediate</small></div></div>
-                </div>
-            </div>
-            <div class="skill__content card-animate">
-                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--color-primary);">後端開發</h3>
-                <div class="skill-list">
-                    <div class="skill-item"><i class="fa-solid fa-badge-check"></i> <div><h4>PHP</h4><small>Experienced</small></div></div>
-                    <div class="skill-item"><i class="fa-solid fa-badge-check"></i> <div><h4>Python</h4><small>Intermediate</small></div></div>
-                    <div class="skill-item"><i class="fa-solid fa-badge-check"></i> <div><h4>MySQL</h4><small>Intermediate</small></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer>
+    本網站由 HTML、CSS 和 JavaScript 打造<br>
+    Copyright © 2026 Jack 官方網站 All Rights Reserved.<br>
+    Powered by Jack.<br>
+    © 2026 本網站由 Jack 維護
+  </footer>
 
-    <section id="projects" class="container">
-        <h5>Recent Works</h5>
-        <h2>我的作品</h2>
-        <div class="projects__grid">
-            <article class="project-card card-animate">
-                <img src="https://jack0852.github.io/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202026-02-05%20220921.png" class="project-img">
-                <h3>示範 1 中國網紅【甜蜜老张】</h3>
-                <p>針對中國網紅設計的展示型頁面，優化了視覺佈局與加載效率。</p>
-                <a href="https://jack0852.github.io/abc2018/wylz004" target="_blank" class="btn btn-primary">造訪網站</a>
-            </article>
-
-            <article class="project-card card-animate">
-                <img src="https://jack0852.github.io/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202026-02-05%20220906.png" class="project-img">
-                <h3>示範 2 中國網紅【青岛大姨张大霞】</h3>
-                <p>基於 Vue 框架開發的動態內容展示系統，支援多種媒體格式。</p>
-                <a href="https://jack0852.github.io/abc2018/wylz003/" target="_blank" class="btn btn-primary">造訪網站</a>
-            </article>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 4rem 0; opacity: 0.3; border-top: 1px solid var(--color-bg-variant);">
-        <p>&copy; 2026 JACK. All rights reserved.</p>
-    </footer>
-
-    <script>
-        const inner = document.getElementById('carouselInner');
-        let idx = 0;
-        setInterval(() => {
-            idx = (idx + 1) % 3;
-            inner.style.transform = `translateX(-${idx * 100}%)`;
-        }, 3500);
-    </script>
 </body>
 </html>
