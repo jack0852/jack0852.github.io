@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>網站維護中｜Jack 官方網站</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f4f6f8, #e9edf2);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #1f2937;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #fff;
+      max-width: 520px;
+      width: 100%;
+      padding: 50px 40px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      color: #f59e0b;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #4b5563;
+    }
+
+    .hint {
+      margin-top: 24px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    footer span {
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* RWD */
+    @media (max-width: 480px) {
+      header {
+        padding: 16px 20px;
+      }
+
+      .card {
+        padding: 40px 24px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <!-- 🔽 這裡換成你的 Logo 圖片 -->
+      <img src="https://jack0852.github.io/%E7%B6%B2%E7%AB%99%E7%B6%AD%E8%AD%B7.jpg" alt="Jack 官方網站 Logo">
+      <span>Jack 官方網站</span>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="card">
+      <div class="icon">⚠️</div>
+      <h1>網站維護中</h1>
+      <p>
+        我們正在進行系統升級與內容優化，<br>
+        以提供更穩定、更優質的瀏覽體驗。
+      </p>
+      <p class="hint">
+        造成您的不便，敬請見諒。<br>
+        請稍後再回來看看，感謝您的耐心等候。
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    本網站由 HTML、CSS 和 JavaScript 打造
+    <span>
+      Copyright © 2026 Jack 官方網站 All Rights Reserved.<br>
+      Powered by Jack．© 2026 本網站由 Jack 維護
+    </span>
+  </footer>
+</body>
+</html>
