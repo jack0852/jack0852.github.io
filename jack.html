@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>Jack 官方網站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background-size: 300% 300%;
+      animation: bgMove 12s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 導覽列 */
+    .navbar {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .navbar h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* 主內容 */
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.85;
+      letter-spacing: 1px;
+      margin-bottom: 48px;
+    }
+
+    /* 關於我 */
+    .about {
+      max-width: 720px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    .about h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .about p {
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .skills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    /* 頁尾 */
+    footer {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 24px 16px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <h1>Jack 官方網站</h1>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Jack</h2>
+      <p>前端開發 · 靜態網站設計</p>
+
+      <div class="about">
+        <h3>關於我</h3>
+        <p>
+          我是 Jack，專注於前端技術與靜態網站設計。
+          擅長使用 HTML、CSS 和 JavaScript，
+          打造結構清晰、視覺乾淨且具備良好使用體驗的網站。
+        </p>
+        <p>
+          目前以設計與製作靜態網站為主，
+          適合個人品牌、作品展示與官方形象網站。
+        </p>
+
+        <div class="skills">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Static Website Design</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    本網站由 HTML、CSS 和 JavaScript 打造<br>
+    Copyright © 2026 Jack 官方網站 All Rights Reserved.<br>
+    Powered by Jack.<br>
+    © 2026 本網站由 Jack 維護
+  </footer>
+
+</body>
+</html>
