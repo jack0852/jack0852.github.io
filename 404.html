@@ -2,20 +2,114 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>找不到頁面</title>
+  <title>404｜杰哥官方網站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: system-ui;
-      text-align: center;
-      padding-top: 15vh;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
     }
-    h1 { font-size: 64px; }
-    a { color: #007aff; text-decoration: none; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background-size: 300% 300%;
+      animation: bgMove 12s ease infinite;
+      color: #fff;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 導覽列 */
+    .navbar {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .navbar h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* 中央內容 */
+    .container {
+      height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .error-code {
+      font-size: 140px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(180deg, #ffffff, #9fd3ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float 4s ease-in-out infinite;
+      text-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+      100% { transform: translateY(0); }
+    }
+
+    .message {
+      margin-top: 16px;
+      font-size: 18px;
+      opacity: 0.85;
+      letter-spacing: 1px;
+    }
+
+    .sub {
+      margin-top: 8px;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+
+    /* 微光粒子 */
+    .glow {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: glowMove 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes glowMove {
+      from { background-position: 0 0; }
+      to { background-position: 200px 200px; }
+    }
   </style>
 </head>
 <body>
-  <h1>404</h1>
-  <p>這個頁面不存在 😢</p>
-  <a href="/">回首頁</a>
+  <div class="glow"></div>
+
+  <header class="navbar">
+    <h1>杰哥官方網站</h1>
+  </header>
+
+  <main class="container">
+    <div class="error-code">404</div>
+    <div class="message">你走到了一個不存在的頁面</div>
+    <div class="sub">The page you are looking for does not exist</div>
+  </main>
 </body>
 </html>
