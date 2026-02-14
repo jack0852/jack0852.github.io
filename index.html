@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>Jack 官方網站-前端網站開發者</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #9f1e1e 0%, #c42f2f 25%, #e6733f 70%, #f5b342 100%);
+      background-size: 400% 400%;
+      animation: bgGlow 16s ease infinite;
+      color: #fef7e6;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 動態背景光暈 (新年火焰感) */
+    @keyframes bgGlow {
+      0% { background-position: 0% 0%; }
+      25% { background-position: 50% 30%; }
+      50% { background-position: 100% 70%; }
+      75% { background-position: 30% 80%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* ===== 新年裝飾元素：雪花 & 金幣 ===== */
+    .snow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .snow {
+      position: absolute;
+      top: -10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 12px #fff9d7, 0 0 20px #ffd966;
+      width: 6px;
+      height: 6px;
+      animation: fall 10s linear infinite;
+    }
+
+    /* 加上金色小元寶 (或星星) 混在雪花裡 */
+    .snow::after {
+      content: "🧧";
+      position: absolute;
+      font-size: 14px;
+      top: -10px;
+      left: -8px;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 4px gold);
+      animation: glitter 3s infinite alternate;
+    }
+
+    /* 不同雪花有不同延遲與大小 */
+    .snow:nth-child(1) { left: 5%; width: 8px; height: 8px; animation-duration: 12s; animation-delay: 0s; }
+    .snow:nth-child(2) { left: 15%; width: 12px; height: 12px; animation-duration: 16s; animation-delay: 2s; }
+    .snow:nth-child(3) { left: 25%; width: 7px; height: 7px; animation-duration: 9s; animation-delay: 1s; }
+    .snow:nth-child(4) { left: 35%; width: 15px; height: 15px; animation-duration: 18s; animation-delay: 0.5s; }
+    .snow:nth-child(5) { left: 45%; width: 6px; height: 6px; animation-duration: 11s; animation-delay: 3s; }
+    .snow:nth-child(6) { left: 55%; width: 10px; height: 10px; animation-duration: 14s; animation-delay: 1.2s; }
+    .snow:nth-child(7) { left: 65%; width: 18px; height: 18px; animation-duration: 20s; animation-delay: 0.2s; }
+    .snow:nth-child(8) { left: 75%; width: 9px; height: 9px; animation-duration: 13s; animation-delay: 2.5s; }
+    .snow:nth-child(9) { left: 85%; width: 11px; height: 11px; animation-duration: 17s; animation-delay: 0.8s; }
+    .snow:nth-child(10) { left: 95%; width: 14px; height: 14px; animation-duration: 15s; animation-delay: 1.7s; }
+    .snow:nth-child(11) { left: 8%; width: 20px; height: 20px; animation-duration: 22s; animation-delay: 4s; }
+    .snow:nth-child(12) { left: 42%; width: 7px; height: 7px; animation-duration: 9s; animation-delay: 5s; }
+
+    @keyframes fall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0.4; }
+    }
+
+    @keyframes glitter {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1.2); text-shadow: 0 0 15px gold; }
+    }
+
+    /* 導覽列 (新年紅金) */
+    .navbar {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      background: rgba(118, 18, 18, 0.7);
+      backdrop-filter: blur(18px);
+      border-bottom: 2px solid #f9d77e;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+      position: relative;
+      z-index: 20;
+    }
+
+    .navbar h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #fff2b5, #ffdb7c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px #ffb347, 2px 2px 0 #b33e1f;
+    }
+
+    /* 左邊與右邊增加過年燈籠 */
+    .navbar::before,
+    .navbar::after {
+      content: "🏮";
+      font-size: 28px;
+      margin-right: 16px;
+      filter: drop-shadow(0 0 6px #ffcf4a);
+    }
+    .navbar::after {
+      margin-left: auto;
+      margin-right: 0;
+      content: "🏮";
+    }
+
+    /* 主內容 */
+    main {
+      flex: 1;
+      position: relative;
+      z-index: 15;
+    }
+
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px 60px;
+    }
+
+    /* 新年大標 + 裝飾 */
+    .hero h2 {
+      font-size: 80px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(145deg, #fef1b9, #ffe48f, #fccf7c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 18px #ff9f1a, 4px 4px 0 #b13e1a;
+      letter-spacing: 6px;
+      animation: flicker 2.5s infinite;
+    }
+
+    @keyframes flicker {
+      0% { text-shadow: 0 0 18px #ff9f1a, 4px 4px 0 #b13e1a; }
+      50% { text-shadow: 0 0 30px #ffe550, 6px 6px 0 #8f2d0f; }
+      100% { text-shadow: 0 0 18px #ff9f1a, 4px 4px 0 #b13e1a; }
+    }
+
+    .hero p {
+      font-size: 22px;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(4px);
+      padding: 8px 30px;
+      border-radius: 60px;
+      border: 1px solid #ffd966;
+      box-shadow: 0 0 20px rgba(255,200,50,0.4);
+      margin-bottom: 50px;
+      color: #fff7e6;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+
+    /* 關於我卡片 (紅金刺繡感) */
+    .about {
+      max-width: 820px;
+      background: rgba(44, 16, 8, 0.7);
+      backdrop-filter: blur(18px);
+      border: 2px solid #ffcd7e;
+      border-radius: 60px 60px 60px 60px / 40px 40px 40px 40px;
+      padding: 40px 44px;
+      box-shadow: 0 25px 40px rgba(0,0,0,0.5), 0 0 0 4px #a8491a inset, 0 0 20px #fabc2c;
+      transition: 0.4s;
+    }
+
+    .about:hover {
+      box-shadow: 0 30px 50px #b3511f, 0 0 0 6px #fecb5e inset, 0 0 40px #ffbb33;
+    }
+
+    .about h3 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      background: linear-gradient(to right, #fff0b5, #ffdd99);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      border-bottom: 3px solid #fbc85a;
+      padding-bottom: 8px;
+      letter-spacing: 3px;
+    }
+
+    .about p {
+      font-size: 18px;
+      line-height: 1.9;
+      opacity: 1;
+      margin-bottom: 24px;
+      color: #fef1d6;
+      text-shadow: 1px 1px 0 #632f12;
+      font-weight: 400;
+    }
+
+    .skills {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      justify-content: center;
+    }
+
+    .skill {
+      padding: 12px 28px;
+      border-radius: 40px;
+      background: linear-gradient(145deg, #fabb4f, #d5541a);
+      border: 2px solid #fff2b5;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d1509;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 0 #792f0d, 0 6px 16px #fabc2c;
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+
+    .skill:hover {
+      transform: scale(1.07) translateY(-3px);
+      background: linear-gradient(145deg, #fdd15e, #e56e2c);
+      box-shadow: 0 6px 0 #943d12, 0 12px 24px #ffcf4a;
+    }
+
+    /* 頁尾 (過年版) */
+    footer {
+      background: rgba(85, 22, 8, 0.8);
+      backdrop-filter: blur(15px);
+      border-top: 3px solid #ffbc6e;
+      padding: 28px 16px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 2;
+      color: #ffebc2;
+      text-shadow: 1px 1px 0 #742f0a;
+      box-shadow: 0 -10px 30px rgba(255, 185, 56, 0.3);
+      position: relative;
+      z-index: 20;
+    }
+
+    footer::before, footer::after {
+      content: "🎉";
+      font-size: 24px;
+      margin: 0 10px;
+      filter: drop-shadow(0 0 6px gold);
+    }
+    footer::after {
+      content: "🧧";
+    }
+
+    /* 響應式 */
+    @media (max-width: 580px) {
+      .hero h2 { font-size: 52px; }
+      .about { padding: 28px 18px; }
+      .skill { padding: 8px 16px; }
+    }
+
+    /* 新增一些隨機漂浮的「福」字（在背景後方） */
+    .floating-fu {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      font-size: 140px;
+      opacity: 0.1;
+      color: #ffe68f;
+      transform: rotate(15deg);
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
+      text-shadow: 0 0 30px orangered;
+      animation: rotateFu 24s infinite linear;
+    }
+
+    @keyframes rotateFu {
+      0% { transform: rotate(10deg) scale(1); }
+      50% { transform: rotate(30deg) scale(1.1); }
+      100% { transform: rotate(10deg) scale(1); }
+    }
+
+    .floating-fu2 {
+      left: 0;
+      top: 30%;
+      font-size: 180px;
+      opacity: 0.1;
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      color: #ffbc6e;
+      transform: rotate(-20deg);
+      animation: floatfu 28s infinite alternate;
+    }
+
+    @keyframes floatfu {
+      0% { transform: translateY(0px) rotate(-20deg); }
+      100% { transform: translateY(-80px) rotate(-10deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 漂浮「福」字 (背景裝飾) -->
+  <div class="floating-fu">福</div>
+  <div class="floating-fu2">💰</div>
+
+  <!-- 飄落的雪花/紅包袋效果 (偽元素) -->
+  <div class="snow-container">
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+    <div class="snow"></div>
+  </div>
+
+  <header class="navbar">
+    <h1>Jack 新年限定版</h1>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Jack</h2>
+      <p>🧨 前端開發 · 靜態網站設計 · 喜氣洋洋 🧨</p>
+
+      <div class="about">
+        <h3>🧧 關於我 · 新年快樂 🧧</h3>
+        <p>
+          我是 Jack，專注於前端技術與靜態網站設計。<br>
+          擅長使用 HTML、CSS 和 JavaScript，<br>
+          打造結構清晰、視覺乾淨且具備良好使用體驗的網站。
+        </p>
+        <p>
+          🎊 目前以設計與製作靜態網站為主，<br>
+          適合個人品牌、作品展示與官方形象網站。<br>
+          ✨ 祝大家新年快樂，代碼無 Bug，紅包拿不完 ✨
+        </p>
+
+        <div class="skills">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Static Design</div>
+          <div class="skill">🏮 新年限定 🏮</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>🧧</span> 本網站由 HTML、CSS 和 JavaScript 打造，滿滿過年氣氛 <span>🧧</span><br>
+    Copyright © 2026 Jack 官方網站 All Rights Reserved.<br>
+    Powered by Jack · 迎春納福 ·  🧨 金蛇狂舞 🧨 <br>
+    © 2026 本網站由 Jack 維護 · 新年專屬版
+  </footer>
+
+  <!-- 一點點動態增加小燈籠點綴 (用JS在底部加幾個漂浮燈籠) -->
+  <script>
+    (function addLanterns() {
+      // 單純趣味，不影響結構
+      const body = document.body;
+      for (let i = 0; i < 3; i++) {
+        const lan = document.createElement('div');
+        lan.style.position = 'fixed';
+        lan.style.bottom = 10 + (i * 20) + 'px';
+        lan.style.left = (10 + i * 30) + 'px';
+        lan.style.fontSize = '32px';
+        lan.style.zIndex = '25';
+        lan.style.pointerEvents = 'none';
+        lan.style.filter = 'drop-shadow(0 0 10px #ffbb33)';
+        lan.innerText = '🏮';
+        lan.style.opacity = '0.7';
+        body.appendChild(lan);
+
+        const lan2 = document.createElement('div');
+        lan2.style.position = 'fixed';
+        lan2.style.bottom = 20 + (i * 25) + 'px';
+        lan2.style.right = (20 + i * 30) + 'px';
+        lan2.style.fontSize = '40px';
+        lan2.style.zIndex = '25';
+        lan2.style.pointerEvents = 'none';
+        lan2.style.filter = 'drop-shadow(0 0 15px #ffa500)';
+        lan2.innerText = '🎊';
+        lan2.style.opacity = '0.8';
+        body.appendChild(lan2);
+      }
+    })();
+  </script>
+</body>
+</html>
