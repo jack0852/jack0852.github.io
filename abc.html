@@ -1,172 +1,443 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>真男人飛車2...</title>
+    <title>瑞良官方網站 · 搞笑正能量</title>
     <style>
-        /* --- 基礎頁面樣式 (模擬遊戲容器) --- */
-        body, html {
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background: #222;
-            color: white;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', '微軟正黑體', sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #fff9e6 0%, #fff0d4 100%);
+            color: #2d1b0e;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+        /* 瑞良大頭貼區 - 最上方 */
+        .hero-header {
+            background: #b22222; /* 正紅討喜 */
+            padding: 2rem 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 8px solid #ffd966;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            position: relative;
             overflow: hidden;
         }
-
-        #game-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        .hero-header::before {
+            content: "🎉🎊 凍蒜啦 🎊🎉";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0.2;
+            white-space: nowrap;
+            transform: rotate(15deg);
+            font-weight: bold;
+            color: #ffffb3;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 6px solid #ffd966;
+            box-shadow: 0 0 0 6px #8b4513, 0 15px 25px rgba(0,0,0,0.3);
+            object-fit: cover;
+            background: #fff0d4 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23b87333"><circle cx="50" cy="50" r="45"/><text x="50" y="70" font-size="60" text-anchor="middle" fill="%23ffffff" font-family="Arial">😎</text></svg>') no-repeat center/cover;
+            /* 圖片備用：如果預設載入失敗會顯示笑臉 */
+        }
+        .hero-header h1 {
+            font-size: 3.2rem;
+            color: #ffeb99;
+            text-shadow: 4px 4px 0 #b33e1f, 6px 6px 0 #2d1b0e;
+            margin-top: 10px;
+            letter-spacing: 4px;
+            transform: rotate(-0.5deg);
+        }
+        .hero-header p {
+            font-size: 1.3rem;
+            background: #2d1b0e;
+            display: inline-block;
+            padding: 0.3rem 2rem;
+            border-radius: 40px;
+            color: #ffd700;
+            font-weight: bold;
+            box-shadow: inset 0 -3px 0 #ffae42;
         }
 
-        /* --- 廣告彈窗樣式 --- */
-        #customAdOverlay {
-            display: none; /* 預設隱藏 */
+        /* 導覽列＋按鈕區 */
+        .action-bar {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 10px 20px;
+            flex-wrap: wrap;
+        }
+        .fun-btn {
+            background: #d44b2e;
+            border: none;
+            border-bottom: 6px solid #7a2e1a;
+            color: white;
+            font-size: 1.7rem;
+            font-weight: 900;
+            padding: 12px 35px;
+            border-radius: 50px 15px 50px 15px;
+            cursor: pointer;
+            transition: 0.1s linear;
+            box-shadow: 0 8px 0 #4f1f10, 0 10px 20px rgba(0,0,0,0.2);
+            letter-spacing: 3px;
+            transform: rotate(-0.3deg);
+        }
+        .fun-btn:hover {
+            background: #b33e1f;
+            border-bottom-width: 2px;
+            transform: translateY(4px) rotate(0deg);
+            box-shadow: 0 4px 0 #4f1f10, 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .fun-btn:active {
+            transform: translateY(8px);
+            border-bottom-width: 0;
+        }
+
+        /* 瑞良選舉故事卡片 */
+        .story-section {
+            max-width: 800px;
+            margin: 30px auto 40px;
+            background: #f5e8d9;
+            border-radius: 70px 20px 70px 20px;
+            border: 5px dashed #b84a2c;
+            padding: 30px 30px 20px;
+            box-shadow: 0 0 0 6px #ffcf9a, 0 20px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .story-section h2 {
+            font-size: 2.6rem;
+            background: #fecb8b;
+            display: inline-block;
+            padding: 0.2rem 3rem;
+            border-radius: 100px;
+            border: 4px solid #a3491b;
+            color: #2d1b0e;
+            margin-bottom: 25px;
+            transform: rotate(-1deg);
+            box-shadow: 6px 6px 0 #915831;
+        }
+        .story-list {
+            list-style: none;
+        }
+        .story-list li {
+            font-size: 1.6rem;
+            background: #fffbf2;
+            margin: 15px 0;
+            padding: 15px 25px;
+            border-left: 20px solid #d67e42;
+            border-radius: 0 50px 0 50px;
+            font-weight: bold;
+            box-shadow: 3px 5px 0 #bc6c37;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .story-list li span {
+            background: #a8491c;
+            color: #fee1a8;
+            font-size: 2rem;
+            padding: 0 15px;
+            border-radius: 40px;
+        }
+        .more-btn {
+            background: #008b6b;
+            color: white;
+            border: none;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 15px 35px;
+            border-radius: 100px;
+            border-bottom: 7px solid #004d3a;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 15px;
+            transition: 0.1s;
+            box-shadow: 0 9px 0 #00382b, 0 5px 15px black;
+            width: fit-content;
+        }
+        .more-btn:hover {
+            transform: translateY(5px);
+            border-bottom-width: 2px;
+            background: #006b51;
+        }
+
+        /* 關於瑞良區塊 (footer之上) */
+        #about-ruiliang {
+            background: #dba875;
+            padding: 30px 20px 40px;
+            margin: 50px 15px 20px;
+            border-radius: 200px 20px 200px 20px;
+            border: 8px double #9b4b2b;
+            text-align: center;
+            box-shadow: inset 0 -10px 0 #b4623a, 0 10px 15px #6b3f1f;
+        }
+        #about-ruiliang h3 {
+            font-size: 3rem;
+            background: white;
+            display: inline-block;
+            padding: 0 40px;
+            border-radius: 100px;
+            color: #b13e1c;
+            border: 5px solid #da7b42;
+            margin-bottom: 25px;
+        }
+        .about-content {
+            font-size: 1.7rem;
+            background: #fff9dd;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 100px 10px 100px 10px;
+            border: 5px solid #ffb882;
+            color: #2c1a0d;
+            line-height: 2.3rem;
+        }
+        .about-content p {
+            margin: 10px 0;
+        }
+
+        /* 版權宣告 Footer */
+        .footer {
+            background: #1f2a36;
+            color: #fadfad;
+            text-align: center;
+            padding: 30px 10px;
+            font-size: 1.2rem;
+            border-top: 8px solid #f3b33d;
+            box-shadow: 0 -10px 0 #a4521e;
+            margin-top: 60px;
+        }
+        .footer p {
+            margin: 8px 0;
+        }
+        .footer a {
+            color: #ffd966;
+            text-decoration: none;
+            border-bottom: 2px dotted;
+        }
+
+        /* 廣告影片 Modal (全螢幕+關閉X) */
+        .video-modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 999999;
+            background: black;
+            z-index: 9999;
             justify-content: center;
             align-items: center;
         }
-
-        .ad-content {
-            position: relative;
-            width: 90%;
-            max-width: 720px;
-            aspect-ratio: 16 / 9;
-            background: #000;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            border-radius: 8px;
-            overflow: visible;
-        }
-
-        #adVideo {
+        .video-modal video {
             width: 100%;
             height: 100%;
-            border-radius: 8px;
-            display: block;
+            object-fit: contain;  /* 全螢幕感覺，完整觀看 */
+            background: #000;
         }
-
-        /* 右上角 X 按鈕 */
-        #closeAdBtn {
+        .close-x {
             position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 35px;
-            height: 35px;
-            background: #ff4444;
+            top: 25px;
+            right: 35px;
             color: white;
-            border: 2px solid white;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
+            font-size: 5rem;
             font-weight: bold;
-            line-height: 31px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
-            z-index: 1000001;
+            text-shadow: 4px 4px 0 red, 0 0 20px black;
+            cursor: pointer;
+            z-index: 10000;
+            line-height: 1;
+            background: rgba(0,0,0,0.4);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid white;
+            transition: 0.2s;
+        }
+        .close-x:hover {
+            background: rgba(255,0,0,0.8);
+            transform: scale(1.1) rotate(90deg);
         }
 
-        #closeAdBtn:hover {
-            transform: scale(1.1);
-            background: #cc0000;
+        /* 備用圖片處理 */
+        .profile-img[src=""], .profile-img:not([src]) {
+            background: #b87333;
         }
     </style>
 </head>
 <body>
 
-    <div id="game-container">
-        <h1>遊戲運行中...</h1>
-        <p>（當畫面出現 "Game Over"、"失敗" 或 "Retry" 時會跳出廣告）</p>
-        
-        <button onclick="simulateGameOver()" style="padding: 10px 20px; cursor: pointer;">手動模擬遊戲失敗</button>
-        
-        <div id="game-status-display"></div>
+    <!-- 最上方 瑞良大頭貼 -->
+    <div class="hero-header">
+        <img src="https://jack0852.github.io/IMG_1538.jpeg" alt="瑞良大頭貼" class="profile-img" id="profilePic" onerror="this.onerror=null; this.alt='瑞良笑顏'; this.style.background='#b87333';">
+        <h1>👍 瑞良・凍蒜 👍</h1>
+        <p>草屯鎮明正里 永遠的候選人</p>
     </div>
 
-    <div id="customAdOverlay">
-        <div class="ad-content">
-            <button id="closeAdBtn">&times;</button>
-            <video id="adVideo" playsinline>
-                <source src="https://jack0852.github.io/video_602044470582050922-6QWhy9td.mp4" type="video/mp4">
-                您的瀏覽器不支援影片播放。
-            </video>
+    <!-- 搞笑按鈕區：關於瑞良 (跳至最下面但會先彈廣告) -->
+    <div class="action-bar">
+        <button class="fun-btn" id="aboutBtn">📜 關於瑞良</button>
+        <!-- 預留第二個按鈕空間，但功能同一個即可，也可以加別的，保持簡潔 -->
+        <button class="fun-btn" id="crazyBtn">🐍 按我也有廣告</button>
+    </div>
+
+    <!-- 瑞良選舉故事專區 -->
+    <div class="story-section">
+        <h2>🏮 瑞良選舉故事 🏮</h2>
+        <ul class="story-list">
+            <li><span>2018-11</span> 村里長・南投縣草屯鎮明正里</li>
+            <li><span>2010-06</span> 村里長・南投縣草屯鎮明正里</li>
+        </ul>
+        <!-- 查看更多按鈕（直接開連結，但會先彈廣告） -->
+        <button class="more-btn" id="moreElectionBtn">🔍 查看更多 凍蒜傳奇</button>
+        <p style="text-align:center; margin-top:10px; color:#7B3F00;">⭐ 點按鈕前先準備好被廣告洗禮 ⭐</p>
+    </div>
+
+    <!-- 關於瑞良區塊 (頁面下方) -->
+    <div id="about-ruiliang">
+        <h3>🤵 關於 瑞良</h3>
+        <div class="about-content">
+            <p>⚡ 南投草屯鎮明正里 靈壓最強男人 ⚡</p>
+            <p>2010年 得票數 346 · 永遠的5號候選人</p>
+            <p>無電話、無傳真、無信箱、無服務處、無政黨、無生日、無學歷<br>🔥 但擁有滿滿的搞笑魂！ 🔥</p>
+            <p>「如果沒有廣告，瑞良睡不著覺。」</p>
         </div>
     </div>
 
+    <!-- 版權 Footer 依照需求 -->
+    <div class="footer">
+        <p>本網站由 HTML、CSS 和 JavaScript 打造</p>
+        <p>Copyright © 2026 瑞良官方網站 All Rights Reserved.</p>
+        <p>Powered by Jack · 迎春納福 · 🧨 金蛇狂舞 🧨</p>
+        <p>© 2026 本網站由 Jack 維護 · 按鈕有毒請勿連續點擊</p>
+    </div>
+
+    <!-- 影片廣告 Modal (全螢幕) 使用提供的 mp4 -->
+    <div id="videoAdModal" class="video-modal">
+        <span class="close-x" id="closeAdBtn">&times;</span>
+        <video id="adVideo" controls playsinline>
+            <source src="https://jack0852.github.io/video_602044470582050922-6QWhy9td.mp4" type="video/mp4">
+            您的瀏覽器不支援影片，但廣告魂不滅。
+        </video>
+    </div>
+
     <script>
-        // --- 1. 廣告邏輯控制 ---
-        const adOverlay = document.getElementById('customAdOverlay');
-        const adVideo = document.getElementById('adVideo');
-        const closeBtn = document.getElementById('closeAdBtn');
-
-        // 顯示廣告功能
-        function showAd() {
-            if (adOverlay.style.display !== 'flex') {
-                adOverlay.style.display = 'flex';
-                adVideo.currentTime = 0; // 從頭播放
-                adVideo.play().catch(e => console.log("自動播放被攔截，需手動點擊", e));
-            }
-        }
-
-        // 關閉廣告功能
-        closeBtn.onclick = function() {
-            adOverlay.style.display = 'none';
-            adVideo.pause();
-        };
-
-        // --- 2. 監測遊戲失敗邏輯 (DOM 監聽) ---
-        // 針對 kuioo 這種動態載入的遊戲，我們監聽整個 body 的文字變化
-        const observer = new MutationObserver(() => {
-            const content = document.body.innerText;
-            const loseKeywords = ["Game Over", "失敗", "Retry", "再試一次", "You Lose", "Level Failed"];
-            
-            const hasLost = loseKeywords.some(keyword => content.includes(keyword));
-            
-            if (hasLost) {
-                showAd();
-            }
-        });
-
-        // 開始監聽整個頁面
-        observer.observe(document.body, { 
-            childList: true, 
-            subtree: true, 
-            characterData: true 
-        });
-
-        // --- 3. 輔助功能：模擬遊戲失敗 (測試用) ---
-        function simulateGameOver() {
-            const status = document.getElementById('game-status-display');
-            status.innerHTML = "<h2 style='color:red;'>Game Over!</h2>";
-        }
-
-        // --- 4. 自動路徑修正 (保留你原本腳本的功能) ---
         (function() {
-            const makeAbsolute = (attr) => {
-                document.querySelectorAll(`[${attr}]`).forEach(el => {
-                    const url = el.getAttribute(attr);
-                    if (url && !url.startsWith('http') && !url.startsWith('data:') && !url.startsWith('//')) {
-                        try {
-                            el[attr] = new URL(url, document.baseURI).href;
-                        } catch(e) {}
+            // 取得元素
+            const modal = document.getElementById('videoAdModal');
+            const video = document.getElementById('adVideo');
+            const closeBtn = document.getElementById('closeAdBtn');
+            
+            // 全站廣告顯示函式 (自動關閉X、播放)
+            function showAdAndPlay() {
+                if (!modal || !video) return;
+                // 如果已經顯示就不重複打開(但可重新播放)
+                modal.style.display = 'flex';
+                video.currentTime = 0; // 重頭開始
+                video.play().catch(e => console.log('播放需使用者互動', e));
+            }
+
+            // 關閉廣告
+            function closeAd() {
+                modal.style.display = 'none';
+                video.pause();
+            }
+
+            // 綁X關閉
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeAd);
+            }
+            // 點擊背景也可以關？但為了搞笑堅持X，但保留點modal空白處關閉？(比較友善)
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeAd(); // 點後面黑色也可關，但X很明顯
+            });
+
+            // 防止點影片本身關閉 (誤觸)
+            video.addEventListener('click', (e) => e.stopPropagation());
+
+            // 1. 網站開啟2秒後出現廣告
+            window.addEventListener('load', function() {
+                setTimeout(() => {
+                    showAdAndPlay();
+                }, 2000); // 2秒
+            });
+
+            // 2. 關於瑞良按鈕: 點擊後跳到下面 about-ruiliang，且顯示廣告
+            const aboutBtn = document.getElementById('aboutBtn');
+            if (aboutBtn) {
+                aboutBtn.addEventListener('click', function() {
+                    // 先廣告
+                    showAdAndPlay();
+                    // 再平滑滾動到關於瑞良區塊
+                    const aboutSection = document.getElementById('about-ruiliang');
+                    if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
-            };
-            ['src', 'href', 'data-src'].forEach(makeAbsolute);
+            }
+
+            // 同場加映第二顆按鈕也一樣 (搞笑重複)
+            const crazyBtn = document.getElementById('crazyBtn');
+            if (crazyBtn) {
+                crazyBtn.addEventListener('click', function() {
+                    showAdAndPlay();
+                    const aboutSection = document.getElementById('about-ruiliang');
+                    if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // 3. 更多選舉故事按鈕：先彈廣告，再開連結
+            const moreBtn = document.getElementById('moreElectionBtn');
+            if (moreBtn) {
+                moreBtn.addEventListener('click', function() {
+                    showAdAndPlay();
+                    // 延遲一點開連結，讓廣告先出來 (但不要block瀏覽器彈出)
+                    setTimeout(() => {
+                        window.open('https://elections.olc.tw/candidates/view/54d9c7c2-9fa4-48bc-9812-6b30acb5b862', '_blank');
+                    }, 300);
+                });
+            }
+
+            // 若影片錯誤或連結失效，顯示友善提示 (但還是不妨礙搞笑)
+            video.addEventListener('error', function() {
+                console.log('影片載不到，但我們有滿滿瑞良魂');
+                // 可以加個搞笑文字在modal
+                const modalContent = document.createElement('div');
+                modalContent.style.position = 'absolute';
+                modalContent.style.color = 'white';
+                modalContent.style.fontSize = '3rem';
+                modalContent.innerText = '😂 廣告被瑞良吃掉了 但X可關閉';
+                if (!document.querySelector('.error-message')) {
+                    modalContent.classList.add('error-message');
+                    modal.appendChild(modalContent);
+                }
+            });
+
+            // 頭貼備用處理 (上面已有onerror)
+            // 如果jpeg無法載入, 加個搞笑替代文字
+            const profile = document.getElementById('profilePic');
+            if (profile) {
+                profile.addEventListener('error', function() {
+                    this.alt = '帥氣瑞良示意';
+                    this.style.background = '#b87333 url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23f4c542%22/><text x=%2250%22 y=%2270%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22%23555%22>😎</text></svg>") no-repeat center/cover';
+                });
+            }
         })();
     </script>
+
+    <!-- 保證廣告出現的第二次防呆：如果有人想偷吃步，再補一個強制關閉x的功能(已經有關閉) 穩 -->
+    <!-- 外加一個小彩蛋：背景隱約的文字 -->
 </body>
 </html>
