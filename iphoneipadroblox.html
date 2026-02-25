@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何在公用平版安裝Roblox - Jack</title>
+    <style>
+        /* --- 全域設定 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 導覽列 (左上角 Jack) --- */
+        header {
+            background-color: #121c22;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* --- 文章內容區 --- */
+        main {
+            flex: 1;
+            background-color: #ffffff;
+            margin: 20px auto;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .post-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .post-title {
+            font-size: 28px;
+            color: #121c22;
+            margin-bottom: 10px;
+        }
+
+        .post-meta {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .content-section {
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            margin: 20px 0 10px;
+            color: #2c3e50;
+            border-left: 5px solid #121c22;
+            padding-left: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* --- 按鈕樣式 --- */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .btn-delta {
+            background-color: #00b894; /* 綠色系 */
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
+        }
+
+        .btn-delta:hover {
+            background-color: #55efc4;
+            transform: scale(1.02);
+        }
+
+        /* --- 頁尾 --- */
+        footer {
+            background-color: #f9f9f9;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* 手機版縮放優化 */
+        @media (max-width: 600px) {
+            .post-title { font-size: 22px; }
+            main { margin: 10px; padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <a href="index.html" class="logo">Jack</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <article>
+            <div class="post-header">
+                <h1 class="post-title">如何在公用平版安裝Roblox</h1>
+                <p class="post-meta">發佈日期：2026-02-25 | 作者：Jack</p>
+            </div>
+
+            <div class="content-section">
+                <p>想在公用或學校平板上玩 Roblox 卻發現 App Store 無法下載？我們可以透過專門的執行器版本來繞過限制並成功運行遊戲。</p>
+                
+                <h3>步驟一：訪問安裝頁面</h3>
+                <p>請使用 Safari 瀏覽器前往 <strong>Delta Executor</strong> 的官方下載頁面。這是一個能在 iOS 環境下順利執行 Roblox 的穩定版本。</p>
+
+                <h3>步驟二：安裝與轉換</h3>
+                <p>按照網頁提示下載安裝包。當系統彈出安裝提示時，點選「安裝」即可將 Roblox 應用程式載入至桌面。</p>
+
+                <h3>步驟三：受信任設定 (重要)</h3>
+                <p>安裝後如果無法直接開啟，請務必手動給予權限。請到：<br>
+                <code>設定 > 一般 > 裝置管理 (或 VPN 與裝置管理)</code><br>
+                點選對應的企業級 APP 描述檔，並點擊「<strong>信任</strong>」。完成後即可正常進入 Roblox 開始遊戲。</p>
+            </div>
+
+            <div class="btn-container">
+                <p style="font-weight: bold; color: #555;">點擊下方按鈕前往安裝：</p>
+                
+                <a href="https://deltaios-executor.com" target="_blank" class="btn btn-delta">
+                    前往 Delta Executor 安裝 Roblox
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <span>Copyright © 2026 Jack 官方網站 All Rights Reserved.</span><br>
+            <span style="font-weight: 500;">Powered by Jack</span><br>
+            <span>© 2026 本網站由 Jack 維護</span>
+        </div>
+    </footer>
+
+    <script>
+        console.log("Roblox 教學頁面載入成功 - Jack");
+    </script>
+</body>
+</html>
