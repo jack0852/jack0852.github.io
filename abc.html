@@ -8,272 +8,219 @@
 <style>
 body{
     margin:0;
-    font-family:"Microsoft JhengHei",sans-serif;
-    background:linear-gradient(135deg,#fff5e6,#ffe0b3);
-    text-align:center;
+    font-family:Arial;
+    background:linear-gradient(45deg,#fff7cc,#ffd700);
+    overflow-x:hidden;
 }
 
-/* ===== 瑞良幣顯示 ===== */
+/* 頭像閃光 */
+.avatar{
+    width:120px;
+    border-radius:50%;
+    animation: glow 1.5s infinite alternate;
+}
+@keyframes glow{
+    from{box-shadow:0 0 10px gold;}
+    to{box-shadow:0 0 30px orange;}
+}
+
+/* 瑞良幣 */
 .coinBox{
     position:fixed;
-    top:15px;
-    right:20px;
+    top:10px;
+    right:10px;
     background:white;
-    padding:8px 15px;
+    padding:8px 12px;
     border-radius:30px;
     display:flex;
     align-items:center;
     gap:8px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
     font-weight:bold;
-    z-index:1000;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+    z-index:999;
 }
-
 .coinBox img{
-    width:30px;
-    height:30px;
+    width:40px;
     border-radius:50%;
 }
 
-/* Header */
-header{
-    padding:40px 20px;
-    background:linear-gradient(45deg,#ffcc00,#ff8800);
-    color:white;
+/* 跑馬燈卡卡效果 */
+.marquee{
+    white-space:nowrap;
+    overflow:hidden;
+    background:black;
+    color:yellow;
+    padding:10px;
+    font-weight:bold;
+}
+.marquee span{
+    display:inline-block;
+    padding-left:100%;
+    animation: run 8s linear infinite;
+}
+@keyframes run{
+    0%{transform:translateX(0);}
+    50%{transform:translateX(-50%);}
+    51%{transform:translateX(-48%);} /* 製造頓一下 */
+    100%{transform:translateX(-100%);}
 }
 
-header img{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    border:5px solid white;
-}
-
-button{
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-    cursor:pointer;
-    background:#ff6600;
-    color:white;
-    margin:10px;
-}
-
-.section{
-    padding:80px 20px;
-}
-
-/* ===== 廣告層 ===== */
-#adOverlay, #imageAdOverlay, #menuOverlay{
+/* 廣告 */
+.adOverlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.85);
-    display:none;
+    background:rgba(0,0,0,0.8);
+    display:flex;
     justify-content:center;
     align-items:center;
-    z-index:9999;
+    z-index:2000;
 }
-
-#adBox, .imageAdBox{
+.adBox{
     position:relative;
-    width:80%;
-    max-width:700px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
 }
-
-video, .imageAdBox img{
-    width:100%;
-    border-radius:20px;
+.adBox img{
+    max-width:80vw;
+    max-height:70vh;
 }
-
-.realClose{
+.closeBtn{
     position:absolute;
-    top:-15px;
-    right:-15px;
+    top:5px;
+    right:5px;
     background:red;
     color:white;
-    padding:5px 12px;
-    border-radius:50%;
+    border:none;
+    padding:5px 10px;
     cursor:pointer;
 }
 
+/* 假X */
 .fakeX{
     position:absolute;
-    font-size:28px;
-    color:yellow;
+    background:black;
+    color:white;
+    padding:4px 8px;
+    font-size:12px;
     cursor:pointer;
 }
-
-.menuBox{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
+.smallAd{
+    position:fixed;
+    width:120px;
+    z-index:1500;
 }
-
-.skipBtn{
-    position:absolute;
-    top:-15px;
-    right:-15px;
-    background:blue;
+.smallAd img{
+    width:100%;
+}
+.smallClose{
+    background:red;
     color:white;
-    padding:5px 12px;
-    border-radius:50%;
+    border:none;
+    width:100%;
     cursor:pointer;
-}
-
-footer{
-    background:#222;
-    color:white;
-    padding:30px;
 }
 </style>
 </head>
+
 <body>
 
-<!-- 瑞良幣 -->
 <div class="coinBox">
-    <img src="https://jack0852.github.io/IMG_1538.jpeg">
-    瑞良幣：<span id="coinCount">0</span>
+<img src="https://jack0852.github.io/IMG_1538.jpeg">
+瑞良幣：<span id="coin">0</span>
 </div>
 
-<header>
-    <img src="https://jack0852.github.io/IMG_1538.jpeg">
-    <h1>瑞良官方網站</h1>
-</header>
+<center style="margin-top:80px;">
+<img src="https://jack0852.github.io/IMG_1538.jpeg" class="avatar">
+<h1>瑞良官方網站</h1>
+<button onclick="watchAd()">🎬 看廣告賺瑞良幣</button>
+</center>
 
-<div class="section">
-    <h2>瑞良選舉故事</h2>
-    <p>2018-11 ＞ 村里長 ＞ 南投縣 ＞ 草屯鎮 ＞ 明正里</p>
-    <p>2010-06 ＞ 村里長 ＞ 南投縣草屯鎮明正里</p>
+<div class="marquee">
+<span>📢 支持瑞良、追蹤瑞良、按讚瑞良、支持瑞良、追蹤瑞良、按讚瑞良</span>
 </div>
 
-<footer>
+<!-- 小廣告 -->
+<div class="smallAd" style="bottom:10px;right:10px;">
+<img src="https://img.tusij.com/tgs_assets/ips_templ_preview/cc/49/98/lg_3265657_1593945333_5f01acf5b284f.jpg%21w390?auth_key=1796083200-0-0-817965df09ee38f2b4bd3305f8fb545c">
+<button class="smallClose" onclick="triggerBigAd()">關閉</button>
+</div>
+
+<div class="smallAd" style="top:100px;left:10px;">
+<img src="https://img.alicdn.com/imgextra/i2/2217289547338/O1CN01tQpkYA244rJcP5fVT_!!2217289547338.jpg_q50.jpg_.webp">
+<button class="smallClose" onclick="triggerBigAd()">關閉</button>
+</div>
+
+<div class="smallAd" style="bottom:150px;left:50%;">
+<img src="https://img.alicdn.com/imgextra/i1/3558912124/O1CN01asJYFN1RYqDDp09td_!!3558912124.jpg_q50s50.jpg">
+<button class="smallClose" onclick="triggerBigAd()">關閉</button>
+</div>
+
+<script>
+
+let coin = localStorage.getItem("rcoin") || 0;
+document.getElementById("coin").innerText = coin;
+
+function addCoin(){
+    coin++;
+    localStorage.setItem("rcoin", coin);
+    document.getElementById("coin").innerText = coin;
+}
+
+function createAd(imgUrl){
+    let overlay=document.createElement("div");
+    overlay.className="adOverlay";
+
+    let box=document.createElement("div");
+    box.className="adBox";
+
+    let img=document.createElement("img");
+    img.src=imgUrl;
+
+    let close=document.createElement("button");
+    close.innerText="關閉";
+    close.className="closeBtn";
+    close.onclick=()=>document.body.removeChild(overlay);
+
+    box.appendChild(close);
+    box.appendChild(img);
+
+    /* 假X */
+    for(let i=0;i<4;i++){
+        let fake=document.createElement("div");
+        fake.innerText="X";
+        fake.className="fakeX";
+        fake.style.top=Math.random()*200+"px";
+        fake.style.left=Math.random()*200+"px";
+        fake.onclick=()=>alert("你按到假的 😆");
+        box.appendChild(fake);
+    }
+
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+}
+
+function watchAd(){
+    createAd("https://jack0852.github.io/IMG_1751.jpeg");
+    addCoin();
+}
+
+function triggerBigAd(){
+    createAd("https://jack0852.github.io/IMG_1749.jpeg");
+}
+
+window.onload=function(){
+    createAd("https://jack0852.github.io/IMG_1751.jpeg");
+}
+
+</script>
+
+<footer style="text-align:center;margin-top:100px;padding:20px;background:black;color:white;">
 本網站由 HTML、CSS 和 JavaScript 打造<br>
 Copyright © 2026 瑞良官方網站 All Rights Reserved.<br>
 Powered by Jack · 迎春納福 · 🧨 金蛇狂舞 🧨<br>
 © 2026 本網站由 Jack 維護
 </footer>
-
-<!-- ===== 影片廣告 ===== -->
-<div id="adOverlay">
-    <div id="adBox">
-        <div class="realClose">5</div>
-        <div class="fakeX"></div>
-        <div class="fakeX"></div>
-        <div class="fakeX"></div>
-        <div class="fakeX"></div>
-
-        <video id="adVideo" autoplay>
-            <source src="https://jack0852.github.io/video_602044470582050922-6QWhy9td.mp4" type="video/mp4">
-        </video>
-    </div>
-</div>
-
-<!-- ===== 選單 ===== -->
-<div id="menuOverlay">
-    <div class="menuBox">
-        <h3>繼續看廣告即可獲得 10 瑞良幣 💰</h3>
-        <button onclick="continueAd()">繼續看廣告</button>
-        <button onclick="showImageAd()">不用了</button>
-    </div>
-</div>
-
-<!-- ===== 圖片廣告 ===== -->
-<div id="imageAdOverlay">
-    <div class="imageAdBox">
-        <div class="skipBtn">5</div>
-        <img id="randomAdImage">
-    </div>
-</div>
-
-<script>
-let coins = 0;
-let adOverlay = document.getElementById("adOverlay");
-let adVideo = document.getElementById("adVideo");
-let realClose = document.querySelector(".realClose");
-let fakeXs = document.querySelectorAll(".fakeX");
-let coinCount = document.getElementById("coinCount");
-
-window.onload = function(){
-    setTimeout(showAd,2000);
-}
-
-function showAd(){
-    adOverlay.style.display="flex";
-    adVideo.currentTime=0;
-    adVideo.play();
-
-    let countdown=5;
-    realClose.innerHTML=countdown;
-    realClose.onclick=null;
-
-    let timer=setInterval(function(){
-        countdown--;
-        if(countdown>0){
-            realClose.innerHTML=countdown;
-        }else{
-            realClose.innerHTML="✕";
-            realClose.onclick=openMenu;
-            clearInterval(timer);
-        }
-    },1000);
-
-    fakeXs.forEach(x=>{
-        x.innerHTML="✕";
-        moveRandom(x);
-        x.onclick=function(){
-            moveRandom(x);
-        }
-    });
-}
-
-function openMenu(){
-    adOverlay.style.display="none";
-    menuOverlay.style.display="flex";
-}
-
-function continueAd(){
-    menuOverlay.style.display="none";
-    coins+=10;
-    coinCount.innerText=coins;
-    showAd();
-}
-
-function showImageAd(){
-    menuOverlay.style.display="none";
-    let images=[
-        "https://jack0852.github.io/IMG_1751.jpeg",
-        "https://jack0852.github.io/IMG_1749.jpeg"
-    ];
-    document.getElementById("randomAdImage").src =
-        images[Math.floor(Math.random()*images.length)];
-
-    imageAdOverlay.style.display="flex";
-
-    let countdown=5;
-    let skip=document.querySelector(".skipBtn");
-    skip.innerHTML=countdown;
-    skip.onclick=null;
-
-    let timer=setInterval(function(){
-        countdown--;
-        if(countdown>0){
-            skip.innerHTML=countdown;
-        }else{
-            skip.innerHTML="跳過";
-            skip.onclick=function(){
-                imageAdOverlay.style.display="none";
-            };
-            clearInterval(timer);
-        }
-    },1000);
-}
-
-function moveRandom(el){
-    el.style.left=Math.random()*80+"%";
-    el.style.top=Math.random()*80+"%";
-}
-</script>
 
 </body>
 </html>
