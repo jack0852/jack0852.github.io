@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>證書卡密查詢系統</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --used-color: #999;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card-item {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .card-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .status {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .status-unused {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-used {
+            background-color: #ffebee;
+            color: #d32f2f;
+            text-decoration: line-through;
+        }
+
+        .copy-btn {
+            cursor: pointer;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn:disabled {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>我的證書卡密</h2>
+    <ul class="card-list">
+        <li class="card-item">
+            <div>
+                <span class="code" style="color: var(--used-color);">SS-GTP6CD720808A34</span>
+                <br>
+                <span class="status status-used">已使用</span>
+            </div>
+            <button class="copy-btn" disabled>複製</button>
+        </li>
+
+        <li class="card-item">
+            <div>
+                <span class="code" id="code1">SS-GTPC632F0CB24A8</span>
+                <br>
+                <span class="status status-unused">未使用</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode('code1')">複製</button>
+        </li>
+
+        <li class="card-item">
+            <div>
+                <span class="code" id="code2">SS-GTPE0B71546C0DF</span>
+                <br>
+                <span class="status status-unused">未使用</span>
+            </div>
+            <button class="copy-btn" onclick="copyCode('code2')">複製</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+    function copyCode(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('卡密已複製到剪貼簿！');
+        });
+    }
+</script>
+
+</body>
+</html>
