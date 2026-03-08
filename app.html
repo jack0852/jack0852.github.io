@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>IPA 簽名大師</title>
+    <title>IPA 簽名大師 - 專業證書</title>
     <style>
         :root {
             --primary-color: #007aff;
@@ -57,18 +57,55 @@
         .section-header {
             font-size: 22px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* 價格區塊 */
+        .price-tag {
+            margin: 10px 0;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .current-price {
+            color: var(--premium-gold);
+            font-size: 28px;
+            font-weight: 900;
+            margin: 5px 0;
+        }
+        .discount-badge {
+            background: var(--danger-color);
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .highlight-box {
-            background: rgba(255, 204, 0, 0.15);
-            border: 1px solid var(--premium-gold);
-            padding: 8px;
+            background: rgba(255, 204, 0, 0.1);
+            border: 1px dashed var(--premium-gold);
+            padding: 10px;
             border-radius: 12px;
             margin: 15px 0;
             color: var(--premium-gold);
-            font-size: 16px;
-            font-weight: 900;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        /* LINE 聯繫區塊 */
+        .line-box {
+            background: #06c755;
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 15px 0;
+            font-weight: bold;
+            font-size: 15px;
         }
 
         .badge {
@@ -84,10 +121,10 @@
         }
 
         .desc {
-            font-size: 14px;
+            font-size: 13px;
             color: #a1a1a6;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
         .btn {
@@ -117,17 +154,9 @@
             margin-bottom: 12px;
         }
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        .warning { color: var(--danger-color); font-weight: 600; }
-
         .footer {
             margin-top: 20px;
-            font-size: 12px;
+            font-size: 11px;
             color: #aeaeae;
         }
     </style>
@@ -138,18 +167,29 @@
         <h1>IPA 簽名中心</h1>
 
         <div class="card card-premium">
-            <div class="badge">🔥 穩定首選</div>
+            <div class="badge">限時 81 折優惠</div>
             <div class="section-header">💎 專業個人證書</div>
             
+            <div class="price-tag">
+                <span class="original-price">原價 $3580</span>
+                <div class="current-price">
+                    $2899 <span class="discount-badge">現省 $681</span>
+                </div>
+            </div>
+
             <div class="highlight-box">
-                🛡️ 承諾 90 天內不掉簽
+                🛡️ 承諾 90 天內不掉簽 (100% 成功)
             </div>
 
             <p class="desc">
-                專人定制 Apple Developer 證書<br>
-                支持最新 iOS 版本，<span style="color:var(--success-color)">100% 安裝成功</span><br>
-                一人一證，私密通道不擁擠
+                定制 Apple 專屬授權，支持最新 iOS<br>
+                一人一證，私密穩定，永不掉簽
             </p>
+
+            <div class="line-box">
+                下單請加官方 LINE：@500ypcau<br>
+                <span style="font-size: 11px;">( 記得要加 @ 符號 )</span>
+            </div>
             
             <button class="btn btn-premium" onclick="handlePremium()">
                 安裝專業付費工具 + 個人證書
@@ -157,41 +197,38 @@
         </div>
 
         <div class="card">
-            <div class="section-header">📱 普通免費方案</div>
+            <div class="section-header" style="font-size: 18px;">📱 普通免費方案</div>
             <p class="desc" style="color: #666;">
-                使用公共共享證書<br>
-                <span class="warning">不一定成功</span>，且隨時可能失效
+                共享企業證書：<span style="color:var(--danger-color); font-weight: bold;">不一定成功</span><br>
+                且隨時可能失效掉簽，無售後保障
             </p>
             <button class="btn btn-free" onclick="handleFree('https://khoindvn.io.vn', '1111')">
                 安裝免費 IPA 工具
             </button>
-            <button class="btn btn-outline" onclick="handleFree('https://jack0852.github.io/zhengshu.zip', '1111')">
-                下載免費證書
-            </button>
         </div>
 
         <div class="footer">
-            更新於：2026-03-08<br>
-            售後服務請聯繫：Jack
+            更新時間：2026-03-08<br>
+            售後支持與卡密購買請聯繫官方 LINE
         </div>
     </div>
 
     <script>
         function handlePremium() {
-            // 第一步：提示
-            alert("卡密請找 Jack 購買");
+            // 提示找 LINE
+            alert("卡密請找 LINE：@500ypcau 購買");
             
-            // 第二步：修改後的提示文字
-            const pass = prompt("請輸入進入網站密碼：");
+            // 輸入密碼
+            const pass = prompt("請輸入 90 天長效個人證書密碼：");
             if (pass === "111111") {
                 window.location.href = "https://qidian.letui.xyz";
             } else if (pass !== null) {
-                alert("密碼無效或已過期，請重新獲取。");
+                alert("卡密無效！請聯繫 LINE 客服。");
             }
         }
 
         function handleFree(url, correctPass) {
-            const pass = prompt("請輸入進入網站密碼：");
+            const pass = prompt("請輸入免費通路密碼：");
             if (pass === correctPass) {
                 window.location.href = url;
             } else if (pass !== null) {
