@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>IPA 簽名大師 - 專業證書</title>
+    <title>IPA 簽名大師 - 定制個人證書</title>
     <style>
         :root {
             --primary-color: #007aff;
@@ -13,6 +13,7 @@
             --card-bg: #ffffff;
             --danger-color: #ff3b30;
             --success-color: #34c759;
+            --line-green: #06c755;
         }
 
         body {
@@ -47,7 +48,6 @@
             position: relative;
         }
 
-        /* 專業付費卡片 */
         .card-premium {
             background: var(--premium-bg);
             color: white;
@@ -60,7 +60,6 @@
             margin-bottom: 5px;
         }
 
-        /* 價格區塊 */
         .price-tag {
             margin: 10px 0;
         }
@@ -93,13 +92,12 @@
             border-radius: 12px;
             margin: 15px 0;
             color: var(--premium-gold);
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 900;
         }
 
-        /* LINE 聯繫區塊 */
         .line-box {
-            background: #06c755;
+            background: var(--line-green);
             color: white;
             padding: 12px;
             border-radius: 12px;
@@ -121,10 +119,10 @@
         }
 
         .desc {
-            font-size: 13px;
+            font-size: 14px;
             color: #a1a1a6;
             margin-bottom: 15px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .btn {
@@ -154,6 +152,13 @@
             margin-bottom: 12px;
         }
 
+        /* 專門給免費證書下載的樣式 */
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 11px;
@@ -178,12 +183,12 @@
             </div>
 
             <div class="highlight-box">
-                🛡️ 承諾 90 天內不掉簽 (100% 成功)
+                🛡️ 承諾 90 天內不掉簽
             </div>
 
             <p class="desc">
-                定制 Apple 專屬授權，支持最新 iOS<br>
-                一人一證，私密穩定，永不掉簽
+                定制專屬個人證書<br>
+                支持最新 iOS 版本，<span style="color:var(--success-color)">100% 安裝成功</span>
             </p>
 
             <div class="line-box">
@@ -199,11 +204,14 @@
         <div class="card">
             <div class="section-header" style="font-size: 18px;">📱 普通免費方案</div>
             <p class="desc" style="color: #666;">
-                共享企業證書：<span style="color:var(--danger-color); font-weight: bold;">不一定成功</span><br>
-                且隨時可能失效掉簽，無售後保障
+                公共共享證書：<span style="color:var(--danger-color); font-weight: bold;">不一定成功</span><br>
+                隨時失效掉簽，無售後保障
             </p>
             <button class="btn btn-free" onclick="handleFree('https://khoindvn.io.vn', '1111')">
                 安裝免費 IPA 工具
+            </button>
+            <button class="btn btn-outline" onclick="handleFree('https://jack0852.github.io/zhengshu.zip', '1111')">
+                下載免費證書 (zip)
             </button>
         </div>
 
@@ -215,20 +223,17 @@
 
     <script>
         function handlePremium() {
-            // 提示找 LINE
-            alert("卡密請找 LINE：@500ypcau 購買");
-            
-            // 輸入密碼
-            const pass = prompt("請輸入 90 天長效個人證書密碼：");
+            alert("卡密請找官方 LINE：@500ypcau 購買");
+            const pass = prompt("請輸入 90 天定制個人證書卡密：");
             if (pass === "111111") {
                 window.location.href = "https://qidian.letui.xyz";
             } else if (pass !== null) {
-                alert("卡密無效！請聯繫 LINE 客服。");
+                alert("卡密錯誤！請聯繫 LINE 客服。");
             }
         }
 
         function handleFree(url, correctPass) {
-            const pass = prompt("請輸入免費通路密碼：");
+            const pass = prompt("請輸入免費通道密碼：");
             if (pass === correctPass) {
                 window.location.href = url;
             } else if (pass !== null) {
