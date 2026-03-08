@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>IPA 簽名大師-杰哥製作</title>
+    <title>IPA 簽名大師</title>
     <style>
         :root {
             --primary-color: #007aff;
@@ -181,17 +181,17 @@
             // 第一步：提示
             alert("卡密請找 Jack 購買");
             
-            // 第二步：輸入密碼 111111
-            const pass = prompt("請輸入 90 天長效個人證書卡密：");
+            // 第二步：修改後的提示文字
+            const pass = prompt("請輸入進入網站密碼：");
             if (pass === "111111") {
                 window.location.href = "https://qidian.letui.xyz";
             } else if (pass !== null) {
-                alert("卡密無效或已過期，請重新獲取。");
+                alert("密碼無效或已過期，請重新獲取。");
             }
         }
 
         function handleFree(url, correctPass) {
-            const pass = prompt("請輸入免費通道安裝密碼：");
+            const pass = prompt("請輸入進入網站密碼：");
             if (pass === correctPass) {
                 window.location.href = url;
             } else if (pass !== null) {
