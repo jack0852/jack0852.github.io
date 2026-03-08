@@ -2,93 +2,131 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPA 簽名工具</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IPA 簽名大師-杰哥製作</title>
     <style>
         :root {
             --primary-color: #007aff;
-            --bg-color: #f5f5f7;
+            --premium-gold: #ffcc00;
+            --premium-bg: #1c1c1e;
+            --bg-color: #f2f2f7;
             --card-bg: #ffffff;
+            --danger-color: #ff3b30;
+            --success-color: #34c759;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 20px 15px;
         }
 
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
             text-align: center;
         }
 
         h1 {
-            font-size: 28px;
-            color: #1d1d1f;
-            margin-bottom: 30px;
+            font-size: 26px;
+            color: #1c1c1e;
+            margin-bottom: 25px;
+            font-weight: 800;
         }
 
-        /* 介面卡片樣式 */
         .card {
             background: var(--card-bg);
-            border-radius: 18px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .description {
-            color: #86868b;
-            font-size: 14px;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 25px;
-            line-height: 1.5;
+            position: relative;
         }
 
-        /* 按鈕樣式 */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        /* 專業付費卡片 */
+        .card-premium {
+            background: var(--premium-bg);
+            color: white;
+            border: 2px solid var(--premium-gold);
+        }
+
+        .section-header {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: rgba(255, 204, 0, 0.15);
+            border: 1px solid var(--premium-gold);
+            padding: 8px;
+            border-radius: 12px;
+            margin: 15px 0;
+            color: var(--premium-gold);
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--premium-gold);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: #a1a1a6;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .btn {
             display: block;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 16px;
+            width: 100%;
+            padding: 18px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 17px;
             border: none;
             cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
+            transition: all 0.2s;
+            text-decoration: none;
+            box-sizing: border-box;
         }
 
-        .btn:active {
-            transform: scale(0.98);
-            background-color: #005bbd;
+        .btn:active { transform: scale(0.96); }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #ffcc00, #ff9500);
+            color: #000;
         }
 
-        .btn-secondary {
-            background-color: #f2f2f7;
+        .btn-free {
+            background-color: var(--primary-color);
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
             color: var(--primary-color);
+            border: 1px solid var(--primary-color);
         }
+
+        .warning { color: var(--danger-color); font-weight: 600; }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 20px;
             font-size: 12px;
             color: #aeaeae;
         }
@@ -97,38 +135,67 @@
 <body>
 
     <div class="container">
-        <h1>IPA 簽名工具 + 證書下載</h1>
+        <h1>IPA 簽名中心</h1>
+
+        <div class="card card-premium">
+            <div class="badge">🔥 穩定首選</div>
+            <div class="section-header">💎 專業個人證書</div>
+            
+            <div class="highlight-box">
+                🛡️ 承諾 90 天內不掉簽
+            </div>
+
+            <p class="desc">
+                專人定制 Apple Developer 證書<br>
+                支持最新 iOS 版本，<span style="color:var(--success-color)">100% 安裝成功</span><br>
+                一人一證，私密通道不擁擠
+            </p>
+            
+            <button class="btn btn-premium" onclick="handlePremium()">
+                安裝專業付費工具 + 個人證書
+            </button>
+        </div>
 
         <div class="card">
-            <div class="section-title">免費通道</div>
-            <p class="description">支持 iOS 14.0 - iOS 26<br>穩定簽名，即開即用</p>
-            
-            <div class="btn-group">
-                <button class="btn" onclick="checkPassword('https://khoindvn.io.vn')">安裝 IPA 簽名工具</button>
-                
-                <button class="btn btn-secondary" onclick="checkPassword('https://jack0852.github.io/zhengshu.zip')">安裝證書</button>
-            </div>
+            <div class="section-header">📱 普通免費方案</div>
+            <p class="desc" style="color: #666;">
+                使用公共共享證書<br>
+                <span class="warning">不一定成功</span>，且隨時可能失效
+            </p>
+            <button class="btn btn-free" onclick="handleFree('https://khoindvn.io.vn', '1111')">
+                安裝免費 IPA 工具
+            </button>
+            <button class="btn btn-outline" onclick="handleFree('https://jack0852.github.io/zhengshu.zip', '1111')">
+                下載免費證書
+            </button>
         </div>
 
         <div class="footer">
-            © 2026 IPA 簽名助手. All rights reserved.
+            更新於：2026-03-08<br>
+            售後服務請聯繫：Jack
         </div>
     </div>
 
     <script>
-        function checkPassword(url) {
-            // 彈出密碼輸入框
-            const password = prompt("請輸入安裝密碼：");
+        function handlePremium() {
+            // 第一步：提示
+            alert("卡密請找 Jack 購買");
+            
+            // 第二步：輸入密碼 111111
+            const pass = prompt("請輸入 90 天長效個人證書卡密：");
+            if (pass === "111111") {
+                window.location.href = "https://qidian.letui.xyz";
+            } else if (pass !== null) {
+                alert("卡密無效或已過期，請重新獲取。");
+            }
+        }
 
-            if (password === "1111") {
-                // 密碼正確，跳轉連結
+        function handleFree(url, correctPass) {
+            const pass = prompt("請輸入免費通道安裝密碼：");
+            if (pass === correctPass) {
                 window.location.href = url;
-            } else if (password === null) {
-                // 使用者點擊取消
-                return;
-            } else {
-                // 密碼錯誤
-                alert("密碼錯誤，請重新輸入！");
+            } else if (pass !== null) {
+                alert("密碼錯誤！");
             }
         }
     </script>
