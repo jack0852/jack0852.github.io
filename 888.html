@@ -3,141 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>證書卡密查詢系統</title>
+    <title>卡密管理中心</title>
     <style>
         :root {
-            --primary-color: #4a90e2;
-            --bg-color: #f4f7f6;
+            --phone-color: #4a90e2;
+            --tablet-color: #673ab7;
+            --bg-color: #f0f2f5;
             --card-bg: #ffffff;
-            --text-color: #333;
-            --used-color: #999;
+            --used-text: #a0a0a0;
+            --used-bg: #f5f5f5;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
         }
 
-        .container {
-            width: 90%;
-            max-width: 500px;
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .main-container {
+            width: 100%;
+            max-width: 900px;
         }
 
-        h2 {
+        h1 {
             text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            color: #333;
+            margin-bottom: 30px;
         }
 
-        .card-list {
-            list-style: none;
-            padding: 0;
+        /* 響應式佈局：預設兩欄 */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .card-item {
-            background: #f9f9f9;
-            border: 1px solid #eee;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
+        /* 手機寬度時改為單欄 */
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+        }
+
+        .phone-title { color: var(--phone-color); border-color: var(--phone-color); }
+        .tablet-title { color: var(--tablet-color); border-color: var(--tablet-color); }
+
+        .item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: transform 0.2s;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #fafafa;
+            border-radius: 6px;
+            border-left: 4px solid #ddd;
         }
 
-        .card-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
+        .item.unused { border-left-color: #4caf50; }
+        .item.used { background: var(--used-bg); opacity: 0.7; }
 
-        .code {
-            font-family: 'Courier New', Courier, monospace;
+        .code-info { flex-grow: 1; }
+        
+        .code-text {
+            display: block;
+            font-family: monospace;
+            font-size: 0.95rem;
             font-weight: bold;
-            font-size: 1.1rem;
+            word-break: break-all;
         }
 
-        .status {
-            font-size: 0.8rem;
-            padding: 4px 8px;
+        .used .code-text { text-decoration: line-through; color: var(--used-text); }
+
+        .status-tag {
+            font-size: 0.7rem;
+            padding: 2px 6px;
             border-radius: 4px;
+            margin-top: 4px;
+            display: inline-block;
         }
 
-        .status-unused {
-            background-color: #e3f2fd;
-            color: #1976d2;
-        }
-
-        .status-used {
-            background-color: #ffebee;
-            color: #d32f2f;
-            text-decoration: line-through;
-        }
+        .tag-unused { background: #e8f5e9; color: #2e7d32; }
+        .tag-used { background: #eeeeee; color: #757575; }
 
         .copy-btn {
-            cursor: pointer;
-            background: var(--primary-color);
-            color: white;
+            margin-left: 10px;
+            padding: 6px 12px;
             border: none;
-            padding: 5px 10px;
             border-radius: 4px;
+            background: #333;
+            color: white;
+            cursor: pointer;
             font-size: 0.8rem;
+            white-space: nowrap;
         }
 
-        .copy-btn:disabled {
-            background: #ccc;
-        }
+        .copy-btn:active { transform: scale(0.95); }
+        .copy-btn:disabled { background: #ccc; cursor: not-allowed; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>我的證書卡密</h2>
-    <ul class="card-list">
-        <li class="card-item">
-            <div>
-                <span class="code" style="color: var(--used-color);">SS-GTP6CD720808A34</span>
-                <br>
-                <span class="status status-used">已使用</span>
-            </div>
-            <button class="copy-btn" disabled>複製</button>
-        </li>
+<div class="main-container">
+    <h1>證書卡密分發中心</h1>
 
-        <li class="card-item">
-            <div>
-                <span class="code" id="code1">SS-GTPC632F0CB24A8</span>
-                <br>
-                <span class="status status-unused">未使用</span>
+    <div class="grid-layout">
+        <div class="section-card">
+            <div class="section-title phone-title">📱 手機專用卡密</div>
+            
+            <div class="item used">
+                <div class="code-info">
+                    <span class="code-text">SS-GTP6CD720808A34</span>
+                    <span class="status-tag tag-used">已使用</span>
+                </div>
+                <button class="copy-btn" disabled>複製</button>
             </div>
-            <button class="copy-btn" onclick="copyCode('code1')">複製</button>
-        </li>
 
-        <li class="card-item">
-            <div>
-                <span class="code" id="code2">SS-GTPE0B71546C0DF</span>
-                <br>
-                <span class="status status-unused">未使用</span>
+            <div class="item unused">
+                <div class="code-info">
+                    <span class="code-text" id="p1">SS-GTPC632F0CB24A8</span>
+                    <span class="status-tag tag-unused">未使用</span>
+                </div>
+                <button class="copy-btn" onclick="copy('p1')">複製</button>
             </div>
-            <button class="copy-btn" onclick="copyCode('code2')">複製</button>
-        </li>
-    </ul>
+
+            <div class="item unused">
+                <div class="code-info">
+                    <span class="code-text" id="p2">SS-GTPE0B71546C0DF</span>
+                    <span class="status-tag tag-unused">未使用</span>
+                </div>
+                <button class="copy-btn" onclick="copy('p2')">複製</button>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title tablet-title">💻 平板專用卡密</div>
+            
+            <div class="item used">
+                <div class="code-info">
+                    <span class="code-text">SS-BZD129F4276550</span>
+                    <span class="status-tag tag-used">已使用</span>
+                </div>
+                <button class="copy-btn" disabled>複製</button>
+            </div>
+
+            <div class="item unused">
+                <div class="code-info">
+                    <span class="code-text" id="t1">SS-BZA664A42E26D4</span>
+                    <span class="status-tag tag-unused">未使用</span>
+                </div>
+                <button class="copy-btn" onclick="copy('t1')">複製</button>
+            </div>
+
+            <div class="item unused">
+                <div class="code-info">
+                    <span class="code-text" id="t2">SS-BZ97C832AC9C29</span>
+                    <span class="status-tag tag-unused">未使用</span>
+                </div>
+                <button class="copy-btn" onclick="copy('t2')">複製</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-    function copyCode(id) {
+    function copy(id) {
         const text = document.getElementById(id).innerText;
         navigator.clipboard.writeText(text).then(() => {
-            alert('卡密已複製到剪貼簿！');
+            alert('複製成功：' + text);
+        }).catch(err => {
+            console.error('無法複製', err);
         });
     }
 </script>
