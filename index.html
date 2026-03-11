@@ -7,10 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 定義深淺色變數 */
         :root {
             --bg-body: #f0f2f5;
             --bg-card: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.9);
             --text-main: #1a202c;
             --text-sub: #65676b;
             --border-color: #e5e7eb;
@@ -20,23 +20,34 @@
         [data-theme="dark"] {
             --bg-body: #18191a;
             --bg-card: #242526;
+            --bg-nav: rgba(36, 37, 38, 0.9);
             --text-main: #e4e6eb;
             --text-sub: #b0b3b8;
             --border-color: #3e4042;
-            --hero-gradient: linear-gradient(180deg, #1877f2 0%, #242526 100%);
+            --hero-gradient: linear-gradient(180deg, #1877f2 0%, #18191a 100%);
         }
 
         body { 
             background-color: var(--bg-body); 
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             transition: background-color 0.3s ease;
         }
 
-        .hero-gradient { background: var(--hero-gradient); height: 200px; transition: background 0.3s ease; }
-        .blue-tick { width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-left: 5px; }
+        /* 頂部導覽列 */
+        .nav-glass {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--bg-nav);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .hero-gradient { background: var(--hero-gradient); height: 260px; transition: background 0.3s ease; }
         
-        /* 改進的 FB 卡片樣式 */
         .fb-card { 
             background-color: var(--bg-card); 
             border-radius: 0.75rem; 
@@ -59,18 +70,18 @@
             width: 48px;
             height: 48px;
             background-color: var(--bg-card);
-            color: var(--text-main);
             border: 1px solid var(--border-color);
-            border-radius: 8px; /* 方塊感 */
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             transition: all 0.2s ease;
+            color: var(--text-main);
         }
 
-        .sq-action-btn:hover { transform: scale(1.05); background-color: var(--bg-body); }
+        .sq-action-btn:hover { transform: scale(1.1); background-color: var(--border-color); }
         
         #backToTop { opacity: 0; pointer-events: none; }
         #backToTop.show { opacity: 1; pointer-events: auto; }
@@ -84,61 +95,76 @@
 </head>
 <body>
 
+    <nav class="nav-glass">
+        <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-[#1877f2] rounded-full flex items-center justify-center text-white font-bold text-sm">J</div>
+                <span class="font-bold text-lg tracking-tight">Jack Official</span>
+            </div>
+            <div class="flex space-x-6 md:space-x-10 font-medium text-sm md:text-base">
+                <a href="#" class="text-[#1877f2]">首頁</a>
+                <a href="https://jackblog.pixnet.net/blog" target="_blank" class="hover:text-[#1877f2] transition">Jack Blog</a>
+                <a href="#features-section" class="hover:text-[#1877f2] transition">功能服務</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="hero-gradient w-full"></div>
 
-    <div class="max-w-4xl mx-auto px-4 -mt-16 relative">
+    <div class="max-w-4xl mx-auto px-4 -mt-20 relative">
         
         <div class="fb-card p-6 mb-8 text-center md:text-left">
-            <div class="flex flex-col md:flex-row items-center">
-                <img src="https://jack4432.com/S__6504471.jpg" alt="Jack" class="w-40 h-40 rounded-full border-4 border-white shadow-md object-cover">
+            <div class="flex flex-col md:flex-row items-end md:items-center">
+                <img src="https://jack4432.com/S__6504471.jpg" alt="Jack" class="w-40 h-40 rounded-full border-4 border-white dark:border-[#242526] shadow-md object-cover mx-auto md:mx-0">
                 
-                <div class="md:ml-8 mt-4 md:mt-10 flex-1">
+                <div class="md:ml-6 mt-4 md:mt-12 flex-1">
                     <div class="flex items-center justify-center md:justify-start">
-                        <h1 class="text-3xl font-bold" style="color: var(--text-main)">Jack</h1>
-                        <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="blue-tick" alt="Verified">
+                        <h1 class="text-3xl font-bold">Jack</h1>
+                        <img src="https://png.pngtree.com/png-vector/20230408/ourmid/pngtree-instagram-bule-tick-insta-blue-star-vector-png-image_6695210.png" class="w-5 h-5 ml-2" alt="Verified">
                     </div>
-                    <p style="color: var(--text-sub)" class="mt-2 text-lg">數位創作者 / AI 研究員</p>
+                    <p style="color: var(--text-sub)" class="mt-1 text-lg">數位創作者 / AI 研究員</p>
                     
-                    <a href="#about-section" class="inline-block mt-4 bg-[#1877f2] hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
-                        關於我
-                    </a>
+                    <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
+                        <a href="https://jackblog.pixnet.net/blog" target="_blank" class="bg-[#1877f2] hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition shadow-md flex items-center">
+                            <i class="fas fa-rss mr-2"></i> 瀏覽 Jack Blog
+                        </a>
+                        <a href="#about-section" class="bg-[#e4e6eb] dark:bg-[#3a3b3c] hover:bg-gray-300 dark:hover:bg-gray-600 font-bold py-2.5 px-6 rounded-lg transition">
+                            關於我
+                        </a>
+                    </div>
                 </div>
             </div>
             
             <hr class="my-6" style="border-color: var(--border-color)">
             
-            <div class="flex space-x-6 font-semibold overflow-x-auto">
-                <a href="#" class="text-[#1877f2] border-b-2 border-[#1877f2] pb-2">貼文</a>
-                <a href="#about-section" class="hover:bg-opacity-10 hover:bg-black px-3 py-1 rounded" style="color: var(--text-sub)">關於</a>
-                <a href="#features-section" class="hover:bg-opacity-10 hover:bg-black px-3 py-1 rounded" style="color: var(--text-sub)">功能</a>
+            <div class="flex space-x-2 md:space-x-6 font-semibold overflow-x-auto whitespace-nowrap pb-1">
+                <a href="#" class="text-[#1877f2] border-b-2 border-[#1877f2] px-4 pb-2">個人動態</a>
+                <a href="https://jackblog.pixnet.net/blog" target="_blank" class="hover:bg-gray-100 dark:hover:bg-white/5 px-4 py-1.5 rounded-md transition" style="color: var(--text-sub)">部落格文章</a>
+                <a href="#features-section" class="hover:bg-gray-100 dark:hover:bg-white/5 px-4 py-1.5 rounded-md transition" style="color: var(--text-sub)">技術功能</a>
             </div>
         </div>
 
         <div id="about-section" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="md:col-span-1">
+            <div class="md:col-span-1 space-y-6">
                 <div class="fb-card p-4">
                     <h3 class="text-xl font-bold mb-4">簡介</h3>
-                    <ul class="space-y-4" style="color: var(--text-main)">
-                        <li class="flex items-center"><i class="fas fa-robot mr-3 text-blue-500"></i> 玩 AI、研究 AI</li>
-                        <li class="flex items-center"><i class="fas fa-desktop mr-3 text-green-500"></i> 學習電腦硬體與系統</li>
-                        <li class="flex items-center"><i class="fas fa-mobile-alt mr-3 text-purple-500"></i> 手機、平板、電腦適配</li>
-                        <li class="flex items-center"><i class="fas fa-code mr-3 text-orange-500"></i> 程式開發：HTML, CSS, JS</li>
+                    <ul class="space-y-4">
+                        <li class="flex items-center"><i class="fas fa-robot w-6 text-blue-500 text-center"></i> <span>玩 AI、研究 AI</span></li>
+                        <li class="flex items-center"><i class="fas fa-desktop w-6 text-green-500 text-center"></i> <span>學習電腦硬體與系統</span></li>
+                        <li class="flex items-center"><i class="fas fa-mobile-alt w-6 text-purple-500 text-center"></i> <span>手機、平板、電腦適配</span></li>
+                        <li class="flex items-center"><i class="fas fa-link w-6 text-gray-400 text-center"></i> <a href="https://jackblog.pixnet.net/blog" class="text-blue-600 hover:underline">Jack Blog (Pixnet)</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="md:col-span-2">
-                <div class="fb-card p-6 mb-6">
+            <div class="md:col-span-2 space-y-6">
+                <div class="fb-card p-6">
                     <h3 class="text-lg font-bold mb-4">關於 Jack</h3>
                     <p style="color: var(--text-sub)" class="leading-relaxed">
                         你好！我是 Jack。我熱衷於探索人工智慧的無限可能，並致力於研究各類科技與電腦技術。
                         目前專注於學習電腦硬體架構與系統優化，追求跨裝置（手機、平板、電腦）最完美的操作適配與工作流。
+                        我會在 **Jack Blog** 定期分享 AI 研究心得、系統優化心得與科技相關資訊，歡迎透過連結關注。
                     </p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm">#ArtificialIntelligence</span>
-                        <span class="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200 px-3 py-1 rounded-full text-sm">#SystemAdaptive</span>
-                        <span class="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-200 px-3 py-1 rounded-full text-sm">#CodingLife</span>
-                    </div>
                 </div>
 
                 <div id="features-section" class="fb-card p-6">
@@ -146,11 +172,11 @@
                         <i class="fas fa-th-large mr-2 text-[#1877f2]"></i> 更多功能
                     </h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <a href="https://jack4432.com/app" target="_blank" class="block p-4 border rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group" style="border-color: var(--border-color)">
+                        <a href="https://jack4432.com/app" target="_blank" class="block p-4 border rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/10 transition group" style="border-color: var(--border-color)">
                             <h4 class="font-bold text-[#1877f2] group-hover:underline">IPA 簽名工具 & 購買</h4>
                             <p class="text-sm mt-1" style="color: var(--text-sub)">專業穩定的 IPA 簽名服務</p>
                         </a>
-                        <a href="https://jack4432.com/kamilogin" target="_blank" class="block p-4 border rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group" style="border-color: var(--border-color)">
+                        <a href="https://jack4432.com/kamilogin" target="_blank" class="block p-4 border rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/10 transition group" style="border-color: var(--border-color)">
                             <h4 class="font-bold text-[#1877f2] group-hover:underline">IPA 簽名付費證書查詢</h4>
                             <p class="text-sm mt-1" style="color: var(--text-sub)">即時查詢您的證書與授權狀態</p>
                         </a>
@@ -170,19 +196,20 @@
         </button>
     </div>
 
-    <footer class="mt-12 py-8 bg-white dark:bg-[#242526] border-t border-gray-200 dark:border-gray-700 text-center transition-colors">
+    <footer class="mt-12 py-10 bg-white dark:bg-[#242526] border-t border-gray-200 dark:border-gray-700 text-center transition-colors">
         <p style="color: var(--text-sub)" class="text-sm">© 2024 Jack Official Website. All rights reserved.</p>
-        <div class="mt-2 text-gray-400 text-xs">
-            Powered by Jack's AI Research
+        <div class="mt-4 flex justify-center space-x-6 text-gray-400">
+            <a href="https://jackblog.pixnet.net/blog" target="_blank" class="hover:text-[#1877f2] transition text-xl"><i class="fab fa-blogger"></i></a>
+            <a href="#" class="hover:text-[#1877f2] transition text-xl"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-[#1877f2] transition text-xl"><i class="fab fa-github"></i></a>
         </div>
     </footer>
 
     <script>
-        // 1. 深色模式切換
+        // 深色模式切換邏輯
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
 
-        // 讀取先前儲存的設定
         if (localStorage.getItem('theme') === 'dark') {
             htmlElement.setAttribute('data-theme', 'dark');
         }
@@ -197,7 +224,7 @@
             }
         });
 
-        // 2. 回到頂部邏輯
+        // 回到頂部按鈕邏輯
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
