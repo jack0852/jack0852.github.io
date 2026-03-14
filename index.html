@@ -34,7 +34,6 @@
             transition: background-color 0.3s ease;
         }
 
-        /* 頂部導覽列 */
         .nav-glass {
             position: fixed;
             top: 0;
@@ -55,7 +54,6 @@
             transition: background-color 0.3s ease;
         }
 
-        /* 右下角功能方塊組 */
         .fixed-actions {
             position: fixed;
             bottom: 24px;
@@ -103,7 +101,7 @@
             </div>
             <div class="flex space-x-6 md:space-x-10 font-medium text-sm md:text-base">
                 <a href="#" class="text-[#1877f2]">首頁</a>
-                <a href="https://jackblog.pixnet.net/blog" target="_blank" class="hover:text-[#1877f2] transition">Jack Blog</a>
+                <a href="javascript:void(0)" class="blog-lock hover:text-[#1877f2] transition">Jack Blog</a>
                 <a href="#features-section" class="hover:text-[#1877f2] transition">功能服務</a>
             </div>
         </div>
@@ -125,7 +123,7 @@
                     <p style="color: var(--text-sub)" class="mt-1 text-lg">數位創作者 / AI 研究員</p>
                     
                     <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
-                        <a href="https://jackblog.pixnet.net/blog" target="_blank" class="bg-[#1877f2] hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition shadow-md flex items-center">
+                        <a href="javascript:void(0)" id="blogLink" class="bg-[#1877f2] hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition shadow-md flex items-center">
                             <i class="fas fa-rss mr-2"></i> 瀏覽 Jack Blog
                         </a>
                         <a href="#about-section" class="bg-[#e4e6eb] dark:bg-[#3a3b3c] hover:bg-gray-300 dark:hover:bg-gray-600 font-bold py-2.5 px-6 rounded-lg transition">
@@ -139,7 +137,7 @@
             
             <div class="flex space-x-2 md:space-x-6 font-semibold overflow-x-auto whitespace-nowrap pb-1">
                 <a href="#" class="text-[#1877f2] border-b-2 border-[#1877f2] px-4 pb-2">個人動態</a>
-                <a href="https://jackblog.pixnet.net/blog" target="_blank" class="hover:bg-gray-100 dark:hover:bg-white/5 px-4 py-1.5 rounded-md transition" style="color: var(--text-sub)">部落格文章</a>
+                <a href="javascript:void(0)" class="blog-lock hover:bg-gray-100 dark:hover:bg-white/5 px-4 py-1.5 rounded-md transition" style="color: var(--text-sub)">部落格文章</a>
                 <a href="#features-section" class="hover:bg-gray-100 dark:hover:bg-white/5 px-4 py-1.5 rounded-md transition" style="color: var(--text-sub)">技術功能</a>
             </div>
         </div>
@@ -152,7 +150,7 @@
                         <li class="flex items-center"><i class="fas fa-robot w-6 text-blue-500 text-center"></i> <span>玩 AI、研究 AI</span></li>
                         <li class="flex items-center"><i class="fas fa-desktop w-6 text-green-500 text-center"></i> <span>學習電腦硬體與系統</span></li>
                         <li class="flex items-center"><i class="fas fa-mobile-alt w-6 text-purple-500 text-center"></i> <span>手機、平板、電腦適配</span></li>
-                        <li class="flex items-center"><i class="fas fa-link w-6 text-gray-400 text-center"></i> <a href="https://jackblog.pixnet.net/blog" class="text-blue-600 hover:underline">Jack Blog (Pixnet)</a></li>
+                        <li class="flex items-center"><i class="fas fa-link w-6 text-gray-400 text-center"></i> <a href="javascript:void(0)" class="blog-lock text-blue-600 hover:underline">Jack Blog (Pixnet)</a></li>
                     </ul>
                 </div>
             </div>
@@ -199,13 +197,34 @@
     <footer class="mt-12 py-10 bg-white dark:bg-[#242526] border-t border-gray-200 dark:border-gray-700 text-center transition-colors">
         <p style="color: var(--text-sub)" class="text-sm">© 2024 Jack Official Website. All rights reserved.</p>
         <div class="mt-4 flex justify-center space-x-6 text-gray-400">
-            <a href="https://jackblog.pixnet.net/blog" target="_blank" class="hover:text-[#1877f2] transition text-xl"><i class="fab fa-blogger"></i></a>
+            <a href="javascript:void(0)" class="blog-lock hover:text-[#1877f2] transition text-xl"><i class="fab fa-blogger"></i></a>
             <a href="#" class="hover:text-[#1877f2] transition text-xl"><i class="fab fa-facebook"></i></a>
             <a href="#" class="hover:text-[#1877f2] transition text-xl"><i class="fab fa-github"></i></a>
         </div>
     </footer>
 
     <script>
+        // 密碼驗證邏輯
+        const PASSWORD = "0222";
+        const BLOG_URL = "https://jackblog.pixnet.net/blog";
+
+        function verifyAndJump() {
+            const userInput = prompt("請輸入訪問密碼：");
+            if (userInput === PASSWORD) {
+                window.open(BLOG_URL, '_blank');
+            } else if (userInput !== null) {
+                alert("密碼錯誤，拒絕訪問！");
+            }
+        }
+
+        // 綁定主按鈕
+        document.getElementById('blogLink').addEventListener('click', verifyAndJump);
+
+        // 綁定其他頁面上所有指向 Blog 的連結 (class="blog-lock")
+        document.querySelectorAll('.blog-lock').forEach(link => {
+            link.addEventListener('click', verifyAndJump);
+        });
+
         // 深色模式切換邏輯
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
