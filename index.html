@@ -54,6 +54,16 @@
             transition: background-color 0.3s ease;
         }
 
+        /* 彈窗動畫 */
+        #blogSelector:not(.hidden) #selectorContent {
+            animation: modalIn 0.3s ease-out forwards;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         .fixed-actions {
             position: fixed;
             bottom: 24px;
@@ -123,9 +133,9 @@
                     <p style="color: var(--text-sub)" class="mt-1 text-lg">數位創作者 / AI 研究員</p>
                     
                     <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
-                        <a href="javascript:void(0)" id="blogLink" class="bg-[#1877f2] hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition shadow-md flex items-center">
+                        <button id="blogLink" class="bg-[#1877f2] hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition shadow-md flex items-center">
                             <i class="fas fa-rss mr-2"></i> 瀏覽 Jack Blog
-                        </a>
+                        </button>
                         <a href="#about-section" class="bg-[#e4e6eb] dark:bg-[#3a3b3c] hover:bg-gray-300 dark:hover:bg-gray-600 font-bold py-2.5 px-6 rounded-lg transition">
                             關於我
                         </a>
@@ -184,6 +194,25 @@
         </div>
     </div>
 
+    <div id="blogSelector" class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm hidden px-4">
+        <div id="selectorContent" class="fb-card w-full max-w-md p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">請選擇要前往的部落格</h3>
+                <button onclick="closeSelector()" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-4">
+                <a href="https://jackblog.pixnet.net/blog" target="_blank" onclick="closeSelector()" class="block w-full p-4 border-2 border-[#1877f2] rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition group">
+                    <div class="font-bold text-[#1877f2] text-lg">Jack 痞客邦部落格 (Blog)</div>
+                    <p class="text-sm opacity-70">經典文章與心得分享</p>
+                </a>
+                <a href="https://jack2026.s5-tastewp.com" target="_blank" onclick="closeSelector()" class="block w-full p-4 border-2 border-green-500 rounded-xl hover:bg-green-50 dark:hover:bg-green-900/20 transition group">
+                    <div class="font-bold text-green-600 text-lg">Jack 部落格</div>
+                    <p class="text-sm opacity-70">全新站點與技術研究 (2026)</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="fixed-actions">
         <button id="backToTop" class="sq-action-btn" title="回到頂部">
             <i class="fas fa-arrow-up"></i>
@@ -204,28 +233,35 @@
     </footer>
 
     <script>
-        // 密碼驗證邏輯
+        // --- 密碼與彈窗邏輯 ---
         const PASSWORD = "0222";
-        const BLOG_URL = "https://jackblog.pixnet.net/blog";
+        const selectorModal = document.getElementById('blogSelector');
+
+        function closeSelector() {
+            selectorModal.classList.add('hidden');
+        }
 
         function verifyAndJump() {
             const userInput = prompt("請輸入訪問密碼：");
             if (userInput === PASSWORD) {
-                window.open(BLOG_URL, '_blank');
+                selectorModal.classList.remove('hidden');
             } else if (userInput !== null) {
                 alert("密碼錯誤，拒絕訪問！");
             }
         }
 
-        // 綁定主按鈕
-        document.getElementById('blogLink').addEventListener('click', verifyAndJump);
+        // 點擊背景關閉彈窗
+        selectorModal.addEventListener('click', (e) => {
+            if (e.target === selectorModal) closeSelector();
+        });
 
-        // 綁定其他頁面上所有指向 Blog 的連結 (class="blog-lock")
+        // 綁定所有進入部落格的按鈕與連結
+        document.getElementById('blogLink').addEventListener('click', verifyAndJump);
         document.querySelectorAll('.blog-lock').forEach(link => {
             link.addEventListener('click', verifyAndJump);
         });
 
-        // 深色模式切換邏輯
+        // --- 深色模式切換邏輯 ---
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
 
@@ -243,7 +279,7 @@
             }
         });
 
-        // 回到頂部按鈕邏輯
+        // --- 回到頂部按鈕邏輯 ---
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
