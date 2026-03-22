@@ -2,6 +2,9 @@
 <html lang="zh-TW" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783872680179851"
+     crossorigin="anonymous"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jack官方網站-首頁</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,13 +30,12 @@
             color: var(--text-primary);
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
             min-height: 100vh;
-            overflow-y: auto; /* 允許上下滑動 */
+            overflow-y: auto;
             transition: background 0.5s ease;
         }
 
         [data-theme="dark"] body { background: #000000; }
 
-        /* 液態玻璃主卡片 */
         .liquid-glass {
             background: var(--glass-bg);
             backdrop-filter: blur(40px) saturate(180%);
@@ -43,7 +45,6 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
         }
 
-        /* 進場動畫 */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -51,7 +52,6 @@
         }
         @keyframes revealIn { to { opacity: 1; transform: translateY(0); } }
 
-        /* 按鈕 iOS 彈性縮放 */
         .ios-btn {
             background: var(--text-primary);
             color: white;
@@ -67,7 +67,6 @@
         [data-theme="dark"] .ios-btn { background: #ffffff; color: #000000; }
         .ios-btn:active { transform: scale(0.92); opacity: 0.8; }
 
-        /* 密碼彈窗美化 */
         .modal-blur { backdrop-filter: blur(25px); background: rgba(0,0,0,0.4); z-index: 2000; }
         .modal-content { animation: modalPop 0.4s var(--spring-easing); }
         @keyframes modalPop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -85,7 +84,6 @@
         }
         [data-theme="dark"] .ios-input { background: rgba(255,255,255,0.1); color: white; }
 
-        /* 主題切換按鈕 */
         #themeToggle {
             position: fixed;
             top: 24px;
@@ -134,7 +132,7 @@
         <div class="liquid-glass w-full max-w-sm p-10 modal-content shadow-2xl">
             <div class="text-center mb-8">
                 <h3 class="text-xl font-bold">身分驗證</h3>
-                <p class="text-sm opacity-50 mt-1">請輸入 4 位數密碼</p>
+                <p class="text-sm opacity-50 mt-1">請輸入 4 位數驗證碼</p>
             </div>
             <input type="password" id="pwInput" class="ios-input mb-8" placeholder="••••" maxlength="4">
             <div class="flex gap-4">
@@ -156,7 +154,7 @@
     </div>
 
     <script>
-        const PASSWORD = "0222";
+        const PASSWORD = "0222"; // 密碼已統一為 0222
 
         function openPasswordModal() {
             document.getElementById('passwordModal').classList.remove('hidden');
@@ -173,7 +171,7 @@
                 closeModal();
                 document.getElementById('blogChoiceModal').classList.remove('hidden');
             } else {
-                alert('密碼錯誤');
+                alert('驗證碼錯誤');
                 document.getElementById('pwInput').value = '';
             }
         }
