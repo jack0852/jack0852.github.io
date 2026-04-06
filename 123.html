@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jack 精選影片</title>
+<title>Jack 精選影像</title>
 
 <style>
 /* ===== 全域 ===== */
@@ -105,26 +105,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* ===== 金色流光 ===== */
-.card::before {
-    content: "";
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    background: linear-gradient(120deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-    top: -100%;
-    left: -100%;
-    transform: rotate(25deg);
-    transition: 0.7s;
-    pointer-events: none;
-}
-
-.card:hover::before {
-    top: 100%;
-    left: 100%;
-}
-
-/* ===== 亮光掃過 ===== */
+/* ===== 亮光效果 ===== */
 .shine {
     position: absolute;
     width: 100%;
@@ -140,8 +121,8 @@ body {
     transform: translateX(100%);
 }
 
-/* ===== 播放動畫 ===== */
-.play {
+/* ===== 圖示動畫 ===== */
+.icon {
     font-size: 45px;
     color: #ffd700;
     margin-bottom: 20px;
@@ -170,14 +151,14 @@ body {
     z-index: 2;
 }
 
-/* 整卡可點連結 (適用於舊卡片) */
+/* 整卡連結 */
 a.full-link {
     position: absolute;
     inset: 0;
     z-index: 10;
 }
 
-/* ===== 雙按鈕設計 (適用於新卡片) ===== */
+/* ===== 按鈕組 ===== */
 .btn-group {
     display: flex;
     gap: 12px;
@@ -221,9 +202,6 @@ a.full-link {
     .premium h1 {
         font-size: 32px;
     }
-    .badge-new {
-        right: -40px;
-    }
 }
 </style>
 </head>
@@ -232,21 +210,32 @@ a.full-link {
 
 <div class="marquee">
     <div class="marquee-content">
-        ✨ 最新公告✨：2026/03/12 更新！新增兩部最新私密影片，歡迎來到 Jack 影片精選專區
+        ✨ 最新公告 ✨：2026/04/07 更新！新增兩部最新影片與精選照片，歡迎瀏覽 Jack 的影像專區。
     </div>
 </div>
 
 <section class="premium">
-    <h1>👑 Jack 精選影片</h1>
+    <h1>👑 Jack 精選影像</h1>
 
     <div class="container">
 
         <div class="card">
-            <div class="badge-new">🔥 新</div>
+            <div class="badge-new">NEW</div>
             <div class="shine"></div>
-            <div class="play">▶</div>
-            <h3>2026/03/12 最新特輯</h3>
-            <p>雙重享受，點擊下方觀看</p>
+            <div class="icon">▶</div>
+            <h3>2026/04/07 最新影片</h3>
+            <p>本日更新內容，點擊觀看</p>
+            <div class="btn-group">
+                <a href="https://drive.google.com/file/d/1EXhFjnMMJJmuS-ONig970IA5NQyhhXle/view?usp=drivesdk" target="_blank" class="action-btn">影片一</a>
+                <a href="https://drive.google.com/file/d/1V-mmAJBtK2Y33xamcuRkrOVwIHnN2F4E/view?usp=drivesdk" target="_blank" class="action-btn">影片二</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="shine"></div>
+            <div class="icon">▶</div>
+            <h3>2026/03/12 特輯</h3>
+            <p>經典回顧</p>
             <div class="btn-group">
                 <a href="https://drive.google.com/file/d/1ty8V2fH3nNIH94gTSYPtG-Ex-aaFHfJ1/view?usp=drivesdk" target="_blank" class="action-btn">影片一</a>
                 <a href="https://drive.google.com/file/d/1eil1ZmwtLtKYZfTBKXjpbvFBeFAMdxkU/view?usp=drivesdk" target="_blank" class="action-btn">影片二</a>
@@ -254,27 +243,23 @@ a.full-link {
         </div>
 
         <div class="card">
+            <div class="badge-new">TOP</div>
             <div class="shine"></div>
-            <div class="play">▶</div>
+            <div class="icon">🖼️</div>
+            <h3>精選照片</h3>
+            <p>獨家精選影像</p>
+            <a href="https://drive.google.com/file/d/15gqoBFADFfEbSvIMN63-3x_AaAmQ-z9n/view?usp=drivesdk" target="_blank" class="full-link"></a>
+            <div class="btn-group">
+                <span class="action-btn">立即查看</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="shine"></div>
+            <div class="icon">▶</div>
             <h3>精選影片 1</h3>
-            <p>點擊立即觀看</p>
+            <p>熱門內容推薦</p>
             <a href="https://jack0852.github.io/copy_65F89E7A-70A3-4434-976B-3C0157B8220C.mov" target="_blank" class="full-link"></a>
-        </div>
-
-        <div class="card">
-            <div class="shine"></div>
-            <div class="play">▶</div>
-            <h3>精選影片 2</h3>
-            <p>精彩內容不要錯過</p>
-            <a href="https://youtu.be/Yb43MqNb6sg?si=bwPCYzERd3FNkS7n" target="_blank" class="full-link"></a>
-        </div>
-
-        <div class="card">
-            <div class="shine"></div>
-            <div class="play">▶</div>
-            <h3>精選影片 3</h3>
-            <p>高人氣推薦</p>
-            <a href="https://drive.google.com/file/d/1egHBLa909dqJRDp11g6lFRbE_Kurj_G5/view?usp=drivesdk" target="_blank" class="full-link"></a>
         </div>
 
     </div>
