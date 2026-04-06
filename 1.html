@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>軟體工具下載中心</title>
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --hover-green: #27ae60;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: "Segoe UI", Microsoft JhengHei, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .software-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .software-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .software-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .info {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        .download-btn {
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background-color: var(--hover-green);
+        }
+
+        /* 針對不同類型的標籤顏色 */
+        .type-tool { color: #3498db; }
+        .type-test { color: #e67e22; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>軟體下載與測試工具</h2>
+    
+    <div class="software-list">
+        <div class="software-item">
+            <div class="info">
+                <span class="name">魯大師</span>
+                <span class="tag">硬體檢測與優化</span>
+            </div>
+            <a href="https://drive.google.com/file/d/1fdzZMpt9p8wlfnAQGi00RjVFCPTH8rUJ/view?usp=sharing" target="_blank" class="download-btn">立即下載</a>
+        </div>
+
+        <div class="software-item">
+            <div class="info">
+                <span class="name">2345安全衛士</span>
+                <span class="tag">系統安全防護</span>
+            </div>
+            <a href="https://safe.2345.cc" target="_blank" class="download-btn">立即下載</a>
+        </div>
+
+        <div class="software-item">
+            <div class="info">
+                <span class="name">360安全衛士</span>
+                <span class="tag">電腦清理與安全</span>
+            </div>
+            <a href="https://drive.google.com/file/d/1DddxDhHPRMQJIyYqCGuW47qPK7zELI7M/view?usp=sharing" target="_blank" class="download-btn">立即下載</a>
+        </div>
+
+        <div class="software-item">
+            <div class="info">
+                <span class="name">讓電腦 CPU 100% 程式碼</span>
+                <span class="tag type-tool">性能壓力測試 (BAT)</span>
+            </div>
+            <a href="https://github.com/jack0852/jack0852.github.io/blob/main/%E7%9B%9C%E7%89%88%E9%AD%AF%E5%A4%A7%E5%B8%AB.bat" target="_blank" class="download-btn">立即下載</a>
+        </div>
+
+        <div class="software-item">
+            <div class="info">
+                <span class="name">測試電腦性能彩色球</span>
+                <span class="tag type-test">線上性能測試</span>
+            </div>
+            <a href="https://cznull.github.io/vsbm" target="_blank" class="download-btn">立即測試</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 未來如果需要點擊統計或其他互動，可以在這裡加入 JS
+    document.querySelectorAll('.download-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.parentElement.querySelector('.name').innerText;
+            console.log('正在跳轉至：' + name);
+        });
+    });
+</script>
+
+</body>
+</html>
