@@ -151,14 +151,7 @@ body {
     z-index: 2;
 }
 
-/* 整卡連結 */
-a.full-link {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-}
-
-/* ===== 按鈕組 ===== */
+/* 按鈕組 */
 .btn-group {
     display: flex;
     gap: 12px;
@@ -188,6 +181,13 @@ a.full-link {
     transform: scale(1.05);
 }
 
+/* 整卡連結 (用於單一連結卡片) */
+a.full-link {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}
+
 /* ===== RWD ===== */
 @media(max-width: 992px) {
     .container {
@@ -199,9 +199,6 @@ a.full-link {
     .container {
         grid-template-columns: 1fr;
     }
-    .premium h1 {
-        font-size: 32px;
-    }
 }
 </style>
 </head>
@@ -210,7 +207,7 @@ a.full-link {
 
 <div class="marquee">
     <div class="marquee-content">
-        ✨ 最新公告 ✨：2026/04/07 更新！新增兩部最新影片與精選照片，歡迎瀏覽 Jack 的影像專區。
+        ✨ 最新公告 ✨：2026/04/08 更新！新增兩部今日最新影片，歡迎瀏覽 Jack 的影像專區。
     </div>
 </div>
 
@@ -223,22 +220,22 @@ a.full-link {
             <div class="badge-new">NEW</div>
             <div class="shine"></div>
             <div class="icon">▶</div>
-            <h3>2026/04/07 最新影片</h3>
-            <p>本日更新內容，點擊觀看</p>
+            <h3>2026/04/08 最新影片</h3>
+            <p>今日更新精彩內容</p>
             <div class="btn-group">
-                <a href="https://drive.google.com/file/d/1EXhFjnMMJJmuS-ONig970IA5NQyhhXle/view?usp=drivesdk" target="_blank" class="action-btn">影片一</a>
-                <a href="https://drive.google.com/file/d/1V-mmAJBtK2Y33xamcuRkrOVwIHnN2F4E/view?usp=drivesdk" target="_blank" class="action-btn">影片二</a>
+                <a href="https://drive.google.com/file/d/1IG_BX9Y3kmMHaPY5f7XuuDLqFnAEgzTn/view?usp=drivesdk" target="_blank" class="action-btn">影片一</a>
+                <a href="https://drive.google.com/file/d/1m0wvVmmPuyGK9ksNf1YNt2oWBBEJ52BY/view?usp=drivesdk" target="_blank" class="action-btn">影片二</a>
             </div>
         </div>
 
         <div class="card">
             <div class="shine"></div>
             <div class="icon">▶</div>
-            <h3>2026/03/12 特輯</h3>
-            <p>經典回顧</p>
+            <h3>2026/04/07 特輯</h3>
+            <p>昨日更新回顧</p>
             <div class="btn-group">
-                <a href="https://drive.google.com/file/d/1ty8V2fH3nNIH94gTSYPtG-Ex-aaFHfJ1/view?usp=drivesdk" target="_blank" class="action-btn">影片一</a>
-                <a href="https://drive.google.com/file/d/1eil1ZmwtLtKYZfTBKXjpbvFBeFAMdxkU/view?usp=drivesdk" target="_blank" class="action-btn">影片二</a>
+                <a href="https://drive.google.com/file/d/1EXhFjnMMJJmuS-ONig970IA5NQyhhXle/view?usp=drivesdk" target="_blank" class="action-btn">影片一</a>
+                <a href="https://drive.google.com/file/d/1V-mmAJBtK2Y33xamcuRkrOVwIHnN2F4E/view?usp=drivesdk" target="_blank" class="action-btn">影片二</a>
             </div>
         </div>
 
@@ -252,14 +249,6 @@ a.full-link {
             <div class="btn-group">
                 <span class="action-btn">立即查看</span>
             </div>
-        </div>
-
-        <div class="card">
-            <div class="shine"></div>
-            <div class="icon">▶</div>
-            <h3>精選影片 1</h3>
-            <p>熱門內容推薦</p>
-            <a href="https://jack0852.github.io/copy_65F89E7A-70A3-4434-976B-3C0157B8220C.mov" target="_blank" class="full-link"></a>
         </div>
 
     </div>
