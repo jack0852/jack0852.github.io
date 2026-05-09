@@ -1,0 +1,2528 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/>
+<meta content="yes" name="mobile-web-app-capable">
+<meta content="#1abc9c" name="theme-color"/>
+<meta content="#1abc9c" name="msapplication-navbutton-color"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<link href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixfYIc0g0CmRkfQGJ4utW3U9JJK_KdxRVRd4nxKPlpXzyKZyJxWOOjREbLhYc7me9Ihkia01E3HHJb4EnCXb1RE1yWcOSq3WIk8BVKSfu-3C6nNarQsrf3NFao4-1iUq7_q6uxbSNkqY2glx5k7-t6-P9MDxdBOs7B2BGIPtC4bMgmjmGxIYSzzqMBi3U0/s48/favicon.ico" rel="icon" type="image/png"/>
+<link href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixfYIc0g0CmRkfQGJ4utW3U9JJK_KdxRVRd4nxKPlpXzyKZyJxWOOjREbLhYc7me9Ihkia01E3HHJb4EnCXb1RE1yWcOSq3WIk8BVKSfu-3C6nNarQsrf3NFao4-1iUq7_q6uxbSNkqY2glx5k7-t6-P9MDxdBOs7B2BGIPtC4bMgmjmGxIYSzzqMBi3U0/s48/favicon.ico" rel="apple-touch-icon"/>
+<link href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixfYIc0g0CmRkfQGJ4utW3U9JJK_KdxRVRd4nxKPlpXzyKZyJxWOOjREbLhYc7me9Ihkia01E3HHJb4EnCXb1RE1yWcOSq3WIk8BVKSfu-3C6nNarQsrf3NFao4-1iUq7_q6uxbSNkqY2glx5k7-t6-P9MDxdBOs7B2BGIPtC4bMgmjmGxIYSzzqMBi3U0/s48/favicon.ico" rel="shortcut icon"/>
+<link href="https://applejr.net/" rel="canonical"/>
+<title>IPA 安裝器</title>
+<meta content="IPA Installer for Roblox Executor (Delta Executor, Krnl Executor iOS), Esign/KSign/Flekstore on iPhone/iPad With Anti-Revoke. Install esign on ios no revoke" name="description"/>
+<meta content="AppleJr, install esign ios, install IPA on iphone, Esign ios, Ksign ios, Scarlet iOS, AppleJr, Esign new certificate, unable to verify esign, Install IPA files on iphone no pc." name="keywords"/>
+<meta content="AppleJr" name="author"/>
+<meta content="AppleJr – Install IPA, Esign, Ksign &amp; Scarlet for iPhone &amp; iPad" property="og:title"/>
+<meta content="Complete guide to sideload IPA, install Esign/Ksign/Scarlet, and fix Unable to Verify errors on iOS." property="og:description"/>
+<meta content="https://applejr.net/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://applejr.net/og-image.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="AppleJr – Install IPA, Esign, Ksign &amp; Scarlet for iPhone &amp; iPad" name="twitter:title"/>
+<meta content="Learn how to install IPA files, bypass revoke, and use Esign/Ksign/Scarlet on iPhone and iPad." name="twitter:description"/>
+<meta content="@AppleJr" name="twitter:site"/>
+<meta content="https://applejr.net/og-image.jpg" name="twitter:image"/>
+<meta content="index, follow" name="robots"/>
+<title>AppleJr</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="//i.imgur.com" rel="dns-prefetch"/>
+<link href="//repo.ethsign.fyi" rel="dns-prefetch"/>
+<link href="//t.me" rel="dns-prefetch"/>
+<link crossorigin="" href="//applejr.cloud" rel="preconnect"/>
+<link crossorigin="" href="//i.imgur.com" rel="preconnect"/>
+<link href="//repository.apptesters.org" rel="dns-prefetch"/>
+<link href="//community-apps.sidestore.io" rel="dns-prefetch"/>
+<link crossorigin="" href="https://raw.githubusercontent.com" rel="preconnect"/>
+</meta></head>
+<body>
+<style>
+:root{
+  --primary:#1abc9c;
+  --primary-dark:#16a085;
+  --bg-dark:#1c1c1e; 
+  --bg-light:#2c2c2e; 
+  --text-light:#fff; 
+  --text-muted:#aaa;
+  --glass-border:rgba(255,255,255,.2);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#111;color:var(--text-light);padding-bottom:70px;}
+.page{display:none;padding:20px;}
+.page.active{display:block;}
+.page-container{max-width:700px;margin:0 auto;}
+
+/* HEADER */
+header{padding:8px;text-align:center;font-size:17px;font-weight:600;
+  position:sticky;top:0;z-index:10;
+  background:rgba(28,28,30,0.55);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--glass-border);
+}
+
+/* meta text with signed dot */
+.meta{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  color:rgba(246,250,255,.75);
+}
+
+/* animated signed dot */
+.dot-green-mini{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#00ff6a;
+  flex-shrink:0;
+
+  box-shadow:
+    0 0 4px rgba(0,255,106,.9),
+    0 0 8px rgba(0,255,106,.6);
+
+  animation: greenPulse 1.8s ease-in-out infinite;
+}
+
+/* animated red dot */
+.dot-red-mini{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#ff3b3b;
+  flex-shrink:0;
+
+  box-shadow:
+    0 0 4px rgba(255,59,59,.9),
+    0 0 8px rgba(255,59,59,.6);
+
+  animation: redPulse 1.8s ease-in-out infinite;
+}
+
+/* pulse animation merah */
+@keyframes redPulse{
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+  50%{
+    transform:scale(1.4);
+    opacity:.7;
+  }
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* pulse animation */
+@keyframes greenPulse{
+  0%{
+    opacity:.6;
+    box-shadow:
+      0 0 2px rgba(0,255,106,.6),
+      0 0 6px rgba(0,255,106,.4);
+  }
+  50%{
+    opacity:1;
+    box-shadow:
+      0 0 6px rgba(0,255,106,1),
+      0 0 14px rgba(0,255,106,.9),
+      0 0 22px rgba(0,255,106,.6);
+  }
+  100%{
+    opacity:.6;
+    box-shadow:
+      0 0 2px rgba(0,255,106,.6),
+      0 0 6px rgba(0,255,106,.4);
+  }
+}
+
+
+
+/* FEATURED */
+.featured-container {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 10px 5px 20px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.featured-card {
+  flex: 0 0 75%;
+  max-width: 75%;
+  height: 160px;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.featured-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.featured-info h3 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.featured-info p {
+  margin: 0;
+  font-size: 12px;
+  color: #d3cece;
+}
+
+@media (max-width:600px){
+  .featured-card { height: 180px; }
+}
+
+/* FEATURED */
+/* === Adsterra Card === */
+.adsterra-card {
+  pointer-events: auto; /* aktif klik */
+  cursor: default;
+}
+
+.adsterra-card * {
+  pointer-events: auto !important;
+}
+
+.adsterra-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+
+.featured-container{display:flex;gap:12px;overflow-x:auto;padding:10px 5px 20px;scroll-snap-type:x mandatory;scroll-behavior:smooth;}
+.featured-card{flex:0 0 75%;max-width:75%;height:160px;border-radius:16px;overflow:hidden;scroll-snap-align:start;cursor:pointer;position:relative;box-shadow:0 4px 16px rgba(0,0,0,0.5);}
+.featured-card img{width:100%;height:100%;object-fit:cover;}
+.featured-info{position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);}
+.featured-info h3{margin:0;font-size:25px;font-weight:700;}
+.featured-info p{margin:0;font-size:12px;color:#d3cece;}
+@media (max-width:600px){
+  .featured-card{height:180px;}
+}
+
+
+.left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1; /* Biar kiri fleksibel */
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0; /* Biar nggak ketarik ke kiri */
+  align-items: center; /* pastikan tombol vertical center */
+}
+
+
+/* Styling konten artikel dalam modal */
+.modal-content article, 
+.modal-content body, 
+#modalBody {
+  max-width: 100%;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+#modalBody h1 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+#modalBody h2 {
+  font-size: 18px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+#modalBody p {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* iframe YouTube lebih rapi */
+#modalBody iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+@media (min-width: 600px) {
+  #modalBody iframe {
+    height: 300px;
+  }
+}
+
+.article-body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #eee;
+}
+
+.article-body h1, 
+.article-body h2, 
+.article-body h3 {
+  font-size: 18px;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.article-body p {
+  margin: 10px 0;
+}
+
+.article-body iframe {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior-y: none;
+}
+
+body {
+  min-height: 100svh; /* iOS 16+ */
+  background: #000;
+}
+
+/* wrapper utama halaman */
+.page {
+  min-height: 100svh;
+}
+
+
+/* ================================
+   SUB TABS — LIQUID GLASS (COMFORT)
+================================ */
+
+.sub-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 18px;
+
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 18px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 10px 28px rgba(0,0,0,0.32);
+}
+
+/* SUB TAB ITEM */
+.sub-tab {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+
+  padding: 14px 8px;          /* ⬅️ LEBIH TINGGI */
+  border-radius: 16px;
+
+  font-size: 14.5px;          /* ⬅️ LEBIH BESAR */
+  font-weight: 600;
+
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.07);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* ICON */
+.sub-tab svg {
+  width: 16px;                /* ⬅️ ICON LEBIH BESAR */
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* HOVER */
+.sub-tab:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+/* ACTIVE */
+.sub-tab.active {
+  background: rgba(255,255,255,0.92);
+  color: #007aff;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* IPHONE 14 PRO & SMALLER */
+@media (max-width: 430px) {
+  .sub-tab {
+    font-size: 14px;
+    padding: 13px 6px;
+  }
+
+  .sub-tab svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+
+
+
+
+
+/* CARD */
+.card{background:var(--bg-dark);border-radius:16px;padding:18px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.card .left {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* jarak antara icon dan teks */
+}
+.card h3{margin:0;font-size:20px;font-weight:600;}
+.card small{color:var(--text-muted);font-size:13px;}
+.card .rating{font-size:12px;color:#ffcc00;margin-top:4px;}
+
+/* APP ICON */
+.app-icon{width:60px;height:60px;border-radius:10px;flex-shrink:0;object-fit:cover;}
+
+/* APP STORE STYLE GET BUTTON */
+.badge {
+  background: linear-gradient(180deg, #f7f7f7 0%, #e6e6e6 100%);
+  color: #007aff; /* biru khas iOS */
+  padding: 8px 22px;
+  border-radius: 9999px; /* pill shape */
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.badge:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 100%);
+}
+
+.badge:active {
+  background: linear-gradient(180deg, #dcdcdc 0%, #c8c8c8 100%);
+}
+
+
+/* SIGNER */
+/* =========================
+   TITLE
+========================= */
+h1{
+  text-align:center;
+  margin-bottom:26px;
+  font-weight:700;
+  letter-spacing:.4px;
+  color:#fff;
+}
+
+/* =========================
+   LIQUID GLASS FORM
+========================= */
+form{
+  position:relative;
+  max-width:720px;
+  margin:0 auto;
+  padding:28px;
+
+  /* 🌈 Gradient Glass */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.18),
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.12)
+    );
+
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,0.22);
+
+  /* 🌑 Outer floating shadow */
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+
+  overflow:hidden;
+  animation: liquidGlow 6s ease-in-out infinite;
+}
+
+/* =========================
+   ✨ CORNER REFLECTION
+========================= */
+form::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-40%;
+  width:140%;
+  height:140%;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255,255,255,0.35),
+      transparent 55%
+    );
+  pointer-events:none;
+}
+
+/* =========================
+   🧊 ANIMATED LIQUID GLOW
+========================= */
+form::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(26,188,156,0.35),
+      rgba(0,255,255,0.25),
+      transparent 70%
+    );
+  filter: blur(28px);
+  opacity:.6;
+  z-index:-1;
+  animation: glowMove 8s linear infinite;
+}
+
+/* =========================
+   LABELS
+========================= */
+label{
+  font-size:14px;
+  font-weight:600;
+  margin-top:14px;
+  margin-bottom:6px;
+  display:block;
+  color:rgba(255,255,255,0.92);
+}
+
+/* =========================
+   INPUTS / SELECT
+========================= */
+input[type=file],
+input[type=password],
+select{
+  width:100%;
+  padding:13px 15px;
+  margin-bottom:16px;
+
+  background:rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.18);
+
+  color:#fff;
+  font-size:14px;
+  outline:none;
+
+  transition:all .3s ease;
+}
+
+/* 🔥 Focus effect */
+input:focus,
+select:focus{
+  background:rgba(255,255,255,0.22);
+  border-color:#1abc9c;
+  box-shadow:
+    0 0 0 2px rgba(26,188,156,.45),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* =========================
+   FILE BUTTON STYLE
+========================= */
+input[type=file]::file-selector-button{
+  background:linear-gradient(135deg,#1abc9c,#00f2fe);
+  border:none;
+  color:#fff;
+  padding:7px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes liquidGlow{
+  0%{ box-shadow:0 18px 60px rgba(0,0,0,.55); }
+  50%{ box-shadow:0 22px 75px rgba(26,188,156,.45); }
+  100%{ box-shadow:0 18px 60px rgba(0,0,0,.55); }
+}
+
+@keyframes glowMove{
+  0%{ transform:translateX(-40%); }
+  100%{ transform:translateX(40%); }
+}
+
+
+button,.link-btn{width:100%;padding:12px;border:none;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;margin-top:8px;}
+button{background:var(--primary);color:#fff;}
+button:hover{background:var(--primary-dark);}
+.link-btn{background:#444;color:#fff;text-align:center;text-decoration:none;display:block;}
+#loader{text-align:center;display:none;margin-top:10px;}
+#progressBar{width:100%;height:6px;background:#333;border-radius:4px;margin-top:10px;display:none;}
+#progressBar div{height:100%;width:0;background:var(--primary);border-radius:4px;transition:width .2s;}
+#resultBtns{display:none;margin-top:10px;}
+
+/* DROPZONE */
+.drop-zone{background:var(--bg-light);border:2px dashed rgba(255,255,255,.25);border-radius:12px;padding:25px;text-align:center;cursor:pointer;margin-bottom:16px;transition:.2s;}
+.drop-zone.dragover{border-color:var(--primary);color:var(--primary);}
+
+/* TOGGLE */
+.toggle-group{display:flex;justify-content:space-between;align-items:center;margin:15px 0;}
+.switch{position:relative;display:inline-block;width:50px;height:28px;}
+.switch input{display:none;}
+.slider{position:absolute;top:0;left:0;right:0;bottom:0;background:#555;transition:.3s;border-radius:34px;}
+.slider:before{content:"";position:absolute;height:20px;width:20px;left:4px;bottom:4px;background:white;transition:.3s;border-radius:50%;}
+.switch input:checked + .slider{background:var(--primary);}
+.switch input:checked + .slider:before{transform:translateX(22px);}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:999;}
+.modal-content{position:relative;background:rgba(28,28,30,0.55);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-border);border-radius:14px;padding:16px;max-width:520px;width:90%;max-height:80%;overflow-y:auto;}
+.modal-close{position:absolute;top:10px;right:10px;background:var(--primary);border:none;color:#fff;font-size:16px;width:32px;height:28px;border-radius:8px;cursor:pointer;}
+
+.bottom-nav-glass {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 88%;
+  max-width: 394px;
+  height: 63px; /* 🔽 LEBIH KECIL */
+
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+  box-shadow:
+    0 6px 20px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+
+  z-index: 1000;
+}
+
+
+.page,
+.page-container {
+  padding-bottom: 100px;
+}
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  .page,
+  .page-container {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+}
+
+
+/* slight glossy reflection line */
+.bottom-nav-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+}
+
+/* each nav icon */
+.nav-link {
+  flex: 1;
+  text-align: center;
+  color: #ffffff;
+  font-size: 13px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+/* icon */
+.nav-link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transition: all 0.4s ease;
+}
+
+/* active glow – iOS subtle */
+.nav-link.active {
+  color: var(--primary);
+  transform: translateY(-2px) scale(1.04); /* 🔽 jauh lebih halus */
+  text-shadow: 0 0 1.5px var(--primary);
+}
+
+/* icon glow */
+.nav-link.active svg {
+  filter: drop-shadow(0 0 1.5px var(--primary));
+}
+
+
+/* subtle blur transition effect */
+.page {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.page.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* glowing pulse behind active nav */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  opacity: 0.2;
+  filter: blur(10px);
+  z-index: -1;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.3); opacity: 0.4; }
+}
+
+/* IPA 資源庫 Grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  .tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tool-card {
+  background: #1c1c1e;
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+}
+
+.tool-card img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.tool-card h4 {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.tool-card small {
+  font-size: 12px;
+  opacity: 0.7;
+  display: block;
+}
+
+.tool-card a {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #1abc9c;
+  text-decoration: none;
+}
+
+/* ================================
+   IPA TOOLS – APP STORE STYLE GET
+================================ */
+
+.tool-card a {
+  background: linear-gradient(180deg, #f7f7f7 0%, #e6e6e6 100%);
+  color: #007aff;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 80px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* hover */
+.tool-card a:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 100%);
+}
+
+/* active / tap */
+.tool-card a:active {
+  background: linear-gradient(180deg, #dcdcdc 0%, #c8c8c8 100%);
+  transform: scale(0.96);
+}
+/* ================================
+   IPA TOOLS CATEGORY — LIQUID GLASS (BALANCED)
+================================ */
+
+.tools-category {
+  display: flex;
+  gap: 8px;                    /* tidak sempit, tidak lebar */
+  margin-bottom: 14px;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tools-category::-webkit-scrollbar {
+  display: none;
+}
+
+/* CATEGORY BUTTON */
+.tool-cat {
+  padding: 8px 16px;           /* ukuran nyaman */
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.12);
+
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    0 4px 12px rgba(0,0,0,0.25);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* HOVER */
+.tool-cat:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* ACTIVE */
+.tool-cat.active {
+  background: rgba(255,255,255,0.9);
+  color: #007aff;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 6px 16px rgba(0,0,0,0.3);
+}
+
+/* SMALL SCREEN SAFETY (iPhone 14 Pro) */
+@media (max-width: 390px) {
+  .tool-cat {
+    padding: 7px 14px;
+    font-size: 13.5px;
+  }
+}
+
+
+
+/* NOTE CONTAINER — LIQUID GLASS CLEAN */
+.tools-note {
+  margin: 10px 0 16px;
+  padding: 10px 14px;
+
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bfc7cf;
+
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 1px 2px rgba(0,0,0,0.25);
+}
+
+
+
+/* SIMPLE TEXT BUTTON WITH BACKGROUND */
+.text-btn {
+  all: unset;
+  display: inline;
+
+  padding: 1px 5px;
+  margin: 0 2px;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: #6ab0ff;
+
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* hover */
+.text-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* active */
+.text-btn:active {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* ===============================
+   🔍 IPA TOOLS SEARCH – LIQUID GLASS
+================================ */
+.tools-search-glass {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 16px;
+  margin: 12px 0 18px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 18px;
+
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 10px 30px rgba(0,0,0,0.35);
+}
+
+.tools-search-glass .search-icon {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.tools-search-glass input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+  color: #fff;
+}
+
+.tools-search-glass input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+/* Fokus */
+.tools-search-glass:focus-within {
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* =========================================
+   🍎 APPLE-STYLE LIQUID GLASS – REPOSITORY UI
+   FINAL • CLEAN • PREMIUM • READY TO PASTE
+========================================= */
+
+/* ===============================
+   CARD CONTAINER
+=============================== */
+.repo-card{
+  margin-top:24px;
+  padding:22px;
+  border-radius:26px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.14),
+      rgba(255,255,255,.05)
+    );
+
+  border:1px solid rgba(255,255,255,.18);
+
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.35),
+    0 24px 60px rgba(0,0,0,.5);
+}
+
+/* ===============================
+   NOTE (ABOVE BUTTONS)
+=============================== */
+.repo-note{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+
+  padding:14px 16px;
+  margin:6px 0 20px;
+
+  font-size:14px;
+  line-height:1.55;
+  color:rgba(255,255,255,.92);
+
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 10px 28px rgba(0,0,0,.38);
+}
+
+.repo-note-icon{
+  font-size:18px;
+  opacity:.85;
+  flex-shrink:0;
+}
+
+/* ===============================
+   ITEM
+=============================== */
+.repo-item{
+  margin-top:24px;
+  text-align:center;
+}
+
+.repo-item strong{
+  display:block;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:rgba(255,255,255,.96);
+}
+
+/* ===============================
+   ACTIONS – PERFECT CENTER
+=============================== */
+.repo-actions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+/* ===============================
+   BUTTON – LIQUID GLASS
+=============================== */
+.repo-btn{
+  min-width:128px;
+  padding:13px 20px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  border-radius:999px;
+
+  font-size:14.5px;
+  font-weight:600;
+  letter-spacing:.25px;
+
+  color:rgba(255,255,255,.96);
+  text-decoration:none;
+
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    0 10px 26px rgba(0,0,0,.4);
+
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
+}
+
+/* HOVER */
+.repo-btn:hover{
+  background:rgba(255,255,255,.2);
+}
+
+/* TAP */
+.repo-btn:active{
+  transform:scale(.94);
+  background:rgba(255,255,255,.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.35),
+    0 6px 16px rgba(0,0,0,.4);
+}
+
+/* ===============================
+   ICON – ELEGANT (NOT APP ICON)
+=============================== */
+.repo-btn img{
+  width:22px;          /* ⬅️ SEDIKIT LEBIH BESAR */
+  height:22px;
+
+  object-fit:contain;
+
+  /* ❌ hapus kesan app icon */
+  background:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+
+  opacity:.92;
+  filter:none;
+}
+
+/* VERY SUBTLE BRAND CLARITY */
+.repo-btn.esign img{
+  filter: brightness(1.06);
+}
+
+.repo-btn.scarlet img{
+  filter: brightness(1.06);
+}
+
+.repo-btn.ksign img{
+  filter: brightness(1.06);
+}
+
+/* ===============================
+   BRAND AURA – SUPER HALUS
+=============================== */
+.repo-btn.esign{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    0 10px 26px rgba(0,255,150,.12);
+}
+
+.repo-btn.scarlet{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    0 10px 26px rgba(255,80,80,.14);
+}
+
+.repo-btn.ksign{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    0 10px 26px rgba(90,150,255,.18);
+}
+
+/* ===============================
+   MOBILE SAFE
+=============================== */
+@media (max-width:420px){
+  .repo-btn{
+    min-width:100%;
+  }
+}
+
+
+/* ===== FEATURED PRO (ANDALAN) ===== */
+
+.featured-pro{
+  background:rgba(255,255,255,.06);   /* glass tipis */
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  border-radius:14px;
+  padding:14px 12px;
+
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 8px 24px rgba(0,0,0,.25);
+
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+.featured-header{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+/* CHIP */
+.featured-chip{
+  font-size:11px;
+  padding:3px 8px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#ffcc70,#ff9f1c);
+  color:#222;
+  font-weight:700;
+}
+
+/* GRID */
+.featured-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+/* ITEM */
+.featured-item{
+  position:relative;
+  background:rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:10px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  transition:.25s ease;
+}
+
+/* PRO ITEM */
+.featured-item.pro{
+  background:linear-gradient(
+    135deg,
+    rgba(26,188,156,.18),
+    rgba(26,188,156,.05)
+  );
+  border:1px solid rgba(26,188,156,.35);
+}
+
+/* ICON */
+.featured-item img{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  flex-shrink:0;
+}
+
+/* INFO */
+.f-info{
+  flex:1;
+  min-width:0;
+}
+
+.f-title{
+  font-size:13px;
+  font-weight:600;
+}
+
+.f-desc{
+  font-size:11px;
+  opacity:.75;
+  line-height:1.3;
+}
+
+.f-rating{
+  font-size:11px;
+  opacity:.9;
+  margin-top:2px;
+}
+
+/* BADGE TOP RIGHT */
+.featured-item.pro::after{
+  content:attr(data-badge);
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  font-size:10px;
+  padding:4px 7px;
+  border-radius:999px;
+  background:#ff3b30;
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+}
+
+/* BUTTON */
+.featured-item .badge{
+  padding:4px 14px;
+  font-size:15px;
+  min-width:auto;
+}
+
+/* HOVER */
+.featured-item:hover{
+  transform:translateY(-3px);
+}
+
+/* MOBILE */
+@media(max-width:640px){
+  .featured-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+/* ======================================
+   FEATURED PRO – MOBILE 1 CARD FIX
+   (CSS ONLY, NO HTML CHANGE)
+====================================== */
+
+/* DEFAULT: Desktop & Tablet = 2 kolom */
+.featured-grid{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+/* 📱 MOBILE iPHONE (portrait & kecil) = 1 kolom */
+@media (max-width:480px){
+  .featured-grid{
+    grid-template-columns:1fr;
+  }
+
+  .featured-item{
+    padding:16px;          /* lebih lega */
+    gap:14px;
+  }
+
+  .featured-item img{
+    width:48px;
+    height:48px;
+  }
+
+  .f-title{
+    font-size:15px;
+  }
+
+  .f-desc{
+    font-size:13px;
+  }
+
+  .f-rating{
+    font-size:12px;
+  }
+
+  .featured-item .badge{
+    font-size:13px;
+    padding:6px 18px;
+  }
+}
+
+/* 📱 MOBILE LANDSCAPE (kecil) = 1 kolom */
+@media (max-width:740px) and (orientation:landscape){
+  .featured-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* Anti overflow (biar gak geser samping) */
+.featured-pro{
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+.featured-item,
+.f-info{
+  min-width:0;
+}
+
+.ipa-card{
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  margin:16px 0;
+}
+
+.ipa-card h3{
+  margin:0 0 12px;
+  font-size:18px;
+}
+
+
+.nav-link {
+  position: relative;
+}
+
+/* Price tag NEW */
+.nav-tag-new {
+  position: absolute;
+  top: 0px;
+  right: 14px;
+
+  font-size: 5px;
+  font-weight: 700;
+  letter-spacing: .8px;
+
+  padding: 2px 6px;
+
+  background: #ff3b30;
+  color: #fff;
+
+  border-radius: 4px;
+
+  transform: rotate(13deg);
+  transform-origin: center;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+
+</style>
+<header id="pageTitle">安裝器</header>
+<div class="page active" id="page-library">
+<div class="page-container">
+<div class="featured-container" id="featuredSlider">
+<div class="featured-card" data-feature="esign">
+<img loading="lazy" src="https://i.imgur.com/1kQPy0tm.jpeg"/>
+<div class="featured-info">
+<h3>無法安裝？</h3>
+<p>修復 Esign / KSign 無法安裝問題</p>
+</div>
+</div>
+<div class="featured-card" data-feature="scarlet">
+<img loading="lazy" src="https://i.imgur.com/R2IKt2km.jpeg"/>
+<div class="featured-info">
+<h3>IPA 資源庫</h3>
+<p>最新 IPA 資源</p>
+</div>
+</div>
+</div>
+<div class="sub-tabs">
+<div class="sub-tab active" data-cat="esign">
+<svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16">
+<path d="M16.365 1.43c-.95.05-2.1.68-2.77 1.47-.6.73-1.13 1.88-.93 2.98 1.02.08 2.08-.52 2.72-1.3.63-.77 1.1-1.93.98-3.06z"></path>
+<path d="M20.88 8.08c-.63-.8-1.47-1.7-2.57-1.72-1.08-.02-1.53.56-2.87.56-1.33 0-1.83-.54-2.87-.54-1.17.02-2.04.95-2.68 1.75-1.85 2.3-1.54 6.63.36 9.44.52.78 1.22 1.64 2.1 1.62.84-.02 1.16-.54 2.18-.54s1.3.54 2.84.52c.9-.02 1.57-.8 2.1-1.58.36-.52.66-1.08.9-1.68-2.36-.9-2.74-4.3-.4-5.6.48-.28 1.27-.52 1.9-.56-.2-.68-.52-1.32-.9-1.82z"></path>
+</svg>
+          Esign
+        </div>
+<div class="sub-tab" data-cat="zsign"><svg viewbox="0 0 24 24">
+<path d="M12 2L1.5 9l10.5 7 10.5-7L12 2zM1.5 15l10.5 7 10.5-7"></path>
+</svg>Ksign</div>
+</div>
+<div class="cat-list" id="cat-esign">
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://jack4432.com/IMG_3275.jpeg"/>
+<div>
+<h3>防撤銷DNS</h3>
+<small>• Anti-Revoke</small>
+<div class="rating">安裝 ESign 前需要</div>
+</div>
+</div>
+<a class="badge" href="https://jack4432.com/jack4432_with_icon.mobileconfig">安裝</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/o8HGFP6m.png"/>
+<div>
+<h3>ESign</h3>
+<small class="meta">
+<span class="dot-green-mini"></span>
+                Signed• Aramco Services
+              </small>
+<div class="rating">⭐ 3.111.773</div>
+</div>
+</div>
+<div class="buttons">
+<a class="badge" href="https://api.khoindvn.io.vn/eQDb5c" rel="noopener noreferrer">安裝</a>
+</div>
+</div>
+</div>
+<div class="cat-list" id="cat-zsign" style="display:none;">
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://jack4432.com/IMG_3275.jpeg"/>
+<div>
+<h3>防撤銷DNS</h3>
+<small>• Anti-Revoke</small>
+<div class="rating">安裝 KSign 前需要</div>
+</div>
+</div>
+<a class="badge" href="https://jack4432.com/jack4432_with_icon.mobileconfig">安裝</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/347Q9VHm.png"/>
+<div>
+<h3>KSign</h3>
+<small class="meta">
+<span class="dot-green-mini"></span>
+                Signed • Aramco Services
+              </small>
+<div class="rating">⭐ 1.492.133</div>
+</div>
+</div>
+<a class="badge" href="https://api.khoindvn.io.vn/a71JoP">安裝</a>
+</div>
+</div>
+<div class="cat-list" id="cat-certificate" style="display:none;">
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Aramco Services Company</h3>
+<small class="meta">
+<span class="dot-green-mini"></span>
+                Signed • Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet/Flesktore</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/isolutionchannel/youtube/raw/refs/heads/main/Aramco%20Services%20Company.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Luoyang Postal Administration.zip</h3>
+<small>
+                • Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Luoyang%20Postal%20Administration.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Qingdao</h3>
+<small class="meta">
+<span class="dot-red-mini"></span>
+                DNS Required • Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Qingdao%20Rural%20Commercial%20Bank%20Co.,%20Ltd.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>XL AXIATA, PT TBK</h3>
+<small>
+                • Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/XL%20AXIATA,%20PT%20TBK.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Beijing Zhizhangyi Inc.</h3>
+<small>
+                • Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet/Flekst0re</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Beijing%20Zhizhangyi%20Inc%202.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Updated National Oilwell NEW</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Updated%20National%20Oilwell%20Varco,%20Inc.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>VIETNAM AIRLINES</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/VIETNAM%20AIRLINES%20JSC.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>ForeverMark Marketing</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Forevermark%20%20Marketing(Shanghai%20)%20Limited.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>PowerChina International</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/PowerChina%20International%20Group%20Limited.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>China Academy</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet/FlekSt0re</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/China%20Academy.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Luoyang Postal Administration.zip</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Luoyang%20Postal%20Administration.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Commission on Election</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet/Flekst0re</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Commission%20on%20Elections.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>VietinBank</h3>
+<small> Import &amp; Export Certs
+              </small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Vietinbank.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Wasu Media</h3>
+<small>• Import &amp; Export Certs</small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/wasu.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Etisalat Emirates</h3>
+<small>• Import &amp; Export Certs</small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Etisalat.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Certificate ZIP</h3>
+<small>• Import &amp; Export Certs</small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Cert%20AppleJr%203.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Heavy Duty Truck</h3>
+<small>• Import &amp; Export Certs</small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/royilkom-alt/cert/raw/refs/heads/main/Truck.zip">下載</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://i.imgur.com/aEL0qKhm.png"/>
+<div>
+<h3>Guangzhou Huahan Educational</h3>
+<small>• Import &amp; Export Certs</small>
+<div class="rating">Esign/Ksign/Scarlet</div>
+</div>
+</div>
+<a class="badge" href="https://github.com/applejr12/signer/raw/refs/heads/main/Guangzhou%20Huahan%20Educational%20&amp;%20Technology%20Co.,Ltd..zip">下載</a>
+</div>
+</div>
+</div>
+</div>
+<div class="page" id="page-source">
+<div class="page-container">
+<div class="ipa-card">
+<h3>📚 越獄 Tools</h3>
+<div class="repo-note">
+<span class="repo-note-icon">ℹ️</span>
+<span>
+            Tap <b>Install</b> to install the IPA directly.
+            If it doesn’t install, make sure your certificate is trusted (Settings → General → VPN &amp; Device Management).
+          </span>
+</div>
+<div class="repo-note">
+<span class="repo-note-icon">ℹ️</span>
+<span>
+            You must <b>Install</b> <b>防撤銷DNS</b> to make it works.
+            It is Avoid revoke and erorr while installing the Tool </span>
+</div>
+<div class="featured-simple featured-pro">
+<div class="featured-header">
+            ⭐ Featured Apps
+            <span class="featured-chip">DIRECT INSTALL</span>
+</div>
+<div class="featured-grid">
+
+<div class="featured-item pro" data-badge="NEW">
+<img alt="Auto Clicker" loading="lazy" src="https://i.imgur.com/N8QVM1jm.jpeg"/>
+<div class="f-info">
+<div class="f-title">Dopamine</div>
+<div class="f-desc">越獄 iOS 15-16.7.15</div>
+<div class="f-rating">⭐ 3.1M+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/dopamine.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="POPULAR">
+<img alt="MeloNX" loading="lazy" src="https://i.imgur.com/t7E5POXm.jpeg"/>
+<div class="f-info">
+<div class="f-title">TrollInstallerX</div>
+<div class="f-desc">iOS 14-16.6.1</div>
+<div class="f-rating">⭐ 2.2M+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/trollinstallerx.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="TOOLS">
+<img alt="IPA Installer" loading="lazy" src="https://i.imgur.com/x630ZiX.png"/>
+<div class="f-info">
+<div class="f-title">Fugu15</div>
+<div class="f-desc">越獄 iOS 15-15.4.1</div>
+<div class="f-rating">⭐ 392k+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/fugu15.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="TOOLS">
+<img alt="IPA Installer" loading="lazy" src="https://i.imgur.com/nFLU4ERm.jpeg"/>
+<div class="f-info">
+<div class="f-title">Xina15</div>
+<div class="f-desc">越獄 iOS 15-15.1</div>
+<div class="f-rating">⭐ 112k+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/xina15.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="TOOLS">
+<img alt="IPA Installer" loading="lazy" src="https://i.imgur.com/7dLG71Km.png"/>
+<div class="f-info">
+<div class="f-title">Taurine</div>
+<div class="f-desc">越獄 iOS 14-14.8</div>
+<div class="f-rating">⭐ 992k+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/taurine.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="TOOLS">
+<img alt="IPA Installer" loading="lazy" src="https://i.imgur.com/4x2WnzJm.jpeg"/>
+<div class="f-info">
+<div class="f-title">Unc0ver</div>
+<div class="f-desc">越獄 iOS 11-14.3</div>
+<div class="f-rating">⭐ 3m+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/unc0ver.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="TOOLS">
+<img alt="IPA Installer" loading="lazy" src="https://i.imgur.com/hnoZi02m.jpeg"/>
+<div class="f-info">
+<div class="f-title">Chimera</div>
+<div class="f-desc">越獄 iOS 12-12.5.7</div>
+<div class="f-rating">⭐ 3m+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/chimera.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="TOOLS">
+<img alt="IPA Installer" loading="lazy" src="https://i.imgur.com/JvlhZPrm.png"/>
+<div class="f-info">
+<div class="f-title">Freya</div>
+<div class="f-desc">越獄 iOS 11-12.5.7</div>
+<div class="f-rating">⭐ 732k+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/freya.plist">安裝</a>
+</div>
+<div class="featured-item" data-badge="TOOLS">
+<img alt="IPA Installer" loading="lazy" src="https://i.imgur.com/ZztMJJwm.jpeg"/>
+<div class="f-info">
+<div class="f-title">Phoenix</div>
+<div class="f-desc">越獄 iOS 9-9.3.6 </div>
+<div class="f-rating">⭐ 732k+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/applejr-panel/public/plist/phoenix.plist">安裝</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page" id="page-signer">
+<div class="page-container">
+<form enctype="multipart/form-data" id="uploadForm">
+<h1>IPA 簽名工具</h1>
+<div class="drop-zone" id="dropZone">📥 點這裡上傳 IPA</div>
+<input accept=".ipa" id="ipa_file" name="ipa_file" required="" style="display:none;" type="file"/>
+<div class="toggle-group">
+<span>🔐 手動證書</span>
+<label class="switch"><input id="certToggle" type="checkbox"/><span class="slider"></span></label>
+</div>
+<div id="serverCertSection">
+<label for="use_server_cert">
+            📁 從伺服器選擇 <br/>
+<a href="https://jack4432.com/jack4432_with_icon.mobileconfig" style="color:#1abc9c;text-decoration:none;font-weight:500;margin-left:6px;">
+              🌏 (防撤銷DNS Required)
+            </a>
+</label>
+<select id="use_server_cert" name="use_server_cert">
+<option value="">-- 選擇證書 --</option>
+<option value="1. Aramco Services Company">1. Aramco Services Company</option>
+<option value="2. XL AXIATA, PT TBK">2. XL AXIATA, PT TBK</option>
+<option value="3. National Oilwell">3. National Oilwell</option>
+<option value="4. Qingdao">4. Qingdao</option>
+<option value="5. VIETNAM AIRLINES">5. VIETNAM AIRLINES</option>
+<option value="6. China Academy">6. China Academy</option>
+<option value="7. Forevermark">7. Forevermark</option>
+<option value="8. Atianjin">8. Atianjin</option>
+<option value="9. Commission on Elections">9. Commission on Elections</option>
+</select>
+</div>
+<div id="manualCertSection" style="display:none;">
+<label for="p12_file">🗳️ 證書 (.p12)</label>
+<input accept=".p12" id="p12_file" name="p12_file" type="file"/>
+<label for="mobileprovision_file">📄 描述檔 MobileProvision</label>
+<input accept=".mobileprovision" id="mobileprovision_file" name="mobileprovision_file" type="file"/>
+<label for="password">🔑 證書密碼</label>
+<input id="password" name="password" placeholder="Password" type="password"/>
+</div>
+<button id="submitBtn" type="submit">🚀 簽名 IPA</button>
+<div id="loader">⏳ 簽名中，請稍候</div>
+<div id="progressBar">
+<div></div>
+</div>
+<div id="resultBtns">
+<a class="link-btn" href="#" id="installLink" target="_blank">📲 安裝 IPA</a>
+<a class="link-btn" href="#" id="downloadLink" target="_blank">⬇️ 下載 IPA</a>
+</div>
+<center>
+<p>
+<p>
+</p></p></center>
+</form>
+</div>
+</div>
+<div class="page" id="page-tools">
+<div class="page-container">
+<h2>IPA 資源庫</h2>
+<p class="tools-note">下載下面的 IPA 檔案，並使用 <button class="text-btn goto-library" data-sub="esign">ESign</button> 或 <button class="text-btn goto-library" data-sub="zsign">KSign</button> 安裝，也可以使用 <button class="text-btn goto-signer">IPA 簽名工具</button>。</p>
+<div class="tools-search-glass">
+<span class="search-icon">🔍</span>
+<input autocomplete="off" id="toolsSearch" placeholder="搜尋 App 名稱…" type="text"/>
+</div>
+<div class="tools-category">
+<button class="tool-cat active" data-cat="all">全部</button>
+<button class="tool-cat" data-cat="emulator">模擬器</button>
+<button class="tool-cat" data-cat="jailbreak">越獄</button>
+<button class="tool-cat" data-cat="tweak">插件</button>
+<button class="tool-cat" data-cat="games">遊戲</button>
+<button class="tool-cat" data-cat="social-media">社群</button>
+<button class="tool-cat" data-cat="music">音樂</button>
+<button class="tool-cat" data-cat="photo-video">照片與影片</button>
+</div>
+<div class="tools-grid" id="toolsGrid"></div>
+<button class="badge" id="toolsLoadMore" style="margin-top:16px;display:none;">
+        載入更多
+      </button>
+</div>
+</div>
+<div class="modal" id="featureModal">
+<div class="modal-content"><button class="modal-close" id="modalClose">×</button>
+<div id="modalBody"></div>
+</div>
+</div>
+<div class="bottom-nav-glass">
+<div class="nav-link active" data-target="page-library">
+<svg viewbox="0 0 24 24">
+<path d="M3 13h18v-2H3v2zM3 19h18v-2H3v2zM3 7h18V5H3v2z"></path>
+</svg>
+<span>安裝器</span>
+</div>
+<div class="nav-link" data-target="page-tools">
+<svg viewbox="0 0 24 24">
+<defs>
+<mask id="ipa-cut">
+<rect fill="white" height="24" width="24"></rect>
+<text fill="black" font-family="system-ui, -apple-system, BlinkMacSystemFont" font-size="8.6" font-weight="900" text-anchor="middle" x="11" y="15">
+              IPA
+            </text>
+</mask>
+</defs>
+<path d="M4.5 1.5h10.5l4.5 4.5v15a2.5 2.5 0 0 1-2.5 2.5H4.5A2.5 2.5 0 0 1 2 21V4a2.5 2.5 0 0 1 2.5-2.5z" fill="currentColor" mask="url(#ipa-cut)"></path>
+<path d="M15 1.5V6h4.5" fill="currentColor" mask="url(#ipa-cut)"></path>
+</svg>
+<span>資源庫</span>
+</div>
+<div class="nav-link" data-target="page-signer">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M3 17.25V21h3.75L17.8 9.95l-3.75-3.75L3 17.25z"></path>
+<path d="M20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path>
+</svg>
+<span>簽名工具</span>
+</div>
+<div class="nav-link nav-has-new" data-target="page-source">
+<span class="nav-tag-new">NEW</span>
+<svg viewbox="0 0 24 24">
+<path d="M22.7 19.3l-4.4-4.4c.3-.7.5-1.4.5-2.2
+             0-3.3-2.7-6-6-6s-6 2.7-6 6
+             2.7 6 6 6c.8 0 1.5-.2 2.2-.5
+             l4.4 4.4 1.3-1.3z
+             M12 16c-2.2 0-4-1.8-4-4
+             s1.8-4 4-4 4 1.8 4 4
+             -1.8 4-4 4z"></path>
+</svg>
+<span>越獄工具</span>
+</div>
+</div>
+<script>
+  // nav
+document.querySelectorAll(".nav-link").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.querySelectorAll(".nav-link").forEach(l=>l.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    link.classList.add("active");
+    document.getElementById(link.dataset.target).classList.add("active");
+    document.getElementById("pageTitle").textContent=link.querySelector("span:last-child")?.textContent?.trim() || link.textContent.trim();
+    if(link.dataset.target === "page-tools") loadIPATools();
+  });
+});
+
+// sub tabs
+document.querySelectorAll(".sub-tab").forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    document.querySelectorAll(".sub-tab").forEach(t=>t.classList.remove("active"));
+    tab.classList.add("active");
+    document.querySelectorAll(".cat-list").forEach(list=>list.style.display="none");
+    document.getElementById("cat-"+tab.dataset.cat).style.display="block";
+  });
+});
+
+// toggle cert
+const certToggle=document.getElementById("certToggle");
+certToggle.addEventListener("change",()=>{
+  document.getElementById("serverCertSection").style.display=certToggle.checked?"none":"block";
+  document.getElementById("manualCertSection").style.display=certToggle.checked?"block":"none";
+});
+
+// dropzone IPA
+const dropZone=document.getElementById("dropZone");
+const ipaInput=document.getElementById("ipa_file");
+dropZone.addEventListener("click",()=>ipaInput.click());
+dropZone.addEventListener("dragover",e=>{e.preventDefault();dropZone.classList.add("dragover");});
+dropZone.addEventListener("dragleave",()=>dropZone.classList.remove("dragover"));
+dropZone.addEventListener("drop",e=>{e.preventDefault();dropZone.classList.remove("dragover");if(e.dataTransfer.files.length){ipaInput.files=e.dataTransfer.files;dropZone.textContent="📦 "+ipaInput.files[0].name;}});
+ipaInput.addEventListener("change",()=>{if(ipaInput.files.length){dropZone.textContent="📦 "+ipaInput.files[0].name;}});
+
+// modal
+const modal = document.getElementById("featureModal");
+const modalBody = document.getElementById("modalBody");
+const closeBtn = document.getElementById("modalClose");
+
+// mapping artikel / konten
+const featureContent = {
+  esign: "/post/unable-to-verify.html",
+  scarlet: "#page-tools",
+  pojav: "https://applejr.net/deltakey/"
+};
+
+// event klik featured-card
+document.querySelectorAll(".featured-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const key = card.dataset.feature;
+    const content = featureContent[key];
+
+    if (key === "scarlet") {
+      document.querySelector('.nav-link[data-target="page-tools"]')?.click();
+      return;
+    }
+
+    // ✅ kalau muncul dari "pojav" → buka di tab baru saja
+    if (key === "pojav") {
+      window.open(content, "_blank");
+      return; // hentikan eksekusi supaya modal tidak muncul
+    }
+
+    // --- sisanya tetap pakai modal ---
+    modal.style.display = "flex";
+    modalBody.innerHTML = "<p>⏳ Loading...</p>";
+
+    // cek apakah content berupa file html
+    if (content.endsWith(".html")) {
+      fetch(content)
+        .then(res=>{
+          if(!res.ok) throw new Error("Artikel tidak ditemukan");
+          return res.text();
+        })
+        .then(html=>{
+          // hapus <head> & <script> supaya modal tidak kacau
+          html = html.replace(/<head[\s\S]*?<\/head>/gi, "")
+                     .replace(/<script[\s\S]*?<\/script>/gi, "");
+          modalBody.innerHTML = `<div class="article-body">${html}</div>`;
+        })
+        .catch(err=>{
+          modalBody.innerHTML = `<p>❌ No article and ${err.message}</p>`;
+        });
+    } else {
+      // fallback kalau konten string biasa
+      modalBody.innerHTML = content || "<p>No content</p>";
+    }
+  });
+});
+
+
+
+closeBtn.addEventListener("click",()=>modal.style.display="none");
+window.addEventListener("click",e=>{
+  if(e.target===modal) modal.style.display="none";
+});
+
+
+// --- featured auto scroll: 1→2→3 (pause) →2→1 (pause) loop ---
+const slider = document.getElementById("featuredSlider");
+const cards = Array.from(slider.querySelectorAll(".featured-card"));
+
+if (window.__featuredTimer) clearInterval(window.__featuredTimer);
+
+if (cards.length > 1) {
+  let index = 0;
+  let direction = 1; // 1 = maju, -1 = mundur
+  let delay = 4000;  // delay antar gerakan normal
+
+  function scrollToCard(i) {
+    slider.scrollTo({
+      left: cards[i].offsetLeft,
+      behavior: "smooth"
+    });
+  }
+
+  function loopScroll() {
+    scrollToCard(index);
+
+    // kalau sudah sampai ujung kanan (terakhir)
+    if (index === cards.length - 1) {
+      direction = -1;
+      setTimeout(() => {
+        index += direction;
+        loopScroll();
+      }, 3000); // pause 2 detik di ujung
+      return;
+    }
+
+    // kalau sudah sampai ujung kiri (pertama)
+    if (index === 0 && direction === -1) {
+      direction = 1;
+      setTimeout(() => {
+        index += direction;
+        loopScroll();
+      }, 3000); // pause 2 detik di ujung
+      return;
+    }
+
+    // kalau di tengah, lanjut normal tiap 4 detik
+    index += direction;
+    window.__featuredTimer = setTimeout(loopScroll, delay);
+  }
+
+  // mulai setelah delay 4 detik di awal
+  setTimeout(loopScroll, 4000);
+}
+
+
+
+
+
+// SIGN IPA process
+const form = document.getElementById("uploadForm");
+const submitBtn = document.getElementById("submitBtn");
+const loader = document.getElementById("loader");
+const resultBtns = document.getElementById("resultBtns");
+const installLink = document.getElementById("installLink");
+const downloadLink = document.getElementById("downloadLink");
+const progressBar = document.getElementById("progressBar");
+const progressFill = progressBar.querySelector("div");
+
+// progress text tambahan
+let progressText = document.createElement("div");
+progressText.style.textAlign = "center";
+progressText.style.marginTop = "8px";
+progressText.style.fontFamily = "monospace";
+progressText.style.fontSize = "14px";
+progressText.style.color = "#007aff";
+progressBar.insertAdjacentElement("afterend", progressText);
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  submitBtn.style.display = "none";
+  loader.style.display = "block";
+  progressBar.style.display = "block";
+  progressFill.style.width = "0";
+  progressText.textContent = "";
+
+  const formData = new FormData(form);
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "/upload", true);
+
+  let startTime = Date.now();
+
+  xhr.upload.addEventListener("progress", function (event) {
+    if (event.lengthComputable) {
+      const percent = (event.loaded / event.total) * 100;
+      const elapsed = (Date.now() - startTime) / 1000; // detik
+      const speed = (event.loaded / 1024 / 1024 / elapsed).toFixed(2); // MB/s
+      const loadedMB = (event.loaded / 1024 / 1024).toFixed(1);
+      const totalMB = (event.total / 1024 / 1024).toFixed(1);
+
+      progressFill.style.width = percent + "%";
+      progressText.textContent = `${percent.toFixed(1)}% (${loadedMB}/${totalMB} MB) • ${speed} MB/s`;
+    }
+  });
+
+  xhr.onload = function () {
+    loader.style.display = "none";
+    progressBar.style.display = "none";
+    progressText.textContent = "";
+    try {
+      const res = JSON.parse(xhr.responseText);
+      if (res.install_url && res.download_url) {
+        installLink.href = res.install_url;
+        downloadLink.href = res.download_url;
+        resultBtns.style.display = "block";
+      } else {
+        alert("❌ Error Password.");
+        submitBtn.style.display = "block";
+      }
+    } catch (err) {
+      alert("❌ Error during signing.");
+      submitBtn.style.display = "block";
+    }
+  };
+
+  xhr.onerror = function () {
+    alert("❌ Upload failed.");
+    loader.style.display = "none";
+    progressBar.style.display = "none";
+    progressText.textContent = "";
+    submitBtn.style.display = "block";
+  };
+
+  xhr.send(formData);
+});
+
+
+
+
+   // ==========================
+// Histats Analytics
+// ==========================
+var _Hasync = window._Hasync || [];
+_Hasync.push(['Histats.start', '1,4981436,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+
+(function () {
+  var hs = document.createElement('script');
+  hs.type = 'text/javascript';
+  hs.async = true;
+  hs.src = '//s10.histats.com/js15_as.js';
+
+  (document.head || document.body).appendChild(hs);
+})();
+
+
+/* ===============================
+   🧠 CATEGORY DETECTOR (TIDAK DIUBAH)
+================================ */
+function detectCategory(app, source) {
+  const text = `
+    ${app.name || ""}
+    ${app.bundleID || ""}
+    ${app.bundleIdentifier || ""}
+    ${app.localizedDescription || ""}
+  `.toLowerCase();
+
+  if (source === "roy" && app.category) return app.category;
+
+  if (/game|launcher|minecraft|coin|legend|3d|zombie|township|block|farm|puzzle|roblox|gta|fps|racing|games|play|arcade/.test(text))
+    return "games";
+
+  if (/instagram|gram|insta|facebook|badoo|tantan|tinder|wechat|chat|twitter|telegram|x|snapchat|messenger|nicegram|twitch|vk|tumblr|like|follower|follow|watushi|discord|whatsapp|tiktok/.test(text))
+    return "social-media";
+
+  if (/music|audio|radio|piano|guitar|drum|vocal|song|sing|beat|eeve|spotify|player|sampler|dj|koala|speak|mix|davinci|garageband/.test(text))
+    return "music";
+
+  if (/photo|video|studio|vsco|beauty|design|vn|vlog|face|procreate|camera|color|art|kinemaster|pic|picture|adobe|pixel|edit|editor|filter|tv|iptv|oldroll|eraser|capcut|reel/.test(text))
+    return "photo-video";
+
+  return "tweak";
+}
+
+/* ===============================
+   📦 STATE
+================================ */
+let ipaToolsData = [];
+let filteredIPATools = [];
+let ipaToolsVisible = 0;
+const IPA_TOOLS_STEP = 8;
+
+/* ===============================
+   🧩 NORMALIZER
+================================ */
+function normalizeRoy(app){
+  return {
+    name: app.name,
+    iconURL: app.iconURL,
+    developerName: app.developerName || "AppleJr",
+    downloadURL: app.downloadURL,
+    category: detectCategory(app,"roy"),
+    versionDate: app.versionDate || "",
+    key: app.name.toLowerCase()
+  };
+}
+function normalizeAppTesters(app){
+  return {
+    name: app.name,
+    iconURL: app.iconURL || app.icon,
+    developerName: "AppTesters",
+    downloadURL: app.downloadURL || app.down,
+    category: detectCategory(app,"apptesters"),
+    versionDate: app.versionDate || "",
+    key: (app.bundleIdentifier||app.name).toLowerCase()
+  };
+}
+
+/* ===============================
+   🧹 DEDUPE TERBARU
+================================ */
+function dedupeLatest(arr){
+  const map=new Map();
+  arr.forEach(a=>{
+    const prev=map.get(a.key);
+    if(!prev || Date.parse(a.versionDate)>Date.parse(prev.versionDate)){
+      map.set(a.key,a);
+    }
+  });
+  return [...map.values()];
+}
+
+/* ===============================
+   🚀 LOAD IPA TOOLS (FINAL STABLE)
+================================ */
+
+let ipaToolsLoaded = false;
+
+async function loadIPATools() {
+  const page = document.getElementById("page-tools");
+  if (!page || !page.classList.contains("active")) return;
+
+  const grid = document.getElementById("toolsGrid");
+  if (!grid) return;
+
+  // 🔒 sudah pernah load → render ulang saja
+  if (ipaToolsData.length) {
+    renderIPATools(true);
+    return;
+  }
+
+  // loading indicator (aman)
+  grid.innerHTML = `
+    <div style="padding:24px;text-align:center;opacity:.7">
+      ⏳ Loading IPA 資源庫...
+    </div>
+  `;
+
+  try {
+    const [royRes, appRes] = await Promise.all([
+      fetch(
+        "https://raw.githubusercontent.com/royilkom-alt/toolsrepo/refs/heads/main/tools.json?ts=" + Date.now()
+      ),
+      fetch(
+        "https://repository.apptesters.org/apps.json?ts=" + Date.now()
+      )
+    ]);
+
+    if (!royRes.ok || !appRes.ok) {
+      throw new Error("Fetch failed");
+    }
+
+    const royJson = await royRes.json();
+    const appJson = await appRes.json();
+
+    const royApps = Array.isArray(royJson.apps)
+      ? royJson.apps.map(normalizeRoy)
+      : [];
+
+    const appApps = Array.isArray(appJson.apps)
+      ? appJson.apps.map(normalizeAppTesters)
+      : [];
+
+    // 🔥 merge + dedupe
+    ipaToolsData = dedupeLatest([...royApps, ...appApps]);
+    filteredIPATools = ipaToolsData;
+    ipaToolsVisible = 0;
+
+    renderIPATools(true);
+
+  } catch (err) {
+    console.error("IPA TOOLS ERROR:", err);
+    grid.innerHTML = "<p style='opacity:.7'>❌ Failed to load IPA 資源庫</p>";
+  }
+}
+
+/* ===============================
+   🧱 RENDER GRID
+================================ */
+function renderIPATools(reset = false) {
+  const grid = document.getElementById("toolsGrid");
+  const btn  = document.getElementById("toolsLoadMore");
+  if (!grid || !btn) return;
+
+  if (reset) {
+    grid.innerHTML = "";
+    ipaToolsVisible = 0;
+  }
+
+  const next = filteredIPATools.slice(
+    ipaToolsVisible,
+    ipaToolsVisible + IPA_TOOLS_STEP
+  );
+
+  next.forEach(app => {
+    const card = document.createElement("div");
+    card.className = "tool-card";
+    card.innerHTML = `
+      <img src="${app.iconURL || ""}" loading="lazy">
+      <h4>${app.name}</h4>
+      <small>${app.developerName}</small>
+      <a href="${app.downloadURL}" target="_blank" rel="noopener">Download</a>
+    `;
+    grid.appendChild(card);
+  });
+
+  ipaToolsVisible += next.length;
+  btn.style.display =
+    ipaToolsVisible < filteredIPATools.length ? "block" : "none";
+}
+
+/* ===============================
+   ➕ LOAD MORE
+================================ */
+document.addEventListener("click", e => {
+  const btn = e.target.closest("#toolsLoadMore");
+  if (!btn) return;
+  if (!filteredIPATools.length) return;
+  renderIPATools(false);
+});
+
+/* ===============================
+   🏷 CATEGORY FILTER
+================================ */
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".tool-cat");
+  if (!btn) return;
+
+  document.querySelectorAll(".tool-cat").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+
+  const cat = btn.dataset.cat;
+  ipaToolsVisible = 0;
+
+  filteredIPATools =
+    cat === "all"
+      ? ipaToolsData
+      : ipaToolsData.filter(a => a.category === cat);
+
+  renderIPATools(true);
+});
+
+/* ===============================
+   🔍 SEARCH
+================================ */
+document.getElementById("toolsSearch")?.addEventListener("input", e => {
+  const q = e.target.value.toLowerCase().trim();
+  ipaToolsVisible = 0;
+
+  filteredIPATools = !q
+    ? ipaToolsData
+    : ipaToolsData.filter(app => {
+        const text = `${app.name}${app.developerName}${app.category}`.toLowerCase();
+        return q.split(/\s+/).every(k => text.includes(k));
+      });
+
+  renderIPATools(true);
+});
+
+/* ===============================
+   ▶ LOAD ON TAB CLICK (SATU KALI)
+================================ */
+document
+  .querySelector('[data-target="page-tools"]')
+  ?.addEventListener("click", () => {
+    if (ipaToolsLoaded) return;
+    ipaToolsLoaded = true;
+    loadIPATools();
+  });
+
+// FEATURED PRO INTERACTION
+document.querySelectorAll('.featured-item').forEach(item=>{
+  item.addEventListener('mousedown',()=>{
+    item.style.transform='scale(.97)'
+  })
+  item.addEventListener('mouseup',()=>{
+    item.style.transform=''
+  })
+  item.addEventListener('mouseleave',()=>{
+    item.style.transform=''
+  })
+})
+
+
+// Quick links inside resource note
+document.addEventListener("click", e=>{
+  const lib=e.target.closest(".goto-library");
+  if(lib){
+    document.querySelector('.nav-link[data-target="page-library"]')?.click();
+    const sub=lib.dataset.sub;
+    if(sub) document.querySelector(`.sub-tab[data-cat="${sub}"]`)?.click();
+  }
+  const signer=e.target.closest(".goto-signer");
+  if(signer) document.querySelector('.nav-link[data-target="page-signer"]')?.click();
+});
+
+// v5 safe click repair
+document.addEventListener("click", function(e){
+  const card=e.target.closest('.featured-card[data-feature="scarlet"]');
+  if(card){ e.preventDefault(); document.querySelector('.nav-link[data-target="page-tools"]')?.click(); }
+});
+</script>
+</body>
+</html>
