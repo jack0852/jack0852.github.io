@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>jack4432｜iOS 簽名軟體安裝</title>
+
+  <style>
+    :root {
+      --bg: #070b16;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --text: #f8fafc;
+      --muted: #a8b3c7;
+      --primary: #6d5dfc;
+      --primary-2: #00d4ff;
+      --success: #22c55e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+        "Microsoft JhengHei", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(109, 93, 252, 0.32), transparent 34%),
+        radial-gradient(circle at top right, rgba(0, 212, 255, 0.22), transparent 32%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+      background: rgba(7, 11, 22, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-install {
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-weight: 700;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+
+    .hero {
+      padding: 92px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.13);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+      color: #bbf7d0;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--success);
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+      70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    h1 {
+      font-size: clamp(2.55rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff, #a5b4fc 45%, #67e8f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      line-height: 1.85;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 16px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 0.98rem;
+      transition: 0.28s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 18px 36px rgba(109, 93, 252, 0.28);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid var(--card-border);
+    }
+
+    .mini-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .hero-card {
+      border-radius: 32px;
+      padding: 26px;
+      overflow: hidden;
+    }
+
+    .phone {
+      margin: 0 auto;
+      max-width: 360px;
+      min-height: 520px;
+      border-radius: 48px;
+      padding: 18px;
+      background: linear-gradient(160deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.46);
+    }
+
+    .phone-screen {
+      min-height: 484px;
+      border-radius: 36px;
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(13,20,38,0.96), rgba(7,11,22,0.96));
+    }
+
+    .phone-notch {
+      width: 120px;
+      height: 28px;
+      background: #050816;
+      border-radius: 0 0 18px 18px;
+      margin: -22px auto 18px;
+    }
+
+    .screen-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--success);
+      border-radius: 999px;
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.8);
+    }
+
+    .app-preview-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .app-preview {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .app-preview img {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
+    .app-preview h4 {
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .app-preview p {
+      font-size: 0.78rem;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    section {
+      padding: 74px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-head .eyebrow {
+      color: #93c5fd;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card,
+    .step-card,
+    .app-card,
+    .certificate-card {
+      border-radius: var(--radius);
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      transition: 0.28s ease;
+    }
+
+    .feature-card:hover,
+    .step-card:hover,
+    .app-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-size: 1.4rem;
+    }
+
+    .feature-card h3,
+    .step-card h3,
+    .app-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+    }
+
+    .feature-card p,
+    .step-card p,
+    .app-card p,
+    .certificate-card p {
+      color: var(--muted);
+      line-height: 1.78;
+      font-size: 0.95rem;
+    }
+
+    .certificate-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .certificate-card {
+      padding: 30px;
+    }
+
+    .certificate-name {
+      display: inline-flex;
+      padding: 13px 16px;
+      margin: 16px 0 18px;
+      border-radius: 16px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: #bbf7d0;
+      font-weight: 900;
+    }
+
+    .certificate-meta {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+    }
+
+    .meta-row strong {
+      color: var(--text);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step-number {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      background: rgba(250, 204, 21, 0.13);
+      color: #fde68a;
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .app-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-logo {
+      width: 82px;
+      height: 82px;
+      object-fit: cover;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .cert {
+      margin: 10px 0 18px;
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: #bfdbfe;
+      background: rgba(59, 130, 246, 0.13);
+      border: 1px solid rgba(59, 130, 246, 0.22);
+    }
+
+    .cta {
+      padding-bottom: 90px;
+    }
+
+    .cta-box {
+      border-radius: 34px;
+      padding: 46px;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(109, 93, 252, 0.32), rgba(0, 212, 255, 0.18)),
+        rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .notice {
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 999;
+      min-width: 280px;
+      max-width: calc(100% - 32px);
+      padding: 14px 18px;
+      border-radius: 16px;
+      color: #fff;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      text-align: center;
+      transition: 0.28s ease;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .certificate-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps,
+      .apps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        position: absolute;
+        top: 73px;
+        left: 18px;
+        right: 18px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 22px;
+        background: rgba(7, 11, 22, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 14px;
+      }
+
+      .menu-btn {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box {
+        padding: 34px 22px;
+      }
+
+      .meta-row {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">jack4432</a>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#why">為什麼選擇我們</a>
+        <a href="#how">如何使用</a>
+        <a href="#apps">內建軟體</a>
+        <a href="#certificate">最新證書</a>
+        <a class="nav-install" href="https://jack4432.com/ipa/esign/ksign">安裝簽名軟體</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="badge">
+          <span class="pulse"></span>
+          目前最新證書：Aramco Services Company✅
+        </div>
+
+        <h1>
+          iOS 簽名軟體<br />
+          <span class="gradient-text">快速安裝平台</span>
+        </h1>
+
+        <p>
+          jack4432 提供 ESign、KSign、Feather 等熱門簽名工具下載入口，
+          讓使用者能在 iOS 裝置上更快速地安裝簽名應用程式。
+          支援免電腦操作，介面簡單，適合想快速開始使用簽名工具的使用者。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary install-link" href="https://jack4432.com/ipa/esign/ksign">
+            立即安裝簽名軟體 →
+          </a>
+          <a class="btn btn-secondary" href="#apps">
+            查看內建軟體
+          </a>
+        </div>
+
+        <div class="mini-stats">
+          <span>⚡ 快速簽名</span>
+          <span>🛡️ 維護證書</span>
+          <span>📱 無需越獄</span>
+        </div>
+      </div>
+
+      <div class="hero-card glass reveal">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+
+            <div class="screen-title">
+              <h3>Signing Apps</h3>
+              <span class="status-dot"></span>
+            </div>
+
+            <div class="app-preview-list">
+              <div class="app-preview">
+                <img src="https://jack4432.com/IMG_3278.jpeg" alt="ESign 標誌">
+                <div>
+                  <h4>ESign✅</h4>
+                  <p>證書：Aramco Services Company✅</p>
+                </div>
+              </div>
+
+              <div class="app-preview">
+                <img src="https://ksign-ios.com/wp-content/uploads/2025/05/What-Is-KSign-iOS.webp" alt="KSign 標誌">
+                <div>
+                  <h4>KSign✅</h4>
+                  <p>證書：Aramco Services Company✅</p>
+                </div>
+              </div>
+
+              <div class="app-preview">
+                <img src="https://feather.claration.dev/feather.png" alt="Feather 標誌">
+                <div>
+                  <h4>Feather✅</h4>
+                  <p>證書：Aramco Services Company✅</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Why Choose Us</div>
+          <h2>為什麼選擇我們</h2>
+          <p>jack4432 專注於提供簡單、快速、方便的簽名軟體入口。</p>
+        </div>
+
+        <div class="features">
+          <article class="feature-card reveal">
+            <div class="icon">⚡</div>
+            <h3>快速簽名</h3>
+            <p>
+              使用我們最佳化的基礎設施，在幾秒鐘內簽署您的 IPA 檔案。
+              高階快取和並行處理確保了最快的簽名速度。
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="icon">🛡️</div>
+            <h3>維護證書</h3>
+            <p>
+              訪問有效期延長的企業證書。
+              我們的證書定期維護和監控，以防止撤銷。
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="icon">🔥</div>
+            <h3>熱門簽名應用程式</h3>
+            <p>
+              下載 ESign、KSign、Feather、Scarlet 和其他流行的簽名應用程式。
+              所有應用程式都經過驗證並定期更新，以實現相容性。
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="icon">📱</div>
+            <h3>無需越獄</h3>
+            <p>
+              在不越獄的情況下在您的 iOS 裝置上安裝修改後的應用程式和調整。
+              適用於所有 iOS 版本，包括最新的 iOS 系統。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificate">
+      <div class="container">
+        <div class="certificate-wrap">
+          <div class="certificate-card glass reveal">
+            <div class="section-head" style="text-align:left;margin-bottom:0;">
+              <div class="eyebrow">Latest Certificate</div>
+              <h2>目前最新證書</h2>
+              <p>目前網站內建簽名軟體使用的證書如下。</p>
+            </div>
+
+            <div class="certificate-name">
+              Aramco Services Company✅
+            </div>
+
+            <button class="btn btn-secondary" id="copyCertBtn" type="button">
+              複製證書名稱
+            </button>
+          </div>
+
+          <div class="certificate-card reveal">
+            <h3>證書狀態</h3>
+            <p>
+              平台會展示目前可用的證書資訊，讓使用者在安裝前能清楚確認目前使用的簽名來源。
+            </p>
+
+            <div class="certificate-meta">
+              <div class="meta-row">
+                <span>目前證書</span>
+                <strong>Aramco Services Company✅</strong>
+              </div>
+
+              <div class="meta-row">
+                <span>內建軟體</span>
+                <strong>ESign✅ / KSign✅ / Feather✅</strong>
+              </div>
+
+              <div class="meta-row">
+                <span>安裝方式</span>
+                <strong>iOS 裝置直接跳轉</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">How To Use</div>
+          <h2>如何使用</h2>
+          <p>只需三個簡單的步驟即可開始。</p>
+        </div>
+
+        <div class="steps">
+          <article class="step-card reveal">
+            <div class="step-number">1</div>
+            <h3>安裝配置描述檔案</h3>
+            <p>
+              單擊「開始」按鈕，然後在 iOS 裝置上安裝 SkibidiTech 配置檔案。
+              這允許您的裝置信任由我們證書簽名的應用程式。
+              配置檔案安裝很快，只需要完成一次。
+            </p>
+          </article>
+
+          <article class="step-card reveal">
+            <div class="step-number">2</div>
+            <h3>選擇您的應用程式</h3>
+            <p>
+              瀏覽我們廣泛的簽名應用程式和修改應用程式庫。
+              從 ESign、Scarlet、Feather 和數百個其他應用程式等熱門選項中進行選擇。
+              您還可以上傳您自己的 IPA 檔案，以便用我們的證書簽名。
+            </p>
+          </article>
+
+          <article class="step-card reveal">
+            <div class="step-number">3</div>
+            <h3>安裝並享受</h3>
+            <p>
+              點選任何應用程式上的安裝，它將被簽名並直接安裝到您的裝置中。
+              不需要電腦，不需要越獄。
+              所有應用程式都能無縫執行，具有全部功能，並在可用時接收更新。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="apps">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Built-in Apps</div>
+          <h2>目前內建證書軟體</h2>
+          <p>
+            目前內建 ESign、KSign、Feather，皆顯示使用
+            Aramco Services Company✅ 證書。
+          </p>
+        </div>
+
+        <div class="apps">
+          <article class="app-card reveal">
+            <img class="app-logo" src="https://jack4432.com/IMG_3278.jpeg" alt="ESign 標誌">
+            <h3>ESign✅</h3>
+            <span class="cert">證書：Aramco Services Company✅</span>
+            <p>熱門 iOS 簽名工具，適合安裝和管理 IPA 檔案。</p>
+          </article>
+
+          <article class="app-card reveal">
+            <img class="app-logo" src="https://ksign-ios.com/wp-content/uploads/2025/05/What-Is-KSign-iOS.webp" alt="KSign 標誌">
+            <h3>KSign✅</h3>
+            <span class="cert">證書：Aramco Services Company✅</span>
+            <p>簡潔快速的簽名工具，方便使用者直接在 iOS 裝置上操作。</p>
+          </article>
+
+          <article class="app-card reveal">
+            <img class="app-logo" src="https://feather.claration.dev/feather.png" alt="Feather 標誌">
+            <h3>Feather✅</h3>
+            <span class="cert">證書：Aramco Services Company✅</span>
+            <p>輕量化簽名應用程式，提供清楚的安裝與管理體驗。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>開始安裝簽名軟體</h2>
+          <p>
+            點擊下方按鈕後，將會跳轉至 jack4432 的簽名軟體安裝頁面。
+            建議使用 iPhone 或 iPad 的 Safari 開啟，以獲得最佳安裝體驗。
+          </p>
+
+          <a class="btn btn-primary install-link" href="https://jack4432.com/ipa/esign/ksign">
+            安裝簽名軟體 →
+          </a>
+
+          <div class="notice">
+            請只安裝您信任且具有合法使用權限的 App 或 IPA 檔案。
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> jack4432. All rights reserved.</p>
+      <p>ESign✅ · KSign✅ · Feather✅</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">已複製</div>
+
+  <script>
+    const INSTALL_URL = "https://jack4432.com/ipa/esign/ksign";
+    const CERTIFICATE_NAME = "Aramco Services Company";
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const copyCertBtn = document.getElementById("copyCertBtn");
+    const toast = document.getElementById("toast");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuBtn.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    document.querySelectorAll(".install-link").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        showToast("正在跳轉至安裝頁面...");
+        setTimeout(() => {
+          window.location.href = INSTALL_URL;
+        }, 450);
+      });
+    });
+
+    copyCertBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(CERTIFICATE_NAME);
+        showToast("已複製證書名稱");
+      } catch (error) {
+        showToast("複製失敗，請手動複製");
+      }
+    });
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    revealElements.forEach((element, index) => {
+      element.style.transitionDelay = `${Math.min(index * 60, 360)}ms`;
+      revealObserver.observe(element);
+    });
+
+    document.querySelectorAll("img").forEach((img) => {
+      img.addEventListener("error", () => {
+        img.src =
+          "data:image/svg+xml;charset=UTF-8," +
+          encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+              <defs>
+                <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#6d5dfc"/>
+                  <stop offset="100%" stop-color="#00d4ff"/>
+                </linearGradient>
+              </defs>
+              <rect width="200" height="200" rx="44" fill="url(#g)"/>
+              <text x="50%" y="54%" text-anchor="middle" fill="white"
+                font-size="44" font-family="Arial" font-weight="700">APP</text>
+            </svg>
+          `);
+      });
+    });
+  </script>
+</body>
+</html>
