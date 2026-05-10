@@ -33,26 +33,26 @@
       "downloadURL": "https://github.com/CLARATION/Feather/releases/download/v2.8.2/Feather.ipa"
     },
     {
-      "name": "Delta",
+      "name": "Delta Executor",
       "bundleIdentifier": "com.jack4432.delta",
       "developerName": "Jack4432",
       "iconURL": "https://deltaios.net/wp-content/uploads/2025/11/delta_main_logo-removebg-preview-Picsart-AiImageEnhancer-1.png",
-      "localizedDescription": "",
+      "localizedDescription": "Delta Executor 是一款專為《Roblox》設計的熱門遊戲指令碼執行器（Script Executor）。它允許玩家在遊戲中運行自訂的腳本與外掛程式，以解鎖進階選項或實現自動化操作。\n\n它具備以下幾項特點：\n\n核心功能\n自訂腳本：允許使用者注入及執行各種 Lua 腳本，修改遊戲數據或自動化遊玩。\n跨平台支援：支援 Windows 電腦、Android 與 iOS 行動裝置。\n介面友善：提供直覺且易於操作的使用者介面。",
       "subtitle": "",
       "tintColor": "848ef9",
       "versions": [
         {
-          "version": "1.0",
+          "version": "2.718.1110",
           "date": "2026-05-10T00:00:00Z",
-          "size": 0,
+          "size": 129603993,
           "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/Delta-2.718.1110.ipa"
         }
       ],
       "appPermissions": {},
       "screenshotURLs": [],
-      "version": "1.0",
+      "version": "2.718.1110",
       "versionDate": "2026-05-10T00:00:00Z",
-      "size": 0,
+      "size": 129603993,
       "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/Delta-2.718.1110.ipa"
     },
     {
@@ -60,22 +60,22 @@
       "bundleIdentifier": "com.roblox.robloxmobile",
       "developerName": "Jack4432",
       "iconURL": "https://m.media-amazon.com/images/I/21aoUPG3svL.png",
-      "localizedDescription": "",
+      "localizedDescription": "ROBLOX：各種類別的精彩遊戲，免費暢玩！\n\nRoblox 提供多元豐富的遊戲，任你暢遊體驗。你可以透過烹飪、建造和模擬類遊戲放鬆身心，盡情享受競速、射擊對戰和生存遊戲的刺激快感，或是探索精彩絕倫的角色扮演冒險遊戲、在大亨遊戲中經營自己的帝國、在體育遊戲中一較高下，還可以跟好友一起暢玩恐怖、動漫和多人遊玩的遊戲。\n\nRoblox 每天都有新遊戲推出，這些作品來自全球開發者社群，包括工作室、獨立團隊和獨立創作者，類別多元，挑戰各種創作可能，總有新鮮好玩的遊戲等你探索。",
       "subtitle": "",
       "tintColor": "848ef9",
       "versions": [
         {
-          "version": "1.0",
+          "version": "2.718.1110",
           "date": "2026-05-10T00:00:00Z",
-          "size": 0,
+          "size": 118174515,
           "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/com.roblox.robloxmobile_2.718.1110_und3fined.2.ipa"
         }
       ],
       "appPermissions": {},
       "screenshotURLs": [],
-      "version": "1.0",
+      "version": "2.718.1110",
       "versionDate": "2026-05-10T00:00:00Z",
-      "size": 0,
+      "size": 118174515,
       "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/com.roblox.robloxmobile_2.718.1110_und3fined.2.ipa"
     }
   ],
