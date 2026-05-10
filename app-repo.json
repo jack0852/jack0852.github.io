@@ -1,5 +1,5 @@
 {
-  "name": "Jack4432 Repository",
+  "name": "Jack4432 ",
   "identifier": "com.jack4432.feather-repo",
   "iconURL": "https://jack4432.com/IMG_3278.jpeg",
   "website": "https://jack4432.com/ipaa",
@@ -31,6 +31,52 @@
       "versionDate": "2026-04-22T09:18:46Z",
       "size": 12598584,
       "downloadURL": "https://github.com/CLARATION/Feather/releases/download/v2.8.2/Feather.ipa"
+    },
+    {
+      "name": "Delta",
+      "bundleIdentifier": "com.jack4432.delta",
+      "developerName": "Jack4432",
+      "iconURL": "https://deltaios.net/wp-content/uploads/2025/11/delta_main_logo-removebg-preview-Picsart-AiImageEnhancer-1.png",
+      "localizedDescription": "",
+      "subtitle": "",
+      "tintColor": "848ef9",
+      "versions": [
+        {
+          "version": "1.0",
+          "date": "2026-05-10T00:00:00Z",
+          "size": 0,
+          "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/Delta-2.718.1110.ipa"
+        }
+      ],
+      "appPermissions": {},
+      "screenshotURLs": [],
+      "version": "1.0",
+      "versionDate": "2026-05-10T00:00:00Z",
+      "size": 0,
+      "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/Delta-2.718.1110.ipa"
+    },
+    {
+      "name": "Roblox",
+      "bundleIdentifier": "com.roblox.robloxmobile",
+      "developerName": "Jack4432",
+      "iconURL": "https://m.media-amazon.com/images/I/21aoUPG3svL.png",
+      "localizedDescription": "",
+      "subtitle": "",
+      "tintColor": "848ef9",
+      "versions": [
+        {
+          "version": "1.0",
+          "date": "2026-05-10T00:00:00Z",
+          "size": 0,
+          "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/com.roblox.robloxmobile_2.718.1110_und3fined.2.ipa"
+        }
+      ],
+      "appPermissions": {},
+      "screenshotURLs": [],
+      "version": "1.0",
+      "versionDate": "2026-05-10T00:00:00Z",
+      "size": 0,
+      "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/com.roblox.robloxmobile_2.718.1110_und3fined.2.ipa"
     }
   ],
   "news": [
