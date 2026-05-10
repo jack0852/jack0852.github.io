@@ -83,6 +83,29 @@
       "versionDate": "2026-05-10T00:00:00Z",
       "size": 118174515,
       "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/com.roblox.robloxmobile_2.718.1110_und3fined.2.ipa"
+    },
+    {
+      "name": "Pikmin Bloom",
+      "bundleIdentifier": "com.nianticlabs.pikmin",
+      "developerName": "Jack4432",
+      "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2e/8d/ed/2e8dedc1-dc77-89bb-dfed-eb35c8dea335/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/146x0w.webp",
+      "localizedDescription": "Pikmin Bloom透過有趣的方式，鼓勵大家和好友一同出門探索並獲得獎勵！現在推出全新的每週挑戰功能，讓玩家能和其他人組隊，無論彼此相隔多遠，都能合力達成步數目標！\n\n收集超過150種特殊飾品皮克敏！有的身上背著魚餌，有的夾在漢堡麵包裡，有的還坐在紙飛機上，造型五花八門。\n\n探索社區，讓更多皮克敏加入你的隊伍！走的路越多，就能找到越多花苗和水果。\n\n與好友組隊打倒蘑菇，獲得獎勵！組成夢幻皮克敏隊伍，增加分數並取得更稀有的水果類型！\n\n讓走過之處開出美麗花朵，妝點這個世界！欣賞你和周圍玩家在地圖上種滿的繽紛花海！\n出門探索自己的社區，讓世界綻放花朵！",
+      "subtitle": "",
+      "tintColor": "848ef9",
+      "versions": [
+        {
+          "version": "142.0",
+          "date": "2026-05-10T00:00:00Z",
+          "size": 140509184,
+          "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/com.nianticlabs.pikmin_142.0_und3fined.ipa"
+        }
+      ],
+      "appPermissions": {},
+      "screenshotURLs": [],
+      "version": "142.0",
+      "versionDate": "2026-05-10T00:00:00Z",
+      "size": 140509184,
+      "downloadURL": "https://github.com/jack0852/jack0852.github.io/releases/download/V1.0/com.nianticlabs.pikmin_142.0_und3fined.ipa"
     }
   ],
   "news": [
