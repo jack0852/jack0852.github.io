@@ -1,5 +1,5 @@
 {
-  "name": "Jack4432 ",
+  "name": "Jack4432 Repository",
   "identifier": "com.jack4432.feather-repo",
   "iconURL": "https://jack4432.com/IMG_3278.jpeg",
   "website": "https://jack4432.com/ipaa",
@@ -72,7 +72,12 @@
         }
       ],
       "appPermissions": {},
-      "screenshotURLs": [],
+      "screenshotURLs": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/20/e6/2c/20e62c34-73ac-46d0-576f-815d22f82736/ASO_Q1_26_Default_EEAO_2602_Apple_iPhone_SC1-B.jpg/1286x0w.webp",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/66/a0/1f/66a01fcd-89d1-0154-0086-2a75346c7514/ASO_Q1_26_Default_EEAO_2602_Apple_iPhone_SC2-C.jpg/1286x0w.webp",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/2a/83/58/2a835802-d5d9-98a7-8e67-24c24be9f6f8/ASO_Q1_26_Default_EEAO_2602_Apple_iPhone_SC3.jpg/1286x0w.webp",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/59/d6/ff/59d6ff04-23a6-c5dd-0867-138a5df9a740/ASO_Q1_26_Default_EEAO_2602_Apple_iPhone_SC4.jpg/1286x0w.webp"
+      ],
       "version": "2.718.1110",
       "versionDate": "2026-05-10T00:00:00Z",
       "size": 118174515,
