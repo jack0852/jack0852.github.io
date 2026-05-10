@@ -1457,6 +1457,88 @@ button:hover{background:var(--primary-dark);}
 }
 
 
+
+/* Feather copy popup */
+.feather-copy-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,.62);
+  z-index:1200;
+}
+.feather-copy-modal.show{
+  display:flex;
+}
+.feather-copy-box{
+  width:min(92vw,560px);
+  max-height:82vh;
+  overflow-y:auto;
+  border-radius:22px;
+  padding:22px;
+  position:relative;
+  background:rgba(28,28,30,.82);
+  border:1px solid rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:0 24px 70px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.feather-copy-box h3{
+  margin:0 40px 10px 0;
+  font-size:20px;
+}
+.feather-copy-box p{
+  margin:0 0 14px;
+  color:rgba(255,255,255,.75);
+  font-size:14px;
+  line-height:1.5;
+}
+.feather-copy-links{
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+  font-size:13px;
+  line-height:1.6;
+  white-space:pre-wrap;
+  word-break:break-all;
+}
+.feather-copy-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  font-size:20px;
+  line-height:1;
+  cursor:pointer;
+}
+@media (max-width:480px){
+  .feather-copy-modal{
+    padding:12px;
+    align-items:flex-end;
+  }
+  .feather-copy-box{
+    width:100%;
+    max-height:78vh;
+    border-radius:22px 22px 18px 18px;
+    padding:20px 16px;
+  }
+  .feather-copy-box h3{
+    font-size:18px;
+  }
+  .feather-copy-links{
+    font-size:12px;
+  }
+}
+
 </style>
 <header id="pageTitle">安裝器</header>
 <div class="page active" id="page-library">
@@ -1488,6 +1570,9 @@ button:hover{background:var(--primary-dark);}
 <div class="sub-tab" data-cat="zsign"><svg viewbox="0 0 24 24">
 <path d="M12 2L1.5 9l10.5 7 10.5-7L12 2zM1.5 15l10.5 7 10.5-7"></path>
 </svg>Ksign</div>
+<div class="sub-tab" data-cat="feather"><svg viewbox="0 0 24 24">
+<path d="M20.24 4.76c-2.87-1.56-6.35-.79-8.35 1.84L4 17.02V20h2.98l10.42-7.89c2.63-2 3.4-5.48 1.84-8.35zM6.18 18l6.08-8.02 1.76 1.76L6 18h.18z"></path>
+</svg>Feather</div>
 </div>
 <div class="cat-list" id="cat-esign">
 <div class="card">
@@ -1543,6 +1628,33 @@ button:hover{background:var(--primary-dark);}
 </div>
 </div>
 <a class="badge" href="https://api.khoindvn.io.vn/a71JoP">安裝</a>
+</div>
+</div>
+<div class="cat-list" id="cat-feather" style="display:none;">
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://feather.claration.dev/feather.png"/>
+<div>
+<h3>Feather</h3>
+<small class="meta">
+<span class="dot-green-mini"></span>
+                Signed • Aramco Services
+              </small>
+<div class="rating">⭐ Feather</div>
+</div>
+</div>
+<a class="badge" href="itms-services://?action=download-manifest&amp;url=https://sign.applep12.com/GetPlist/69fcf913-6964-ef01-002a-8c82614d2a3f">安裝</a>
+</div>
+<div class="card">
+<div class="left">
+<img class="app-icon" loading="lazy" src="https://feather.claration.dev/feather.png"/>
+<div>
+<h3>Jack4432軟件源</h3>
+<small>點擊複製軟件源連結</small>
+<div class="rating" id="featherRepoStatus"></div>
+</div>
+</div>
+<a class="badge feather-copy-btn" data-copy="https://github.com/jack0852/jack0852.github.io/raw/refs/heads/main/app-repo.json&#10;https://github.com/jack0852/jack0852.github.io/raw/refs/heads/main/app-repo.json" href="#">複製</a>
 </div>
 </div>
 <div class="cat-list" id="cat-certificate" style="display:none;">
@@ -1955,6 +2067,15 @@ button:hover{background:var(--primary-dark);}
       </button>
 </div>
 </div>
+<div class="feather-copy-modal" id="featherCopyModal" aria-hidden="true">
+<div class="feather-copy-box" role="dialog" aria-modal="true" aria-labelledby="featherCopyTitle">
+<button class="feather-copy-close" id="featherCopyClose" type="button">×</button>
+<h3 id="featherCopyTitle">連結已複製</h3>
+<p id="featherCopyMessage">為了防止沒有複製到，以下顯示已複製的連結：</p>
+<div class="feather-copy-links" id="featherCopyLinks"></div>
+</div>
+</div>
+
 <div class="modal" id="featureModal">
 <div class="modal-content"><button class="modal-close" id="modalClose">×</button>
 <div id="modalBody"></div>
@@ -2023,6 +2144,60 @@ document.querySelectorAll(".sub-tab").forEach(tab=>{
     tab.classList.add("active");
     document.querySelectorAll(".cat-list").forEach(list=>list.style.display="none");
     document.getElementById("cat-"+tab.dataset.cat).style.display="block";
+  });
+});
+
+// Feather repo copy
+function copyFeatherRepoLinks(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  const ok = document.execCommand("copy");
+  textarea.remove();
+  return ok ? Promise.resolve() : Promise.reject(new Error("copy failed"));
+}
+
+function showFeatherCopyPopup(title, message, text) {
+  const modal = document.getElementById("featherCopyModal");
+  const titleEl = document.getElementById("featherCopyTitle");
+  const messageEl = document.getElementById("featherCopyMessage");
+  const linksEl = document.getElementById("featherCopyLinks");
+  if(!modal || !titleEl || !messageEl || !linksEl) return;
+  titleEl.textContent = title;
+  messageEl.textContent = message;
+  linksEl.textContent = text;
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden", "false");
+}
+
+function closeFeatherCopyPopup() {
+  const modal = document.getElementById("featherCopyModal");
+  if(!modal) return;
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("featherCopyClose")?.addEventListener("click", closeFeatherCopyPopup);
+document.getElementById("featherCopyModal")?.addEventListener("click", e=>{
+  if(e.target.id === "featherCopyModal") closeFeatherCopyPopup();
+});
+
+document.addEventListener("click", e=>{
+  const btn = e.target.closest(".feather-copy-btn");
+  if(!btn) return;
+  e.preventDefault();
+  const text = btn.dataset.copy;
+  copyFeatherRepoLinks(text).then(()=>{
+    showFeatherCopyPopup("連結已複製", "為了防止沒有複製到，以下顯示已複製的連結：", text);
+  }).catch(()=>{
+    showFeatherCopyPopup("請手動複製", "複製失敗時，可以直接手動複製以下連結：", text);
   });
 });
 
